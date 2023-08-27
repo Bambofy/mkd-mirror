@@ -1,0 +1,47 @@
+
+   70    Fichier mkddocu.sh
+   71    -----------------------------------------------------------------------------
+   72    Tests : Ne peut fonctionner que si la commande mkd est installée.
+   73   
+   74    Test unitaire :
+   75    ---------------
+   76    Renommer mkddocu mkddocu.sh ou .csh
+   77    Editer le fichier mkddocu.sh et modifier la valeur de BACKUPSMAX limiter 
+   78    cette valeur à 3 (4 sauvegardes indicées)
+   79   
+   80    La commande s'autoteste
+   81    1. Lancer 4 fois la commande ./mkddoccu (sans paramètre)
+   82    2. Vérifier la commande de boucle à chaque fois, elle doit incrémenter les 
+   83       répertoires de projets project (le dernier), puis project.1, etc.
+   84       Après project.3 on doit vous demander si vous désirez préserver ces
+   85       fichiers dans un répertoire .Backups. Répondez oui : 'y' (yes)
+   86    3. Vérifier que le fichier .prj prend bien en charge tous les fichiers de
+   87       langages de programmation de la commande mkd. Pour cela il faut évidemment
+   88       disposer des fichiers nécessaires. On peut en trouver sur le site EELL
+   89       http://edeulo.free.fr/wiki/index.php/Projet_mkd/Fichiers_en_développement
+   90       Les fichiers en développement sont accompagnés de leurs tests unitaires,
+   91       notamment le fichier find.inc.c très sollicité par la commande mkddocu.
+   92       Trouver des exemples aussi sur wikipedia, wikibooks.
+   93    4. Essayer les commandes : (dans un 'Terminal' ou une 'Konsoke')
+   94       ./mkddocu.sh -s
+   95       ./mkddocu.sh mkddocu
+   96       ./mkddocu.sh mkddocu -s
+   97       ./mkddocu.sh -s mkddocu
+   98       Les commandes mkd ont été éprouvées par ailleurs. Vérifiez tout de même
+   99       que les fichiers générés sont bien conformes.
+  100    5. Vérifiez que les fichiers en langage C sont pris en compte quand ils sont
+  101       présents. les fichiers d'entête (.h) n'ont pas à être pris en compte.
+  102    6. Vérifier le bon fonctionnement des traduction
+  103       xgettext : Outil pour extraire les chaînes à traduire avec poedit
+  104       ne pas oublier la ligne '. gettext.sh' en tête de fichier
+  105       xgettext -L shell -o lang/mkddocu.po --from-code=UTF-8 mkddocu.sh
+  106    
+  107   
+  108    Tests d'intégration :
+  109    ---------------------
+  110    Pour ces tests il faut évidemment disposer de vrais fichiers de programmation
+  111    dans différent langages mais cela a déjà été fait lors des tests
+  112    d'intégration de la commande mkd.
+  113    On peut trouver ces fichiers dans chaqu'un des fichiers de tests unitaires de
+  114    la page wiki 'fichiers' en développement citée plus haut.
+  115   

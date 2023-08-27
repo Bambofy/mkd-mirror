@@ -1,0 +1,13 @@
+#!/bin/sh -ev
+# preinst script for mkd
+#
+
+#
+# PRE INSTALL
+#
+
+# remove old mkd doc and mkddocu directory
+rm -Rf /usr/share/doc/mkd
+rm -Rf /usr/share/doc/mkddocu
+
+exit 0

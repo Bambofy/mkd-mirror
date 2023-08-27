@@ -1,0 +1,153 @@
+.\" FILE manuals Update_mkd_en.1.txt to edit in UTF-8 format
+.\" .
+.\" Mise à jour par JPL le 1 avril 1989 dans version.h MKDOC.3
+.\" Vérifications UTF-8 par Clara le 6 novembre 2012
+.\" Mise à jour par Cardabela le 31 mars 2012
+.\" Mise à jour par JPL le 6 avril 2013
+.\" Mise à jour par Clara le 11 mai 2013 suite à la modif de find.inc.c
+.\" Mise à jour par Luca le 5 octobre 2013 Retouches
+.\" Mise à jour par JPL le 15/03/2014 Retouches et ajout de mkddocu(1)
+.\" .
+
+.TH MKD 1 "28 March 2014"
+.SH NAME
+mkd \- Extract from source files, the software documentation.
+.SH SYNOPSIS
+.B mkd
+.BR [\-ABCFPSafjlpstw]
+.IR char_codes
+.IR path_source
+.RB [path_target]
+.SH DESCRIPTION
+.TP
+.B mkd
+Selected comments (or all comments) are extracted from programs sources and product specific documentation to target file. Usual target files are Organigrams, or Structure of programs, or comments for Programmers, Warnings and Tests points .... Coded informations are respectively 'O', 'S', 'P', 'www', and 'T' just after the comment character.
+.TP
+.I char_codes
+All ASCII. The comment are extracted if the comment begin with this character. With two star mkd extract all comments.
+.TP
+.I path_source
+Path source file (or project file: option j ).
+.TP
+.RB path_target
+Path target file. Default, path target is idendical to source file with extension \'.doc\' .
+.SH OPTIONS
+.TP
+
+.B Uppercase options :
+
+.B These options restrict the extraction of comments to a sigle style of language.
+.IP \fB\-A\fB
+\fRextract Assembler style comments ( ; to end of line  )\fR
+.IP \fB\-B\fB
+\fRBasic style                 ( REM or \' → end of line )\fR
+.IP \fB\-C\fB
+\fRC++ style                   ( // → NL and  /*  →  */ )\fR
+.IP \fB\-F\fB
+\fRFortran style               ( c,C or * → end of line )\fR
+.IP \fB\-P\fB
+\fRPascal style                ( {  →  } and (*  →  *)  )\fR
+.IP \fB\-S\fB
+\fRShell or ratfor style       (   #    →   end of line )\fR
+
+.B Lowercase options :
+
+.IP \fB\-a\fB
+\fRappend to current target file.\fR
+.IP \fB\-f\fB
+\fRfind source file language. (useful with project file). mkd recognizes the following files: .asm, .s, .bas, .vb, .bat; .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js, .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw, .pj, .prj\fR
+.IP \fB\-j\fB
+used if source file is a project file.
+.IP \fB\-l\fB
+\fRlines (extract lines delimited by CD1 or CD2 in first colomn or CD3 in line, and next New-Line. CD1, CD2, CD3 are compilable options in version.h from mkd distribution. You can see these options compiled by the command\fR \fBmkd\ \\?\fB
+.IP \fB\-n\fB
+\fRnumbering the lines (line number from source files)\fR
+.IP \fB\-p\fB
+\fRpage (extract text delimited by CD4 and CD5 \-begin with CD4 and end with CD5\-. CD4, CD5 are compilable options in version.h from mkd distribution. You can see these options compiled by the command\fR\ \fBmkd \\?\fB
+.IP \fB\-s\fB
+\fRadd to screen. (verbose)\fR
+.IP \fB\-t\fB
+\fRtext (copy only the comment).\fR
+.IP \fB\-w\fB
+\fRoverwrite the current target file.\fR
+.SH EXAMPLES
+.TP
+.B mkd -Ct \fIF manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+Product UNIX manual for french users.
+.TP
+.B mkd -Ct \fIM manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+Product UNIX manual.
+.TP
+.B mkd -Csl \fI'*Sied' mkd3.c\fI \fR'*.verif_struct'\fR
+Product documentation with structure of program, includes, defines, ifdef else and endif compile options, to verify structure of program.
+(with compilable options CD1='#' or CD2='#' in version.h from mkd distribution).
+.TP
+.B mkd -jfsl \fI'*OHie' mkd_docu.prj\fI \fRmkd.org\fR
+Product organigram. Comment begin with *,O,H, and sources files are listed in project file.
+(with compilable options CD1='#' or CD2='#'). f: find language, j: source file is a project file containing the list of sources files. 
+.TP
+.B mkd -l \fI'*ide' mkd3.c\fI \fR'*.id_ei'\fR
+(with compilable options CD1='#' or CD2='#', extract lines: #include, #define, #ifdef, #else, #endif, etc.)
+.TP
+.B mkd -pj \fI'**' mkd_docu.prj\fI \fRmkd.strings\fR
+Extract strings from program. (messages are printed to stdout).
+(sources files are itemize in project file, and with compilable options CD4=CD5=\'\\"\').
+.TP
+.B mkd \fR(without argument)\fR
+Cause any error and syntax are transmit to terminal with caracters compiled to use options l and p.
+.SH SEE ALSO
+.PP
+mkddocu(1) mkdcppw(1)
+.br
+file:////usr/share/doc/mkddocu/
+.br
+file:////usr/share/doc/mkd/
+.SH HISTORY
+.PP
+1989 - mkd for DOS, and mkdoc for UNIX, are writen  in  ASCII format by Jean-Paul Louyot for the University of Montpellier  'CEM' laboratory (France).
+.TP
+1991 - mkdoc 3.12 for PC and UNIX (Sun)
+.TP
+1995 - 2004 - mkdoc 3.22 to mkdoc 4 for Unix and Linux: SUN-SPARC, HP-UX, RedHat
+.TP
+2004 - mkdoc 4 for Linux Ubuntu, Windows 98, Windows 2000
+.TP
+2007-2012 - mkdoc release 7.01 to mkd R12.01 are in format  ISO-8859-1. The name 'mkdoc' was forgotten  with the  release  10.01  compiled  with Visual C++ 2010
+.TP
+2012 - mkd 12.03 is  adapted  to  UTF-8  format  for  translations  and internationalization. During the developement,  mkdcppw was writen to decode  computer languages C, c++ and php in graphical mode with 'gcc' and 'gtkmm'.
+.SH DOWNLOADS
+.PP
+http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX
+.SH AUTHORS
+.PP
+man updated by Clara JIMENEZ, Cardabela, and JPL. (May 2013) and by Luca (Oct 1013)
+.SH TRANSLATORS
+.PP
+Catalan : Alizée
+.TP
+English : JPL, Cardabela
+.TP
+German : Clara, JPL, Martine
+.TP
+Italian : Luca
+.TP
+Spanish : Alizée, JPT, Sharo
+.TP
+Email : http://edeulo.free.fr/contacts/formmail.php
+.IP
+.SH NOTES
+.PP
+It belong to the programmers to close comments, blocks and lines, by the appropriate closing codes in the source files.
+
+Warning: The closure of a comment line is a carriage-return (NL, LF, CR/LF) as the case.
+
+At the end of the file: this note implies a carriage-return at the end of the comment line. In this case you must have a blank line at the end of the source file.
+
+Do es not allow to read and decode the files included by #include in the sources files.
+.SH BUGS
+.PP
+Bugs Report: http://edeulo.free.fr/phpBB3/index.php 
+
+Documents generator mkd
+

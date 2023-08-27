@@ -1,0 +1,151 @@
+.\" FILE manuals Update_mkd_(fr).1.txt to edit in UTF-8 format
+.\" .
+.\" Mise à jour par JPL le 1 avril 1989 dans version.h MKDOC.3
+.\" Vérifications UTF-8 par Clara le 6 novembre 2012
+.\" Mise à jour par Cardabela le 31 mars 2012
+.\" Mise à jour par JPL le 6 avril 2013
+.\" Mise à jour par Clara le 11 mai 2013 suite à la modification de find.inc.c
+.\" Mise à jour par JPL le 15/03/2014 Retouches et ajout de mkddocu(1)
+.\" .
+
+.TH MKD 1 "28 mars 2014"
+.SH NOM
+mkd \- Extrait des fichiers sources, la documentation logicielle.
+.SH RÉSUMÉ
+.B mkd
+.BR [\-ABCFPSafjlpstw]
+.IR codes
+.IR chemin_source
+.RB [chemin_cible]
+.SH DESCRIPTION
+.TP
+.B mkd
+Des commentaires sélectionnés (ou tous les commentaires) sont extraits des programmes sources: 'chemin_source', et sont copiés dans un fichier documentaire: 'chemin_cible', afin de produire une documentation spécifique .  Habituellement les fichiers documentaires sont des Organigrammes, des Structures de programme, des commentaires pour Programmeurs, des points de Test et 'warnings' .... Les codes de sélection peuvent être respectivement 'O', 'S', 'P', 'T' et 'www' juste après le caractère début de commentaire.
+.TP
+.I codes
+Les commentaires commençant par ces caractères sont extraits du programme source et sont ajoutés au fichier documentaire. Tous les caractères ASCII peuvent servir a coder les commentaires, toutefois on utilise habituellement des caractères majuscules, sauf w pour 'warning'. Avec deux étoiles en paramètre codes, mkd extrait tous les commentaires. (Voir aussi option t et les exemples).
+.TP
+.I chemin_source
+Chemin du fichier source (ou fichier projet: option j)
+.TP
+.RB chemin_cible
+Chemin du fichier documentaire. Par défaut chemin_cible est une copie de chemin_source auquel on remplace le suffixe par le suffixe \'.doc\'.
+.SH OPTIONS
+.TP
+
+.B Options en majuscules :
+
+Ces options restreignent l'extraction des commentaires a un seul style de langage.
+
+.IP \fB\-A\fB
+\fRextrait le style Assembleur (   ;    → fin de ligne  )\fR
+.IP \fB\-B\fB
+\fRstyle Basic                ( REM ou ' → fin de ligne )\fR
+.IP \fB\-C\fB
+\fRstyle C++                  (  // → NL et  /*  →  */  )\fR
+.IP \fB\-F\fB
+\fRstyle Fortran              ( c,C ou * → fin de ligne )\fR
+.IP \fB\-P\fB
+\fRstyle Pascal               (  {   →   } et (*  →  *) )\fR
+.IP \fB\-S\fB
+\fRstyle Shell ou ratfor      (   #    →  fin de ligne  )\fR
+
+.B Options en minuscules:
+
+.IP \fB\-a\fB
+\fR(append) Ajoute a la suite du fichier documentaire \'chemin_cible\'.\fR
+.IP \fB\-f\fB
+\fR(find) Trouve le langage du fichier source par analyse du suffixe. (s\'utilise généralement avec un fichier projet).  mkd reconnait les extensions suivantes:  .asm, .s, .bas, .vb, .bat, .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw; .pj, .prj\fR
+.IP \fB\-j\fB
+\fR(project) S\'utilise avec un fichier projet composé de sources en langages différents.\fR
+.IP \fB\-l\fB
+\fR(lignes) Extrait les lignes commençant par les caractères CD1 ou CD2 ou CD3 et suivis par un des caractères codes, le commentaire se termine par la lecture du caractère \'Nouvelle Ligne\'. CD1 et CD2 doivent être placés en 1ère colonne, alors que CD3 peut être placé en milieu de ligne. CD1, CD2, CD3, sont des options de compilation dans le fichier version.h de la distribution source de mkd. On peut connaître ces options compilées par la commande\fR \fBmkd\ \\?\fB
+.IP \fB\-n\fB
+\fR(num) numérote les lignes (numéro de ligne du fichier d'origine).\fR
+.IP \fB\-p\fB
+\fR(page) Extrait le texte débutant par le caractère CD4 suivi d\'un des caractères codes, l'extraction du commentaire se termine avec la lecture du caractère CD5. CD4 et CD5 sont des options de compilation dans le fichier version.h de la distribution source de mkd. On peut connaître ces options compilées par la commande\fR\ \fBmkd \\?\fB
+.IP \fB\-s\fB
+\fR(screen verbose) Duplique les commentaires extraits sur la sortie standard.\fR
+.IP \fB\-t\fB
+\fR(text) Ne copie que le commentaire.\fR
+.IP \fB\-w\fB
+\fR(overwrite) Réécrit le fichier documentaire.\fR
+.SH EXEMPLES
+.TP
+.B mkd -Ct \fIF manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+(Produit un manuel UNIX en francais. au format UTF-8 depuis la version 12.03) C: pour décoder le fichier en langage C, s:avec visualisation à l\' écran, t:ne copier que le commentaire, F:sélectionner les commentaires debutants par F. 
+.TP
+.B mkd -Ct \fIM manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+(Produit un manuel UNIX standard en anglais au format UTF-8 depuis la version 12.03)
+.TP
+.B mkd -Csl \fI'*Sied' mkd3.c\fI \fR'*.verif_struct'\fR
+(avec les options de compilation CD1 ou CD2 = '#', produit une documentation avec la structure du programme, avec les: include, define, ifdef, else, et endif, des options de compilations afin de vérifier la structure du programme.) C:décoder les commentaires style C, s:vérifier à l'écran, l:décoder egalement des lignes commencant par les caractères CD1 ou CD2 ou CD3 et suivis des char_codes:*Sied.
+.TP
+.B mkd -jfsl \fI'*OHie' mkd_docu.prj\fI \fRmkd.org\fR
+(avec les options de compilation CD1 ou CD2 = '#', produit un organigramme. Les commentaires commencent par *,O,H, et les fichiers sources sont listés dans le fichier projet.) f:trouver le style de langage, j:le fichier source est un fichier projet qui contient la liste des fichiers a documenter.
+.TP
+.B mkd -l \fI'*ide' mkd3.c\fI \fR'*.id_ei'\fR
+(avec les options de compilation CD1='#' ou CD2='#', décode les #includes, #define, #ifdef, #else, #endif des options de compilation en C ).
+.TP
+.B mkd -pj \fI'**' mkd_docu.prj\fI \fRmkd.strings\fR
+(avec les options de compilation CD4=CD5=\'\\"\', extrait les chaînes de caractères du programme. (les commentaires sont transmis a la sortie standard).
+.TP
+.B mkd \fR(sans argument)\fR
+Génère une erreur et envoie la syntaxe au terminal avec les caractères compilés pour les options l et p.
+
+.SH VOIR AUSSI
+.PP
+mkddocu(1) mkdcppw(1)
+.br
+file:////usr/share/doc/mkddocu/
+.br
+file:////usr/share/doc/mkd/
+
+.SH HISTORIQUE
+.PP
+1989 - mkd pour DOS, et mkdoc pour UNIX, sont écrits  au  format  ASCII par Jean-Paul Louyot pour  le  laboratoire  'CEM'  de  l'université  de Montpellier (France).
+.TP       
+1991 - mkdoc 3.12 pour PC et UNIX (Sun)
+.TP
+1995 - 2004 - mkdoc 3.22 à mkdoc 4 pour Unix et Linux: SUN-SPARC, HP-UX, RedHat
+.TP
+2004 - mkdoc 4 pour Linux Ubuntu, Windows 98, Windows 2000
+.TP       
+2007 - 2012 - de mkdoc R7.01 à mkd R12.01 sont  au  format  ISO-8859-1. Le nom 'mkdoc' est  abandonné  avec  la  version  10.01  compilée  avec Visual C++ 2010
+.TP
+2012 - mkd 12.03 adapté au format UTF-8 pour son  internationalisation. Dans la foulée mkdcppw est écrit pour les styles de langages C++ (C, c++, c#, php, java, javscript, CSS, etc.) en mode graphique avec gcc et 'gtkmm' (fenêtres). 
+.SH TELECHARGEMENTS
+.PP
+http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX
+.SH AUTEURS
+.PP
+Manuel mis à jour par : Clara JIMENEZ
+.SH TRADUCTEURS
+.PP
+Allemand : Clara, JPL, Martine
+.TP
+Catalan : Alizée 
+.TP
+Espagnol : Alizée, JPT, Sharo
+.TP
+Italien : Luca
+.TP
+Email : http://edeulo.free.fr/contacts/formmail.php
+.IP
+.SH NOTES
+.PP
+Il appartient aux programmeurs de veiller à refermer les commentaires, blocs et lignes, par les codes de fermeture appropriés dans les fichiers sources.
+
+Attention: La fermeture d'un commentaire ligne est un  retour chariot ( NL, LF, CR/LF) selon les cas.
+
+En fin de fichier: cette note implique un retour chariot en fin de commentaire ligne. Dans ce cas vous devez avoir une ligne vide à la fin du fichier source.
+
+Remarque: Cette version ne lit et ne décode pas les fichier inclus par '#include' dans les sources.
+
+.SH BUGS
+.PP
+Bugs Report: http://edeulo.free.fr/phpBB3\fIndex.php 
+
+Générateur de documents mkd
+

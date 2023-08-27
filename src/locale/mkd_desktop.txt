@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=mkd
+GenericName=mkd extract the documentation
+GenericName[de]=mkd-Extrakt der Dokumentation
+GenericName[fr]=mkd extrait de la documentation
+GenericName[es]=mkd extraer la documentación
+GenericName[it]=mkd estrarre la documentazione
+Comment=Extract the documentation for maintainers and programmers
+Comment[de]=mkd extrahieren die Dokumentation für Betreuer und Programmierer
+Comment[fr]=mkd extrait de la documentation pour programmeurs et mainteneurs
+Comment[es]=mkd extraer documentación para desarrolladores y programadores
+Comment[it]=mkd estrarre la docummentazione per manutentori e programmatori
+Icon=/usr/share/pixmaps/mkd.xpm
+Exec=/usr/bin/mkd
+Terminal=true
+Categories=Project Management

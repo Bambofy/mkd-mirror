@@ -1,0 +1,11 @@
+#!/bin/bash
+echo -e '\E['32';'01'm'"click on New Line to 'start' the Konsole"
+# echo -e '\E['31';'01'm' "not 'start in a terminal'"
+echo -e '\E['32';'01'm'"click on Ctrl-C to exit"
+tput sgr0 # Reset text attributes to normal without clear
+read pwd
+pwd
+echo $pwd
+tput sgr0 # Reset text attributes to normal without clear
+/usr/bin/konsole background-mode --workdir pwd dir
+read

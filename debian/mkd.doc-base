@@ -1,0 +1,16 @@
+Document: mkd
+Title: Debian mkd Manual
+Author: Edeulo
+Abstract: This manual describes what mkd is
+ and how it can be used to
+ manage online manuals on Debian systems.
+Section: Programming
+
+Format: text
+Files: /usr/share/doc/mkd/*.txt.gz
+
+Format: HTML
+Index: /usr/share/doc/mkd/html/index.html
+Files: /usr/share/doc/mkd/html/*.html
+Index: /usr/share/doc/mkddocu/html/index.html
+Files: /usr/share/doc/mkddocu/html/*.html

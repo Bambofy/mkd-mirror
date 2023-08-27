@@ -1,0 +1,45 @@
+mkd for Debian
+--------------
+
+Ce package utilise dpatch pour gérer toutes les modifications en amont
+ la source. Les changements sont enregistrés dans le paquet source diffs dans
+ debian / patches et appliquées lors de la construction.
+ 
+Pour obtenir le code source entièrement mis à jour après le déballage du paquet source, cd
+ au niveau du paquet source root et lancez:
+ 
+    debian / rules correctif
+ 
+Suppression d'un patch est aussi simple que de retirer son entrée dans le
+ fichier debian/patches/00list, et s'il vous plaît supprimer également le fichier de patch
+ lui-même.
+ 
+Créer un nouveau patch est fait avec "dpatch-edit-patch correctif XX_patchname"
+ où vous devez remplacer XX avec un nouveau numéro et PatchName avec un
+ nom court descriptif du patch. Vous pouvez alors simplement modifier tous les
+ fichiers de votre pièce veut modifier, et puis tout simplement "exit 0" à partir du shell
+ pour créer effectivement le fichier patch.
+ 
+Pour modifier une pièce existante, appeler "XX_patchname dpatch-edit-patch"
+ et remplacer XX_patchname avec le nom de fichier réel de debian / patches
+ . que vous souhaitez utiliser
+ 
+pour nettoyer après encore, «debian / rules unpatch" feront le
+ travail pour vous - ou vous pouvez bien sûr choisir d'appeler
+ "fakeroot debian / rules clean" tous ensemble.
+ 
+
+--- 
+ 
+cette documentation fait partie du paquet dpatch, et ​​peut être utilisé par
+ les logiciels en utilisant dpatch pour se conformer à la politique sur README.source. Cette
+ documentation est destinée à être utile pour les utilisateurs qui ne maîtrisent pas
+ dpatch à faire le travail avec des paquets sur la base dpatch. S'il vous plaît envoyer vos
+ améliorations pour les BTS du paquet dpatch.
+ 
+texte original par Gerfried Fuchs, édité par Junichi Uekawa <dancer@debian.org>
+ 10 août 2008.
+
+
+
+

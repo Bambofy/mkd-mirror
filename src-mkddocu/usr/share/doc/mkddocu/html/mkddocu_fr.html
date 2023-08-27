@@ -1,0 +1,168 @@
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<HTML><HEAD><TITLE>Man page of mkddocu</TITLE>
+</HEAD><BODY>
+<H1>mkddocu</H1>
+Section: Linux User's Manual (1)<BR>Updated: 2014-02-24<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<P>
+<A NAME="lbAB">&nbsp;</A>
+<H2>NOM</H2>
+
+mkddocu - Cette commande shell génère la documentation informatique de tout fichier de projet reconnu par la commande <B>mkd</B>.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>mkddocu</B>
+
+[projet]
+
+[-s]
+
+<BR>
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+La commande <B>mkd</B> associée à <B>mkddocu</B>, extrait les commentaires dotés d'un 
+<I>repère.</I>
+
+<BR>
+
+Exemple :  //D ceci est un commentaire php répéré par le caractère 'D'
+<BR>
+
+Si des fichiers de langage C sont présents, <B>mkddocu</B> génère un fichier d'entête global (header) du projet informatique.
+<P>
+
+<B>Repère :</B>
+<BR>
+
+D - Extrait la documentation générale.
+<BR>
+
+T - Extrait le document des directives de tests.
+<BR>
+
+P - Extrait un document utile aux mainteneurs.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><B>projet<DD>
+Cette option permet de choisir un nom de projet différent du nom par défaut 
+</B><I>project</I>
+
+
+Si 'projet' est le caractère '?' la commande affiche la syntaxe.
+<P>
+<DT><B>-s<DD>
+Cette option précise qu'il faut générer le fichier des chaînes de caractères et le fichier des chaînes utiles aux traductions avec gettext</B> et <B>poedit</B>.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>VALEURS RETOURNÉES</H2>
+
+0 : Fin normale à la fin de l'exécution de la commande.
+<BR>
+
+1 : Fin normale après l'affichage de la syntaxe de la commande.
+<BR>
+
+-1 : Arrêt de la commande. La sauvegarde de la série de documents dans 
+<I>Backups</I>
+
+n'a pas été effectuée.
+<P>
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>EXEMPLES</H2>
+
+L'auto documentation de cette commande se crée en renommant pour l'usage mkddocu.sh L'extension importe peu, la commande sera gérée par bash. Les fichiers sans extension ou avec l'extension .bash ne sont pas pris en compte.
+<BR>
+
+<BR>
+
+Lancer la commande '<B>mkddocu.sh mkddocu -s</B>'
+<BR>
+
+Le répertoire 
+<I>maintenance/mkddocu</I>
+
+contiendra la documentation.
+<BR>
+
+Les répertoires de projet sont générés par séries et peuvent avoir été sauvegardés dans un répertoire 
+<I>Backups</I>
+
+si le nombre de fichiers de projet de la série ont atteind la limite 
+<I>BACKUPSMAX</I>
+
+<BR>
+
+Pour les essais on peut se limiter à 
+<I>BACKUPSMAX=2 </I>
+
+(3 'backups' par série.)
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>REMARQUES</H2>
+
+<I>BACKUPSMAX </I>
+
+est normalement fixé à 9 mais peut être modifié par édition du fichier.
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>VOIR AUSSI</H2>
+
+<A HREF="/cgi-bin/man/man2html?1+mkd">mkd</A>(1)
+<A HREF="/cgi-bin/man/man2html?1+gettext">gettext</A>(1)
+<A HREF="/cgi-bin/man/man2html?1+poedit">poedit</A>(1)
+<P>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>TÉLÉCHARGEMENTS</H2>
+
+<A HREF="http://edeulo.free.fr">http://edeulo.free.fr</A>
+<P>
+<A NAME="lbAK">&nbsp;</A>
+<H2>AUTEURS</H2>
+
+Clara, JPL
+<BR>
+
+Email : <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A>
+<P>
+<A NAME="lbAL">&nbsp;</A>
+<H2>BUGS</H2>
+
+Rapports de bugs :  <A HREF="http://edeulo.free.fr/phpBB3/viewforum.php?f=14">http://edeulo.free.fr/phpBB3/viewforum.php?f=14</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NOM</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">VALEURS RETOURNÉES</A><DD>
+<DT><A HREF="#lbAG">EXEMPLES</A><DD>
+<DT><A HREF="#lbAH">REMARQUES</A><DD>
+<DT><A HREF="#lbAI">VOIR AUSSI</A><DD>
+<DT><A HREF="#lbAJ">TÉLÉCHARGEMENTS</A><DD>
+<DT><A HREF="#lbAK">AUTEURS</A><DD>
+<DT><A HREF="#lbAL">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 13:16:48 GMT, February 26, 2014
+</BODY>
+</HTML>

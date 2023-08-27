@@ -1,0 +1,230 @@
+<meta charset="utf-8">
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MKD</TITLE>
+</HEAD><BODY>
+<H1>MKD</H1>
+Section: User Commands  (1)<BR>Updated: 28 March 2014<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>BEZEICHNUNG</H2>
+
+mkd - Extrakte aus Quelldateien, der Softwaredokumentation.
+<A NAME="lbAC">&nbsp;</A>
+<H2>ÜBERSICHT</H2>
+
+<B>mkd</B>
+
+<B>[-ABCFPSafjlnpstw]</B>
+
+<I>Codes</I>
+
+<I>Quellpfad</I>
+
+[Zieldatei]
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>BESCHREIBUNG</H2>
+
+<DL COMPACT>
+<DT><B>mkd</B>
+
+<DD>
+<DT>Selected comments (or alle comments) are extracted from programs sources and product specific documentation to target file. Usual target files are Organigrams, or Structure of programs, or comments for Programmers, Warnings and Tests points .... Coded informations are respectively 'O', 'S', 'P', 'www', ant 'T' just after the comment character.<DD>
+<DT>Ausgewählte Kommentaren,  (oder alle Kommentaren) werden von Proggramme Quelle extrahiert und Produkt  spezifische  Dokumentation. Üblichen Zieldateien sind Organigramme, Struktur der  Programme, Kommentare für Programmierer, Warnungen oder Testpunkte Kommenttare ... Codierte Informationen sind jeweils 'O', 'S', 'P', 'www' und 'T', direkt hinter dem Kommentar.<DD>
+<DT><I>Codes</I>
+
+<DD>
+Alle  ASCII. Der Kommentar werden extrahiert, wenn der Kommentar beginnt mit diesem Zeichen.
+<DT><I>Quellpfad</I>
+
+<DD>
+Pfad der Quelldatei. (Oder mit Projektdatei : Option j).
+<DT>Zieldatei
+
+<DD>
+Pfad der Zieldatei. In der  Standardeinstellung  Pfad  Ziel  ist identisch mit der Quelldatei mit der Erweiterung '.doc'.
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONEN</H2>
+
+<DL COMPACT>
+<DT><DD>
+<B>Großbuchstaben Optionen:</B>
+
+<P>
+Wählen Sie eine bestimmte Programmierung Sprache.
+<P>
+<DT><B>-A<DD>
+</B>Assembler Stil Kommentare zu extrahieren ( ;  Zum Ende der Zeile)
+<DT><B>-B<DD>
+</B>Basic Stil               ( REM oder '  →  Zum Ende der Zeile  )
+<DT><B>-C<DD>
+</B>C++ Stil                 ( // → Ende der Zeile, und /*  →  */ )
+<DT><B>-F<DD>
+</B>Fortran Stil             ( c,C oder *  →   Zum Ende der Zeile )
+<DT><B>-P<DD>
+</B>Pascal Stil              ( {  Bis zu  }  und   (*  Bis zu  *) )
+<DT><B>-S<DD>
+</B>Shell oder Ratfor Stil   (   #  →  Bis  zu  Ende  der  Zeile  )
+<P>
+<B>Kleinbuchstaben Optionen :</B>
+
+<DT><B>-a<DD>
+</B>(append) Hinzufügen am ende von Zieldatei.
+<DT><B>-f<DD>
+</B>(find) Finden Quelldatei Programmierung Sprache. (Mit Projekt Datei). mkd erkennt die folgenden Dateien 
+: .asm, .s, .bas, .vb, .bat, .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js, .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw, .pj, .prj
+<DT><B>-j<DD>
+</B>(project) Verwendet, wenn die Quelldatei ist eine Projektdatei.
+<DT><B>-l<DD>
+</B>(lines) Linien (Extrakt  Linien beginnend mit  CD1  oder  CD2  in erste Spalte, oder CD3 in Linie bis nächste Ende der Zeile. CD1, CD2, CD3, sind kompilierbare im Vertrieb und sind definiert in 'version.h'). Sie sehen die Optionen kompiliert mit dem Befehl <B>mkd&nbsp;\?
+<DT>-n<DD>
+</B>(num) Zeilennummerierung (Die Nummer der Zeile der Quelldatei).
+<DT><B>-p<DD>
+</B>(page) Seite  (Extrakt Text beschränkt mit CD4 und CD5 - Beginnend mit CD4 und beendet mit CD5 - CD4, CD5, sind kompilierbare im Vertrieb und sind definiert in 'mkd distribution', in 'version.h'). Sie sehen die Optionen kompiliert mit dem Befehl <B>mkd&nbsp;\?
+<DT>-s<DD>
+</B>(screen verbose) Fügt auf dem Konsole Bildschirm ('Verbose' ; Ausführliche)
+<DT><B>-t<DD>
+</B>(text only) Text (Kopiert nur der Kommentar).
+<DT><B>-w<DD>
+</B>(overwrite) Überschrieben die aktuelle Zieldatei.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>BEISPIEL</H2>
+
+<DL COMPACT>
+<DT><B>mkd -Cst </B><I>F manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+Produkt französisch UNIX Manual; Version 12.03. C: Sprache C, s:Auch anzeigen die Konsole, t:nur text, F:Code zu entschlüsseln. 
+<DT><B>mkd -Ct </B><I>M manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+Produkt englisch UNIX Manual; Version 12.03.
+(Produit un manuel UNIX standard en anglais au format UTF-8 depuis la version 12.03)
+<DT><B>mkd -Csl </B><I>'*Sied' mkd3.c </I>'*.verif_struct'
+
+<DD>
+(Mit den Kompilierung--optionen CD1='#' oder CD2='#' in 'mkd distribution' version.h).Produkt  Dokumentation  mit Struktur der Programme, '#includes', '#defines', '#ifdef', '#else' und '#endif' Kompilierte Optionen, für überprüfen die Struktur in Quelldatei in Programms 
+<DT><B>mkd -jfsl </B><I>'*OHie' mkd_docu.prj </I>mkd.org
+
+<DD>
+(Mit den Kompilierung Optionen CD1='#' oder CD2='#' in 'mkd distribution' version.h) Produkt Organigramm. Der Kommentar beginnt mit * oder O oder H, und Pfad zu den Quelldatei sind die Komponenten der Projektdatei. Optionen : 'f' finden der Stil der Sprache, 'j'  sagte dass die Quelldatei ist eine Projektdatei.  
+<DT><B>mkd -l </B><I>'*ide' mkd3.c </I>'*.id_ei'
+
+<DD>
+( Mit Kompilierung--optionen  CD1='#' oder CD2='#' extrahiert #include, #define, #ifdef, #else, #endif Kompilierung--optionen der C- Sprache.
+<DT><B>mkd -pj </B><I>'**' mkd_docu.prj </I>mkd.strings
+
+<DD>
+(Mit Kompilierung--optionen  CD4=CD5='\&quot;', extrahiert Saiten aus den Quelldateien. (Die Saiten werden auf die Standard-Ausgabe angezeigt.)
+<DT><B>mkd \?</B>
+
+<DD>
+Zeigt die Syntax und den Charakter CD1 bis CD5 Kompiliert. (Mit den Optionen l und p verwendet)
+<DT><B>mkd </B>(Ohne Argumente)
+
+<DD>
+Generiert einen Syntaxfehler und zeigt die Syntax zum Konsole.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SIEHE AUCH</H2>
+
+<P>
+
+<A HREF="/cgi-bin/man/man2html?1+mkddocu">mkddocu</A>(1) <A HREF="/cgi-bin/man/man2html?1+mkdcppw">mkdcppw</A>(1)
+<BR>
+
+<A HREF="file:////usr/share/doc/mkddocu/">file:////usr/share/doc/mkddocu/</A>
+<BR>
+
+<A HREF="file:////usr/share/doc/mkd/">file:////usr/share/doc/mkd/</A>
+<A NAME="lbAH">&nbsp;</A>
+<H2>HISTORISH</H2>
+
+<P>
+
+1989 - mkd für DOS, und mkdoc für UNIX, werden in ASCII geschrieben von Jean-Paul Louyot für CEM loratory in Montpellier Universität (Frankreich).
+<DL COMPACT>
+<DT>1991 - 1991 - mkdoc 3.12 für PC und UNIX (Sun)<DD>
+<DT>1995 - 2004 - mkdoc 3.22 für Unix und Linux: SUN-SPARC, HP-UX, RedHat<DD>
+<DT>2004 - mkdoc 4 für Linux Ubuntu, Windows 98, Windows 2000<DD>
+<DT>2007 - 2012 -mkdoc R7.01 bis R12.01 sind auf ISO-8859-1-Format abgestimmt.       <DD>
+<DT>2012 - mkd 12.03 ist umgeschrieben in UTF-8 Format, und mkdcppw (für C, c++, php) ist geschrieben für Fenstern mit gcc und gtkmm. <DD>
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>DOWLOADS</H2>
+
+<P>
+
+<A HREF="http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX">http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX</A>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTOREN</H2>
+
+<P>
+
+Manuel mis à jour par : Clara JIMENEZ und JPL
+<A NAME="lbAK">&nbsp;</A>
+<H2>ÜBERSETZER</H2>
+
+<P>
+
+Deutsch : Clara, JPL, Martine
+<DL COMPACT>
+<DT>Englisch : JPL, Cardabela<DD>
+<DT>Italienisch : Luca<DD>
+<DT>Katalanisch : Alizée <DD>
+<DT>Spanisch : Alizée, JPT, Sharo<DD>
+<DT>E-Mail : <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A><DD>
+<DT><DD>
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>HINWEISE</H2>
+
+<P>
+
+Es gehört zu Programmierer, um die Kommentare zu schließen, blöcke und Zeilen, mit entsprechenden Codes in Quelldateien.
+<P>
+Warnung: Die Schließung einer Kommentarzeile ist ein Wagenrücklauf (NL, LF, CR/LF) als der Fall.
+<P>
+Ende der Datei: Diese Beobachtung impliziert einen Wagenrücklauf am ende des Kommentar Linie. In diesem Fall muss eine leerzeile am Ende der Quelldatei.
+<P>
+Diese Version lesen, und Dekodiert nicht,  mit  '#include'  Richtlinie in der Quelldatei.
+<A NAME="lbAM">&nbsp;</A>
+<H2>BUGS</H2>
+
+<P>
+
+Bugs Report: <A HREF="http://edeulo.free.fr/phpBB3/index.php">http://edeulo.free.fr/phpBB3/index.php</A> 
+<P>
+Documents generator mkd
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">BEZEICHNUNG</A><DD>
+<DT><A HREF="#lbAC">ÜBERSICHT</A><DD>
+<DT><A HREF="#lbAD">BESCHREIBUNG</A><DD>
+<DT><A HREF="#lbAE">OPTIONEN</A><DD>
+<DT><A HREF="#lbAF">BEISPIEL</A><DD>
+<DT><A HREF="#lbAG">SIEHE AUCH</A><DD>
+<DT><A HREF="#lbAH">HISTORISH</A><DD>
+<DT><A HREF="#lbAI">DOWLOADS</A><DD>
+<DT><A HREF="#lbAJ">AUTOREN</A><DD>
+<DT><A HREF="#lbAK">ÜBERSETZER</A><DD>
+<DT><A HREF="#lbAL">HINWEISE</A><DD>
+<DT><A HREF="#lbAM">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 15:35:06 GMT, March 31, 2014
+</BODY>
+</HTML>

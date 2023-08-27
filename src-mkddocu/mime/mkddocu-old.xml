@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/mkddocu">
+		<sub-class-of type="text/plain"/>
+		<comment>mkd projects files</comment>
+		<comment xml:lang="en">Projects files for mkd</comment>
+		<comment xml:lang="fr">Fichiers de projets pour mkd</comment>
+		<glob pattern="*.prj"/>
+		<glob pattern="*.pj"/>
+	</mime-type>
+</mime-info>

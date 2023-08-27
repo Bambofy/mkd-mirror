@@ -1,0 +1,691 @@
+   
+        fonction asm_
+ -----------------------------------------------------------------------------
+ NOM DU FICHIER: asm.c pour console, asm.cc pour intégration en c++
+  ( Format texte UTF-8 )
+
+ SYNTAXE, SYNOPSIS:
+  #include "version.h"
+  #include "asm.h"
+  int asm_(FILE *pfdoc, FILE *pnfile);
+  FILE *pfdoc: pointe sur le fichier cible ouvert (ou créé) par la fonction 
+    appelante.
+  FILE *pnfile: pointe sur le fichier source ouvert par la fonction appelante.
+
+ ACTION, DESCRIPTION:
+  La fonction asm_() lit le fichier écrit en assembleur et extrait les
+    commentaires; de structure, d'organigramme, de documents destinés aux
+    programmeurs, le fichier d'entête (.h) ou encore, de documents destinés à
+    l'utilisateur final.
+  On utilise habituellement les 'Codes' d'identification des commentaires à
+    extraire suivants :
+    ;D pour la documentation générale
+    ;H pour générer le fichier d'entête (header, .h ou .hpp)
+    ;O pour générer l'organigramme
+    ;S pour le contrôle de la structure du programme
+    ;T pour les points de tests
+    ;U pour la documentation utilisateur
+  On peut aussi extraire tous les commentaires avec pour 'Code' le double
+    étoile entouré de simples cotes : '**'
+  Description des 'Options' d'extraction:
+    -n : pour ajouter le numéro de la ligne du commentaire.
+    -s : pour ajouter le commentaire extrait à la sortie standard; l'écran.
+    -t : pour n'extraire que le commentaire. (Par défaut, toute la ligne)
+
+ CONFORME À, CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY:
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ VALEUR RETOURNEE:
+  Ne retourne rien
+
+ DROIT DE COPIE:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007.
+    Association à but non lucratif selon l'Article 11 de la convention
+    européenne des droits de l'homme.
+  Concédée sous licence EUPL, version 1.1 ou – dès leur approbation par la 
+    Commission européenne - versions ultérieures de l’EUPL (la «Licence»).
+  Vous ne pouvez utiliser la présente œuvre que conformément à la Licence.
+  Vous pouvez obtenir une copie de la Licence à l’adresse suivante:
+    http://ec.europa.eu/idabc/eupl5
+  Sauf obligation légale ou contractuelle écrite, le logiciel distribué sous la
+    Licence est distribué «en l’état», SANS GARANTIES OU CONDITIONS QUELLES
+    QU’ELLES SOIENT, expresses ou implicites.
+  Consultez la Licence pour les autorisations et les restrictions linguistiques
+   spécifiques relevant de la Licence.
+
+ AUTEURS, AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL, Clara Jimenez, and GC
+  Traducteurs: Clara
+
+ RESSOURCES:
+  (gtkmm with mkdw future widowed version.)
+
+ NOTES:
+  Mise à jour: 2013 Conforme aux nouvelles directives avec UTF-8.
+  Correction du défaut de fin de fichier.
+  Correction de l'extraction des commentaires dans la ligne, avec l'option -t
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 asm_
+
+    
+	function basic_
+ -----------------------------------------------------------------------------
+ FILE NAME: basic.c for konsole basic.cc for individual compilation in
+  c++ or basic.inc.cc to include file in sources files with gtkmm
+
+ FUNTION NAME:
+  basic_
+ 
+ SYNOPSIS, SYNTAX: 
+  #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/basic.h"   // or mkd.h
+  int basic_(FILE * pfdoc, FILE * pnfile);
+  FILE * pfdoc: pointer of the target stream opened by the calling function 
+  FILE * pnfile: pointer of the source stream opened by the calling function
+
+ ACTION, DESCRIPTION:
+  The basic_ function reads the source file (pnfile) transmitted from the 
+  calling function, and decodes the inline comments pre-encoded and writing
+  this comments to a target file (pfdoc).
+  Pre-coded characters are defined in a external global table 'Codes';
+
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters: 
+    extern char codes[]; 
+    They must be dÃ©fined in the calling function:
+    char codes[5] = {0,0,0,0,0};
+  The 'Options': n,s,t,v:
+    extern unsigned char n,s,t;
+    They must be dEfined in the calling function:
+    unsigned char n=0,s=0,t=0;
+  With the options:
+    -n: The transcript is preceded by line number. This allows to easily 
+       reach the commented line.
+    -s: Add the comment to the stdout to use shell redirections > , >> , 
+       or ||.
+    -t: With the t option only the commented text is extracted.
+       Without the t option the entire line or block is copied.
+       The t option permit to generate directly exploitable and publishable
+       documents. 
+
+  Remarks:
+    
+ CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY, 
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ RETURN VALUE:
+  Nothing.
+
+ COPYRIGHT:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007.
+  Association à but non lucratif selon l'Article 11 de la convention
+  européenne des droits de l'homme.
+  Concédée sous licence EUPL, version 1.1 ou – dès leur approbation par la 
+  Commission européenne - versions ultérieures de l’EUPL (la «Licence»).
+  Vous ne pouvez utiliser la présente œuvre que conformément à la Licence.
+  Vous pouvez obtenir une copie de la Licence à l’adresse suivante:
+    http://ec.europa.eu/idabc/eupl5
+  Sauf obligation légale ou contractuelle écrite, le logiciel distribué sous la
+  Licence est distribué «en l’état», SANS GARANTIES OU CONDITIONS QUELLES
+  QU’ELLES SOIENT, expresses ou implicites.
+  Consultez la Licence pour les autorisations et les restrictions linguistiques
+  spécifiques relevant de la Licence.
+  La Licence est totalement compatible avec la licence GNU.
+
+ AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Translations: Alizée, Clara, Luca, JPL, JPT, Martine
+
+ RESSOURCES:
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update April 2013
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 basic_
+ 
+    
+	function cpp_
+ -----------------------------------------------------------------------------
+ FILE NAME: cpp.c for konsole cpp.cc for individual compilation in c++ or
+           cpp.inc.cc to include file in sources files with gtkmm
+ FUNTION NAME:
+  cpp_
+ 
+ SYNOPSIS, SYNTAX: 
+  #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/cpp.h"     // or mkd.h
+  int cpp_(FILE * pfdoc, FILE * pnfile);
+  FILE * pfdoc: pointer of the target file opened by the calling function 
+  FILE * pnfile: pointer of the source file opened by the calling function  In UNIX / LINUX 
+
+ ACTION, DESCRIPTION:
+  The cpp_ function reads the source file (pnfile) transmitted from the 
+  calling function, and decodes the comments pre-encoded in lines or 
+  blocks of style c++. and then writing this comments in a target file 
+  (pfdoc).
+  Pre-coded characters are defined in a external global table 'Codes';
+
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters: 
+    extern char codes[]; 
+    They must be dÃ©fined in the calling function:
+    char codes[5] = {0,0,0,0,0};
+  The 'Options': n,s,t,v:
+    extern unsigned char n,s,t;
+    They must be dEfined in the calling function:
+    unsigned char n=0,s=0,t=0;
+  With the options:
+    -n: The transcript is preceded by line number. This allows to easily 
+       reach the commented line.
+    -s: Add the comment to the screen to use shell redirections > , >> , 
+       or ||.
+    -t: With the t option only the commented text is copied.
+       Without the t option the entire line or block is copied.
+       The t option permit to generate directly exploitable and publishable
+       documents. 
+
+  Remarks:
+    if the decoded comment begins with the characters / and *, the  comment
+       is copied until find the characters * and /, whatever included any 
+       comment-line starting with "//".
+    if the decoded comment begins with the characters "//", the line is
+       copied until find the end-of-line or new-line 'NL' character or 
+       end-of-file 'EOF'.
+       This provisions facilitate the automatic generation of header files
+       (file.h ; .hpp ; etc.) and documentation of functions.
+
+ CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY, 
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ RETURN VALUE:
+  Return 0 in case of success in konsole version, nothing with gtkmm.
+
+ COPYRIGHT:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007
+  Association À  but non lucratif selon l'Article 11 de la convention 
+  européenne des droits de l'homme.
+  Vous êtes libre de copier reproduire et distribuer l’application selon les
+  termes de la Licence EUPL totalement compatible avec la licence GNU.
+
+ 
+ AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Traducteurs: Clara
+
+ RESSOURCES:
+  gtkmm 3 to compile mkdcppw with cpp.cc
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update April 2013 the Coded comment begin also in 3rd colomn
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 cpp_
+    
+ NAME:
+  Function: fortran_().
+  Files: fortran.c for Kosole or fortran.cc or fortran.inc.cc for included
+  file in windowed version with gtkmm
+
+ SYNOPSIS:
+  In UNIX / LINUX environment:
+  #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/fortran.h" // or mkd.h
+  In local environment:
+  #include "version.h"
+  void fortran_(FILE * pfdoc, FILE * pnfile);
+
+ DESCRIPTION:
+  Fortran 77: (ASCII)
+  -------------------
+  Originally Fortran programs were written in a fixed column format for the 
+  cards. 
+  A letter "C" in column 1 caused the entire card to be treated as a comment
+  and ignored by the compiler.
+  Usage:
+  The comment character begin with the C or c or * in first colomn frequently
+  followed by a space and shall not exceed the 72nd colomn for fortran 77.
+  The mkd 'Code' character de must by placed in the 2nd or in 3rd colomn.
+  
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters:
+      extern char codes[]; 
+      They must be defined in the calling function:
+      char codes[5] = {0,0,0,0,0};
+  The 'Options': l,n,s,t. 
+      see NOTES for inline ! comment
+      extern unsigned char n,s,t;
+      They must be defined in the calling function:
+      unsigned char n=0,s=0,t=0;
+  With the options:
+   n: The transcript is preceded by line number on 5 colomns. This allows to 
+      easily reach the commented line. (Warning with the tabs ...)
+   s: Add the comment to the screen to use shell redirections > , >> , or ||.
+   t: With the t option only the commented text is copied.
+      Without the t option the entire line or block is copied.
+      The t option permit to generate directly exploitable and publishable
+      documents. 
+
+ RETURN VALUE:
+  Nothing
+
+ CONFORMING TO: or STANDARDS: 
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY:
+  LINUX-Debian-systems, LINUX-Red-Hat, Windows NT, etc.
+
+ COPYRIGHT:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  © EELL, Éditeurs Européens de Logiciels Libres, 2007
+  Association à but non lucratif selon l'Article 11 de la convention européenne 
+  des droits de l'homme.
+
+ AUTHORS:
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Traducteurs: Clara
+
+ RESSOURCES:
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update April 2013 the Coded comment begin also in 3rd colomn
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO:
+  Fortran 90:
+  -----------
+  Character ! is the inline comment starting with this character to NewLine.
+  See -l compilation option #define CD3 '!' in version.h
+
+  Fortran 2003:
+  -------------
+  The interface with the C languages are insured with the external module
+  ISO_C_BINDING to facilitate access at the C libraries.
+
+  mkd for fortran 90 with the -l option: Decode The inline comment '!' if the
+  option CD3 are defined with the char '!' in version.h.
+  Unix / Linux Man(3) attached in English. Command line : man 3 fortran_   Fichier mkddocu.sh
+   -----------------------------------------------------------------------------
+   Documentation : Manuel mkddocu(1)
+   Cette commande doit être placée dans le répertoire /usr/bin
+   
+   NOM
+      mkddocu  -  Cette commande shell génère la documentation informatique de tout fichier de
+      projet reconnu par la commande mkd
+  
+   SYNOPSYS
+      mkddocu [nom] [s]
+  
+   DESCRIPTION
+      La commande mkd associée à mkddocu, extrait les commentaires  dotés  d'un  caractère  de
+      repère.
+      Si  des  fichiers  de langage C sont présents, mkddocu génère un fichier d'entête global
+      (header) du projet informatique.
+  
+      Caractère de repère
+         D - Extrait la documentation générale.
+         T - Extrait le document des directives de tests.
+         P - Extrait un document utile aux mainteneurs.
+  
+   OPTIONS
+      nom    Cette option permet de choisir un nom de  projet  différent  du  nom  par  défaut
+             project.  Si nom est le caractère '?' la commande affiche la syntaxe.
+  
+      s      Cette  option  génère  le  fichier  des  chaînes  de caractères et le fichier des
+             chaînes de caractères utiles aux traductions avec gettext et poedit.
+  
+   VALEURS RETOURNÉES
+       0 : Fin normale à la fin de l'exécution de la commande.
+       1 : Fin normale après l'affichage de la syntaxe de la commande.
+       -1 : Erreur de sauvegarde de la série de documents dans Backups.
+   
+   EXEMPLES :
+      L'auto documentation de cette commande se crée  en  renommant  pour  l'usage  mkddocu.sh
+      L'extension importe peu, la commande sera gérée par bash. Les fichiers sans extension ou
+      avec l'extension .bash ne sont pas pris en compte.
+      compte.
+      Lancer la commande 'mkddocu.sh mkddocu -s'
+      Le répertoire maintenance/mkddocu contiendra la documentation
+      Les répertoires de projet sont générés par séries et peuvent avoir été sauvegardés  dans
+      un répertoire Backups si le nombre de fichiers de projet de la série ont atteind la lim‐
+      ite BACKUPSMAX
+      Pour les essais on peut se limiter à BACKUPSMAX=2 (3 'backups' par série.)
+  
+   REMARQUES
+      BACKUPSMAX est normalement fixé à 9 mais peut être modifié par édition du fichier.
+  
+   VOIR AUSSI 
+      mkd(1) gettext(1) poedit(1)
+  
+   TÉLÉCHARGEMENTS
+      http://edeulo.free.fr
+  
+   AUTEURS
+      Clara, JPL
+      Email : http://edeulo.free.fr/contacts/formmail.php
+  
+   BUGS
+      Rapports de bugs : http://edeulo.free.fr/phpBB3/index.php
+      
+	function pascal_
+ -----------------------------------------------------------------------------
+ FILE NAME: pascal.c for konsole pascal.cc for individual compilation in
+  c++ or pascal.inc.cc to include file in sources files with gtkmm
+
+ FUNTION NAME:
+  pascal_
+ 
+ SYNOPSIS, SYNTAX: 
+  #include "/usr/include/mkd/version.h"    // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/pascal.h"     // or mkd.h
+  int pascal_(FILE * pfdoc, FILE * pnfile);
+  FILE * pfdoc: pointer of the target stream opened by the calling function 
+  FILE * pnfile: pointer of the source stream opened by the calling function
+
+ ACTION, DESCRIPTION:
+  The pascal_ function reads the source file (pnfile) transmitted from the 
+  calling function, and decodes the comments pre-encoded in lines or 
+  blocks. and then writing this comments to a target file (pfdoc).
+  Pre-coded characters are defined in a external global table 'Codes';
+
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters: 
+    extern char codes[]; 
+    They must be defined in the calling function:
+    char codes[5] = {0,0,0,0,0};
+  The 'Options': n,s,t,v:
+    extern unsigned char n,s,t;
+    They must be defined in the calling function:
+    unsigned char n=0,s=0,t=0;
+  With the options:
+    -n: The transcript is preceded by line number. This allows to easily 
+       reach the commented line.
+    -s: Add the comment to the stdout to use shell redirections > , >> , 
+       or ||.
+    -t: With the t option only the commented text is extracted.
+       Without the t option the entire line or block is copied.
+       The t option permit to generate directly exploitable and publishable
+       documents. 
+
+  Remarks:
+    
+ CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY, 
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ RETURN VALUE:
+  Nothing.
+
+ COPYRIGHT:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007.
+  Association à but non lucratif selon l'Article 11 de la convention
+  européenne des droits de l'homme.
+  Concédée sous licence EUPL, version 1.1 ou – dès leur approbation par la 
+  Commission européenne - versions ultérieures de l’EUPL (la «Licence»).
+  Vous ne pouvez utiliser la présente œuvre que conformément à la Licence.
+  Vous pouvez obtenir une copie de la Licence à l’adresse suivante:
+    http://ec.europa.eu/idabc/eupl5
+  Sauf obligation légale ou contractuelle écrite, le logiciel distribué sous la
+  Licence est distribué «en l’état», SANS GARANTIES OU CONDITIONS QUELLES
+  QU’ELLES SOIENT, expresses ou implicites.
+  Consultez la Licence pour les autorisations et les restrictions linguistiques
+  spécifiques relevant de la Licence.
+  La Licence est totalement compatible avec la licence GNU.
+
+ AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Translations: Alizée, Clara, Luca, JPL, JPT, Martine
+
+ RESSOURCES:
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update April 2013
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 pascal_
+ 
+    
+	function shell_
+ -----------------------------------------------------------------------------
+ FILE NAME: shell.c for konsole shell.cc for individual compilation in
+  c++ or shell.inc.cc to include file in sources files with gtkmm
+
+ FUNTION NAME:
+  shell_
+ 
+ SYNOPSIS, SYNTAX: 
+  #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/shell.h"     // or mkd.h
+  int shell_(FILE * pfdoc, FILE * pnfile);
+  FILE * pfdoc: pointer of the target stream opened by the calling function 
+  FILE * pnfile: pointer of the source stream opened by the calling function
+
+ ACTION, DESCRIPTION:
+  The shell_ function reads the source file (pnfile) transmitted from the 
+  calling function, and decodes the comments pre-encoded in lines or 
+  blocks. and then writing this comments to a target file (pfdoc).
+  Pre-coded characters are defined in a external global table 'Codes';
+
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters: 
+    extern char codes[]; 
+    They must be defined in the calling function:
+    char codes[5] = {0,0,0,0,0};
+  The 'Options': n,s,t,v:
+    extern unsigned char n,s,t;
+    They must be defined in the calling function:
+    unsigned char n=0,s=0,t=0;
+  With the options:
+    -n: The transcript is preceded by line number. This allows to easily 
+       reach the commented line.
+    -s: Add the comment to the stdout to use shell redirections > , >> , 
+       or ||.
+    -t: With the t option only the commented text is extracted.
+       Without the t option the entire line or block is copied.
+       The t option permit to generate directly exploitable and publishable
+       documents. 
+
+  Remarks:
+   Ce programme copie les commentaires des lignes contenant le caractère # 
+   suivi par un des caractères 'Codes' entrés en paramètre. Si le caractère
+   '#' est précédé de \ ou si il est intégré dans une chaîne, alors il n'est
+   pas considéré comme début de commentaire.
+
+    
+ CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY, 
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ RETURN VALUE:
+  Nothing.
+
+ COPYRIGHT:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007.
+  Association à but non lucratif selon l'Article 11 de la convention
+  européenne des droits de l'homme.
+  Concédée sous licence EUPL, version 1.1 ou – dès leur approbation par la 
+  Commission européenne - versions ultérieures de l’EUPL (la «Licence»).
+  Vous ne pouvez utiliser la présente œuvre que conformément à la Licence.
+  Vous pouvez obtenir une copie de la Licence à l’adresse suivante:
+    http://ec.europa.eu/idabc/eupl5
+  Sauf obligation légale ou contractuelle écrite, le logiciel distribué sous la
+  Licence est distribué «en l’état», SANS GARANTIES OU CONDITIONS QUELLES
+  QU’ELLES SOIENT, expresses ou implicites.
+  Consultez la Licence pour les autorisations et les restrictions linguistiques
+  spécifiques relevant de la Licence.
+  La Licence est totalement compatible avec la licence GNU.
+
+ AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Translations: Alizée, Clara, Luca, JPL, JPT, Martine
+
+ RESSOURCES:
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update May 2013
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 shell_
+ 
+    
+	function tri_
+ -----------------------------------------------------------------------------
+ FILE NAME: tri.c for konsole tri.cc for individual compilation in
+  c++ or tri.inc.cc to include file in sources files with gtkmm
+
+ FUNTION NAME:
+  tri_
+ 
+ SYNOPSIS, SYNTAX: 
+  #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+  #include "/usr/include/mkd/tri.h"     // or mkd.h
+  int tri_(FILE * pfdoc, FILE * pnfile);
+  FILE * pfdoc: pointer of the target stream opened by the calling function 
+  FILE * pnfile: pointer of the source stream opened by the calling function
+
+ ACTION, DESCRIPTION:
+  The tri_ function reads the source file (pnfile) transmitted from the 
+  calling function, and decodes the comments pre-encoded in lines or 
+  blocks. and then writing this comments to a target file (pfdoc).
+  Pre-coded characters are defined in a external global table 'Codes';
+
+  The golbal variables are 'Codes' and 'Options'.
+  The 'Codes': table of 5 characters: 
+    extern char codes[]; 
+    They must be defined in the calling function:
+    char codes[5] = {0,0,0,0,0};
+  The 'Options': n,s,t,v:
+    extern unsigned char n,s,t;
+    They must be dEfined in the calling function:
+    unsigned char n=0,s=0,t=0;
+  With the options:
+    -n: The transcript is preceded by line number. This allows to easily 
+       reach the commented line.
+    -s: Add the comment to the stdout to use shell redirections > , >> , 
+       or ||.
+    -t: With the t option only the commented text is extracted.
+       Without the t option the entire line or block is copied.
+       The t option permit to generate directly exploitable and publishable
+       documents. 
+
+  Remarks: (1991)
+  Cette fonction de mkdoc permet le tri des commentaires en fonction des para-
+  mètres CD1 CD2 CD3 CD4 CD5 compiles.
+  avec l'option l (copie de ligne):
+  CD1 et CD2 sont des caractères début de commentaires a placer en début de
+  ligne comme en FORTRAN: c ou C ou * .
+  CD3 est un caractère début de commentaire que l'on peut placer en tout point
+  d'une ligne comme ; en assembleur, # en shell ou % en PostScript.
+  Cette fonction permet des tris différents de SHELL_.C vu qu'elle ignore si
+  # est dans une chaîne ou si elle est précédée du char \ .
+  avec l'option p (copie de page ):
+  CD4 est le caractère de début du commentaire et CD5 est la fin du commentaire
+  comme en PASCAL : CD4={ et CD5=} . CD4=CD5=" peut a la rigueur permettre
+  d'extraire des chaînes de caractères afin d’éditer un dictionnaire syntaxique
+  toutefois " étant a la fois début et fin de caractère le résultat n'est pas
+  assuré.
+
+    
+ CONFORMING TO:
+  POSIX, ANSI C, BSD, ISO/IEC 9899:2011; gcc, MS-Vc10; UTF-8.
+
+ PORTABILITY, 
+  LINUX-Debian-systems, LINUX-Red-Hat, UNIX, gcc.
+  Microsoft Visual studio under Windows : x86(Win32) x64(Win32 and WIN64)
+
+ RETURN VALUE:
+  Nothing.
+
+ COPYRIGHT:
+  © EELL, Éditeurs Européens de Logiciels Libres, EUPL 2007.
+  Association à but non lucratif selon l'Article 11 de la convention
+  européenne des droits de l'homme.
+  Concédée sous licence EUPL, version 1.1 ou – dès leur approbation par la 
+  Commission européenne - versions ultérieures de l’EUPL (la «Licence»).
+  Vous ne pouvez utiliser la présente œuvre que conformément à la Licence.
+  Vous pouvez obtenir une copie de la Licence à l’adresse suivante:
+    http://ec.europa.eu/idabc/eupl5
+  Sauf obligation légale ou contractuelle écrite, le logiciel distribué sous la
+  Licence est distribué «en l’état», SANS GARANTIES OU CONDITIONS QUELLES
+  QU’ELLES SOIENT, expresses ou implicites.
+  Consultez la Licence pour les autorisations et les restrictions linguistiques
+  spécifiques relevant de la Licence.
+  La Licence est totalement compatible avec la licence GNU.
+
+ AUTHORS:
+  © Contact: http://edeulo.free.fr/contacts/formmail.php
+  Designer: intial JP Louyot (JPL)
+  Updates : JPL and Clara Jimenez
+  Translations: Alizée, Clara, Luca, JPL, JPT, Martine
+
+ RESSOURCES:
+  gtkmm with mkdw future widowed version.
+
+ NOTES:
+  Update April 2013
+
+ BUGS:
+  See bugs reports http://edeulo.free.fr/phpBB3
+
+ SEE ALSO MANUAL:
+  Man(3) attached in English.
+  Command line : man 3 tri_
+ 
+

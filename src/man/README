@@ -1,0 +1,24 @@
+README : for multi-languages mkd manuals updates
+================================================
+For all systems
+Note : (XXXX-XX-XX is the date of last update)
+
+1 - Download the mkd_manuals_XXXX-XX-XX.tgz at the url:
+    http://edeulo.free.fr/telechargements/console-ubuntu/mkd
+2 - unpack mkd_manuals_XXXX-XX-XX.tgz
+    command line : "tar xvzf mkd_manuals_XXXX-XX-XX.tgz ."
+2 - Go to ~/Downloads/mkd_manuals_XXXX-XX-XX/
+3 - Running :
+
+Executable File: install_manuals_on_debian_systems. 
+--------------------------------------------------
+	Running by cliking on "install_manuals_on_debian_systems"
+
+Or : others commands in terminals with executable install_manuals.
+------------------------------------------------------------- 
+In directory ~/Downloads/mkd_manuals_XXXX-XX-XX/ :
+	Go in a terminal, or running the executable "starting_a_konsole"
+	Konsole command syntax on Debian or Ubuntu systems : 
+		"sudo ./install_manuals"
+	Konsole command syntax for user root (see command su) : 
+		"./install_manuals"

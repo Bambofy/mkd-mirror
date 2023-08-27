@@ -1,0 +1,16 @@
+#!/bin/sh -ev
+# file postinst for mkd debian installation	
+#
+
+#
+# POST INSTALL
+#
+echo " postinst : update icon cache "
+	gtk-update-icon-cache -t /usr/share/icons/hicolor
+echo " postinst : install and update MIME database "
+	update-mime-database /usr/share/mime
+echo " postinst : update man database "
+	mandb -c
+#
+echo " postinst END "
+

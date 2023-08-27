@@ -1,0 +1,186 @@
+     #!/bin/bash
+#P File mkddocu
+. gettext.sh
+#
+if test -x /usr/bin/mkd; then echo "";
+else
+   if test -x ./mkd ; then echo "";
+   else 
+      echo "$(gettext ' Please install mkd software ')" 
+      exit -1 #P exit -1 : La commande mkd n'est pas trouvée
+   fi
+fi
+#
+if test $1; then
+   if [ $1 = "?" ]
+   then
+      echo "$(gettext ' Syntax : ')"
+      echo "$(gettext ' mkddocu [target_dir] [-s] ')"
+      echo "$(gettext '    → example of series with date : mkddocu 2014-02-22 ')"
+      echo "$(gettext '    → without target_dir, name of target directory is : project ')"
+      echo "$(gettext '    → with -s mkddocu generates a complete documentation. ')"
+      echo "$(gettext ' The target directory is writen in maintenance directory : ')"
+      echo "$(gettext '    → ./maintenance/2014-02-22/ ')"
+      echo "$(gettext ' mkddocu ? for help ')"
+      echo "$(gettext ' Note : ')"
+      echo "$(gettext ' This command dépends on the mkd command ')"
+      exit 0 #P exit 0 : Fin d'affichage de la syntaxe
+   fi
+fi
+#P Affecttion des macros et des variables
+#P    BACKUPSMAX : Définition du nombre de sauvegardes d'une série avant la 
+#P     sauvegarde globale dans un répertoire 'Backup'. (Valeur modifiable)
+BACKUPSMAX=3 
+let i=1           #P compteur
+str="false"       #P false ou true
+project="project" #P nom du fichier de projet .prj
+#
+#P -----------------------------------------------------------------------------
+#P Gestion des paramètres d'entrée
+#
+if test $1; then
+   if test $2; then
+      echo ""
+#      echo " Deux paramètres à la ligne de commande "
+#      echo " Paramètres : 1=$1, 2=$2 "
+      if test $1 && [ $1 != "-s" ] ; 
+      then 
+         project=$1; 
+         if [ $2 = "-s" ]; then str="true"; fi #P Vérif que c'est bien -s
+      else 
+         if [ $1 = "-s" ]; then str="true"; project=$2; fi
+      fi
+   else
+      echo ""
+#      echo " Un seul paramètre à la ligne de commande : $1 "
+      if test $1 && [ $1 != "-s" ] ; then project=$1; fi
+      if [ $1 = "-s" ]; then str="true"; fi
+   fi
+else echo "" # " Pas de paramètre "
+fi
+# echo " Projet : $project "
+# echo " Strings ? : $str "
+#
+#P -----------------------------------------------------------------------------
+#P Gestion de sauvegarde des séries (Transfert dans maintenance/Backup)
+#
+#P Créer la fonction 'sauvegarde'. (Noter que la varable i est globale)
+function sauvegarde
+{
+   if test -d maintenance/$project 
+   then
+   mv maintenance/$project maintenance/$project.$i
+   fi
+}
+#Po Tant que l'on n'a pas atteind BACKUPSMAX
+    while ((i<=BACKUPSMAX)); 
+    do
+#Po   Si le répertoire de projet.i existe
+      if test -d maintenance/$project.$i
+#Po   alors:
+      then 
+#Po      Si le nombre de répertoires projet.i de la série dépasse BACKUPSMAX
+         if [ $i = $BACKUPSMAX ]
+         then 
+#Po         demander si il faut transférer la série dans de répertoire 'Backup'
+            echo "$(gettext ' Last backup before maintenance : ')"
+            echo -n "$(gettext ' Make backup in Backups dir, yes ? Your choice : y ? ')"
+            read char
+#Po         si 'y' (yes)
+            if test $char &&  [ $char = "y" ]
+#Po         alors:
+            then 
+#Po            Créer le répertoir Backup s'il y alieu et transférer la série .*
+               echo "$(gettext ' If the Backups directory does not exist, create the `Backups` directory ')"
+               install -d Backups
+               ((i++))
+               sauvegarde
+               cp -rf  maintenance/$project.* Backups/.
+               rm -rf maintenance/$project.*
+               clear
+               echo "$(gettext ' Files in directory Backups ')"
+               ls -al Backups
+            else 
+               echo "$(gettext ' exit -2 ')"
+               exit -2 #P exit -2 : Fin par erreur ou abandon de l'utilisateur
+            fi
+         fi
+#Po    sinon: Sauvegarder le dernier répertoire par incrément d'extension
+      else 
+         sauvegarde
+      fi
+      let i++
+      #break
+   done
+#
+#P -----------------------------------------------------------------------------
+#P Préparation des répertoires de travail, maintenance et fichier de projet .prj
+#
+#P    Clean, nettoyage des fichiers d'éditions *~
+      rm *.c~ #w ATTENTION ! à exécuter avec précaution
+#P    Créer du répertoire ./maintenance si il n'existe pas
+      install -d maintenance/$project
+#P    Créer le fichier de projet .prj pour tout langage de programmation
+      rm -f *.prj
+      ls -1 *.asm *.s *.bas *.vb *.bat *.c *.C *.h *.H *.D *.cc *.hh *.cp *.cs \
+      *.c# *.c++ *.h++ *.c-- *.h-- *.cpp *.hpp  *.css *.pr *.pl *.php *.jav \
+      *.jse *.js  *.f99 *.f *.pas *.p *.sh *.csh *.pl, *.rb *.py *.pyw *.pj \
+      *.prj > $project.prj
+#
+#P -----------------------------------------------------------------------------
+#P Génération de la documentation :
+#
+#P    Générer le fichier d'entête global .h si il existe des fichiers .c??
+ls *.c* *.C* > cfiles.txt
+if test -s cfiles.txt ; then cfiles="true"; fi
+rm -f cfiles.txt
+if test $cfiles; then
+   echo "$(gettext ' → Create header file in ./maintenance/$project/$project.h (benchmark H) ')"
+   mkd -Cjt H $project.prj ./maintenance/$project/$project.h 
+#Pw   → Remarque d'ATTENTION pour copier manuellement le fichier d'entête .h
+   echo "$(gettext ' → Warning : Copy manually the header file in current source directory ')"
+#Pw   → ATTENTION ligne non validée : cp -f ./maintenance/$project/$project.h . 
+else 
+   echo "$(gettext ' C files not found ')"
+fi
+#
+#en   Make documentation with benchmark 'D'
+#P    Générer la 'documentation' avec le repère 'D'
+#
+echo "$(gettext ' Creating documentation, find the programming style, with the benchmark D ')"
+echo "$(gettext ' → ./maintenance/$project/$project-documentation.txt ')"
+mkd -fjt D $project.prj ./maintenance/$project/$project-documentation.txt
+#
+#en   Make individuals tests directives document; style find add number of lines
+#P    Générer le fichier des directives des tests; avec numéro de ligne repère 'T'
+#
+echo "$(gettext ' Creates the tests document and the directives of tests, with the benchmark T ')"
+echo "$(gettext ' → ./maintenance/$project/$project-tests-directives.txt ')"
+mkd -fjnt T $project.prj ./maintenance/$project/$project-tests-directives.txt
+#
+#en   Make maintainers documentation, add line number, benchmark 'P'
+#P    Générer le fichier destiné aux mainteneurs avec le repère 'P'
+#
+echo "$(gettext ' Creates the document for the maintainers, with the benchmark P ')"
+echo "$(gettext ' → /maintenance/$project-maintainers-doc.txt ')"
+mkd -fjnt P $project.prj ./maintenance/$project/$project-maintainers-doc.txt
+#
+#P Si le paramètre '-s' est entrée à la commande:
+#P    Créer les fichiers : chaînes de caractères et chaînes pour gettext
+#en If second parametre is "-s" then
+#en   Get all strings and select strings for translations
+#
+if [ $str = "true" ]; then
+   echo "$(gettext ' Creates a file with strings, and a file with strings for tranlations, with benchmark ** ')"
+   mkd -fpnjs '**' $project.prj ./maintenance/$project/strings.txt | \
+   grep gettext > ./maintenance/$project/strings-2-translations.txt 
+fi
+#
+#P -----------------------------------------------------------------------------
+#P Afficher les recommandations de lecture des fichiers de maintenance
+#
+echo "$(gettext '  See in working directory: ./maintenance/$project/$project/* ')"
+ls -l ./maintenance/$project
+#P Quitter avec un retour à la valeur 0 Fin correcte normale
+exit 0 #P exit 0 : Fin d'exécution de la commande mkddocu
+#

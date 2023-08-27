@@ -1,0 +1,24 @@
+Fichier src-mkddocu/maintenance/maintenance.txt
+
+Date : Vendredi 21 mars 2014 (Noter d'un + quand ce sera fait.)(JPL)
+
+  Suite à la mise à jour du fichier src/mime/mkddocu.xml
+  Suite à la création de l'icône src/icons/mkd-128x128.png :
+
+  A l'installation :
+  2 + Prévoir aussi de `vérifier et installer' cette image dans ~/.icons à chaque
+      fois que l'on exécute /usr/bin/mkddocu ou mkddocu.sh
+    - Il faut vérifier le test d'écriture dans ~/.icons
+  3 + vérifier si mkddocu.xml n'a pas été supprimé à l'installation.
+    + (voir aussi preinst, postinst et postrm)
+    + Contrôler mkddocu.xml pour qu'il n'interfère pas avec mkd.xml
+    - C'est fait mais il faut vérifier la cohérence
+    - Vérifier et valider le test pour l'exécution des bases de données. ICON et
+      mime selon la macro $(DESTDIR).
+  4 + Créer le fichier debian/preinst avec la supression des vieux fichiers tels
+      que : /usr/share/doc/mkddocu en plus de doc/mkd
+  5 + Pour les installations autres que ubuntu il faudrait peut-être installer
+      le manuel français dans /usr/share/man/fr/man1/mkddocu.1.gz plutôt que dans
+      le répertoire /usr/share/man/fr.UTF-8
+
+Date :

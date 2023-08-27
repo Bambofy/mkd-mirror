@@ -1,0 +1,73 @@
+.\"Created with GNOME Manpages Editor
+.\"http://sourceforge.net/projects/gmanedit2
+.\"Replace <program> with the program name, x with the Section Number
+.TH mkddocu 1 "2014-02-24" "" "Linux User's Manual"
+.SH NOM
+mkddocu \- Génère la documentation informatique avec \fBmkd (1)\fR.
+.SH SYNOPSIS
+.B mkddocu \fIprojet\fR
+.SH DESCRIPTION
+.TP
+.B mkddocu
+La commande \fBmkddocu\fR associée à \fBmkd\fR, extrait les commentaires codés par un \fBcaractère de repérage\fR pour créer les documents logiciels.
+Exemple : 
+.B //D
+ceci est un commentaire php ou C, répéré par le caractère 'D'
+.br
+Si des fichiers de langage C sont présents, \fBmkddocu\fR génère un fichier d'entête global (header) du projet informatique grâce au caractère de repérage 'H'.
+.br
+.B Caractère de repérage :
+.br
+\fBD\fR Extrait la documentation générale.
+.br
+\fBH\fR Crée le fichier d'entête global (header) si un fichier C est présent.
+.br
+\fBP\fR Extrait un document utile aux mainteneurs, noms, dates, versions, etc.
+.br
+\fBT\fR Extrait le document des directives de tests. (Unitaires, d'intégration, etc.)
+.TP
+.I projet 
+C'est sous ce nom_de_projet que seront crées ou mis à jour les fichiers du répertoire 'maintenance/nom_de_projet'
+.SH VALEURS RETOURNÉES
+\fB\ 0\fR Fin normale à la fin de l'exécution de la commande ou de l'aide (syntaxe).
+.br
+\fB\-1\fR La commande \fBmkd\fR n'est pas installée.
+.br
+\fB\-2\fR Command stoppée. La sauvegarde de la série de documents dans le répertoire \fBBackups\fR n'a pas été effectuée.
+.br
+\fB-3\fR Command stoppée. Le paramètre \fIproject\fR est vide.
+.SH EXEMPLES
+L'auto-documentation de cette commande se crée avec le fichier d'origne des sources mkddocu.sh. Lancer la commande\ :
+.br
+.B \fBmkddocu.sh mkddocu\fR
+.br
+Le répertoire 
+.B
+maintenance/mkddocu
+contiendra les documents.
+.br
+
+Les répertoires de projet sont générés par séries et peuvent avoir été sauvegardés dans un répertoire \fBmaintenance/Backups\fR si le nombre de fichiers de projet de la série a atteind la limite 
+.I BACKUPSMAX
+.br
+Pour les essais on peut limiter \fIBACKUPSMAX\fR à 2 
+(3 sauvegardes par série.)
+.SH REMARQUES
+.I BACKUPSMAX 
+est normalement fixé à 9 mais peut être modifié par édition du fichier : /usr/bin/mkddocu.
+.SH "VOIR AUSSI"
+mkd(1)
+xgettext(1)
+poedit(1)
+.br
+file:////usr/share/doc/mkddocu/
+.br
+file:////usr/share/doc/mkd/
+.SH TÉLÉCHARGEMENTS
+http://edeulo.free.fr
+.SH AUTEURS
+Clara, JPL, Luca
+.br
+Email : http://edeulo.free.fr/contacts/formmail.php
+.SH BUGS
+Rapports de bugs :  http://edeulo.free.fr/phpBB3/viewforum.php?f=14

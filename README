@@ -1,0 +1,23 @@
+ Description :
+ =============
+ mkd is a UNIX command to extract pre-encoded comments lines to generate software
+ documentation  according to ISO standards. 
+ mkd is the abbreviation of make documentation. This command was originally known
+ under the name mkdoc (make documentation).
+
+ This command is not included into the standard distributions of Unix and Linux.
+
+ Bugs reports :
+ ==============
+ http://edeulo.free.fr/phpBB3/viewforum.php?f=14
+
+ Usage, self updates: man, po, mo files, are written by user Cardabela on wikimedias :
+ =====================================================================================
+ See `Mkd (Extracteur de documents)` on wikibook.
+ See also `Mkd (Unix command)` on wikipedia (en).
+ or `Mkd (Commande unix)` on wikipedia (fr)
+ or `Mkd (Kommandozeile)` on http://marjorie-wiki.de (de)
+
+ Contacts :
+ ==========
+ edeulo@free.fr

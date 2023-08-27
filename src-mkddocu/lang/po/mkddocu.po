@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mkd-doc_140515\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-05 19:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jean-Paul Louyot <edeulo@free.fr>\n"
+"Language-Team: Edeulo <edeulo@free.fr>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../mkddocu.sh:146
+msgid " Please install mkd software "
+msgstr ""
+
+#: ../../mkddocu.sh:157
+msgid " Syntax : "
+msgstr ""
+
+#: ../../mkddocu.sh:158
+msgid " mkddocu <target_dir> "
+msgstr ""
+
+#: ../../mkddocu.sh:159
+msgid "    -> example of series with date : mkddocu 2014-02-22 "
+msgstr ""
+
+#: ../../mkddocu.sh:160
+msgid "    The target directory is also writen in maintenance directory : "
+msgstr ""
+
+#: ../../mkddocu.sh:161
+msgid "    -> maintenance/2014-02-22/ "
+msgstr ""
+
+#: ../../mkddocu.sh:162
+msgid " mkddocu ? for this help "
+msgstr ""
+
+#: ../../mkddocu.sh:234
+msgid " Last backup before maintenance : "
+msgstr ""
+
+#: ../../mkddocu.sh:236
+msgid " Make backup in Backups dir, yes ? Your choice : y ? "
+msgstr ""
+
+#: ../../mkddocu.sh:245
+msgid " If the directory "
+msgstr ""
+
+#: ../../mkddocu.sh:247
+msgid " does not exist, create it "
+msgstr ""
+
+#: ../../mkddocu.sh:255
+msgid " Files in directory "
+msgstr ""
+
+#: ../../mkddocu.sh:260
+msgid " return -2 "
+msgstr ""
+
+#: ../../mkddocu.sh:295
+msgid " -> Create header file in "
+msgstr ""
+
+#: ../../mkddocu.sh:297
+msgid " (benchmark H) "
+msgstr ""
+
+#: ../../mkddocu.sh:301
+msgid ""
+" -> Warning : Copy manually the header file in current source directory "
+msgstr ""
+
+#: ../../mkddocu.sh:305
+msgid " C files not found "
+msgstr ""
+
+#: ../../mkddocu.sh:312
+msgid ""
+" Creating documentation, find the programming style, with the benchmark D "
+msgstr ""
+
+#: ../../mkddocu.sh:320
+msgid ""
+" Creates the tests document and the directives of tests, with the benchmark "
+"T "
+msgstr ""
+
+#: ../../mkddocu.sh:328
+msgid " Creates the document for the maintainers, with the benchmark P "
+msgstr ""
+
+#: ../../mkddocu.sh:339
+msgid ""
+" Creates a file with strings, and a file with strings for tranlations, with "
+"benchmark ** "
+msgstr ""
+
+#: ../../mkddocu.sh:348
+msgid "  See in working directory: "
+msgstr ""
+
+#: ../../mkddocu.sh:353
+msgid "  end normal, return 0 "
+msgstr ""

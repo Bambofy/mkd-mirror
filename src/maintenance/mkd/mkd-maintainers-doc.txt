@@ -1,0 +1,310 @@
+
+    1    
+    2 NOM DU FICHIER: asm.c pour console
+    3 
+    4 PROJET: mkd 
+    5 Générer la documentation pré-écrite dans les fichiers de sources multiples.
+    6 Cette commande n'est pas intégrée dans les distributions standards UNIX / LINUX
+    7 
+    8 PROJET INITIAL: mkdoc 1989 pour MS-DOS et UNIX. Projet obsolète.
+    9 
+   10 DOSSIER: extractdoc 04/12/2009
+   11 
+   12 MODIFICATIONS:
+   13 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   14 Date: ../../1991 by JPL mkdoc 3.12 for PC and UNIX
+   15 ....
+   16 Le: 10/01/2010 par Clara objet de la modification: contrôle de l'accentuation
+   17                des commentaires en ISO-8859-1
+   18 Le: 10/03/2010 par JPL objet de la modification: simplification de l'entête
+   19 Le: 17/03/2012 par JPL objet de la modification: corrections au format UTF-8
+   20 Date: 28/04/2013 by GC Mise en conformité avec les nouvelles directives EELL
+   21 
+  146         options bool à définir dans main() ou winmain() 
+  171     -- si le char c1 est NL -------------------------------------------------
+  196    -- sinon si c1 = ';' est en première colonne -----------------------------
+  256    --------- sinon si c1 = ';' est dans la ligne ----------------------------
+  259                 si c1 est tabulation incrémenter tab 
+  260                     if (c1=='\t')tab++;
+  261                 sinon si c1 = ; 
+  262                     else 
+  316                             copier autant de tabulations qu'il y en a dans le source */
+  317     for(i=0;i<tab;i++)
+  318     { /*S tabs */
+  319     	putc('\t',pfdoc);
+  320     	if(s)putch('\t');
+  321     } /*S tabs */
+    2    
+    3 FILE NAME: basic.c for konsole basic.cc for individual compilation in
+    4   c++ or basic.inc.cc to include file in sources files with gtkmm
+    5 
+    6 PROJECT: mkd 
+    7 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    8 software documentation according to ISO standards. 
+    9 mkd is the abbreviation of make documentation. This command was originally 
+   10 known under the name mkdoc (make documentation).
+   11 This command is not integrated into the standard distributions of Unix / Linux
+   12 
+   13 INITIAL PROJECT: 
+   14 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   15 
+   16 ADMINISTRATIVE RECORD: 
+   17 extractdoc 04/12/2009
+   18 
+   19 FILE UPDATE:
+   20 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   21 Date: 09/02/1989 by JPL mkdoc ?? for PC and UNIX
+   22 Date: 12/02/1991 by JPL mkdoc 3.12 for PC and UNIX
+   23 Date: 04/05/2013 by Clara Update for UTF-8
+   24 
+   25 
+  208                               c2, c3 ne sont lus que si c1 est faux
+  223                                                      unget c4 if not "REM_"
+  228                                        c5 sera le char qui suit ', REM ou rem_
+  295                                               copier NL
+  296                                               revenir sur NL pour num++
+  306                                            c5 est lu dans tous les cas de commentaires
+    1    
+    2 FILE NAME: cpp.c for konsole cpp.cc for individual compilation in c++ or
+    3            cpp.inc.cc to include file in sources files with gtkmm
+    4 
+    5 PROJECT: mkd 
+    6 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    7 software documentation according to ISO standards. 
+    8 mkd is the abbreviation of make documentation. This command was originally 
+    9 known under the name mkdoc (make documentation).
+   10 This command is not integrated into the standard distributions of Unix / Linux
+   11 
+   12 INITIAL PROJECT: 
+   13 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   14 
+   15 ADMINISTRATIVE RECORD: 
+   16 extractdoc 04/12/2009
+   17 
+   18 FILE UPDATE:
+   19 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   20 Date: ../../1991 by JPL mkdoc 3.12 for PC and UNIX
+   21 Date: ../../1995 by JPL mkdoc 3.22 for RED-HAT on LINUX
+   22 Date: ../../2004 by JPL mkdoc 4.00 for LINUX ubuntu
+   23 Date: 11/02/2010 by JPL Update for MS Visual C10 beta 2. 
+   24 Date: ../../.... by JPL Transformation into independant function for mkdcpp.
+   25 Date: ../03/2012 by CLARA Update to UTF-8 format (C++)
+   26 Date: 02/05/2012 by CLARA Special adaptation for mkdcppw with gtkmm
+   27 Date: 10/03/2013 by JPL Rewrite in english (en) to facilitate the translations
+   28 Date: 30/04/2013 by GC  Rewrite to correct End Of File control
+   29 Date: 03/05/2013 by JPL Resolve the EOF problem if the last block is open.
+   30 
+   31 
+  215                                     is not necessary to break here
+  234                      w appearance of codes in lines if codes[] flags are false
+  235                                                         w depends of codes[]
+  253                                              in this case c1 ≠ EOF
+  301                                                                        break while w3
+  308                                     CR/LF under DOS 
+  323                                          c1='*' c2=?
+  335                                     c1 = always '*' and c2 ≠ '/' 
+  355                         -- including '\r' (CR/LF) under DOS */
+  379                                              exit from while w1
+  381                   and next, copy New Lines under this form: CR/LF under DOS 
+  382                                                     obsolete ?
+    1     maj R3.11 04/01/91 par JPL
+    2     maj R 130509 alpha
+    1    
+    2 FILE NAMES: fortran.c for konsole, or fortran.cc or fortran.inc.cc to include
+    3             the file in windowed version of mkd with gtkmm
+    4 FUNCTION : fortran_()
+    5  
+    6 PROJECT: mkd 
+    7 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    8 software documentation according to ISO standards. 
+    9 mkd is the abbreviation of make documentation. This command was originally 
+   10 known under the name mkdoc (make documentation).
+   11 This command is not integrated into the standard distributions of Unix / Linux
+   12  
+   13 INITIAL PROJECT: 
+   14 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   15  
+   16 ADMINISTRATIVE RECORD: 
+   17 extractdoc 04/12/2009
+   18  
+   19 FILE UPDATE:
+   20 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   21 Date: ../../1991 by JPL mkdoc 3.12 for PC and UNIX
+   22 Date: 17/04/2013 by Clara; Mise à jour vers UTF-8 et correction de fin de 
+   23                     fichier pour version 2013 + introduction de la nouvelle
+   24                     entête mkd* + numérotation des lignes.
+   25 Date: 21/04/2013 by JPL Nettoyage du code après les testsb unitaires.
+   26 
+   27 
+
+
+    1    
+    2 	NOM DU FICHIER: mkd.c
+    3 	PROJET INITIAL: mkd console linux & Windows 7
+    4 	DOSSIER INITIAL : mkdoc3.12 Centre d'Electronique de Montpellier
+    5 	PROGRAMMEUR: Jean-Paul LOUYOT
+    6 	DATE: 18/12/2009
+    7 	MODIFICATIONS:
+    8 	le: 10/03/2010 par JPL :  Mise à jour pour Visual C 10
+    9 	le: 25/03/2012 par Clara : internationalisation
+   10 	le: 31/03/2012 par jpl : internationalisation. Conversion du fichier
+   11                                  au format UTF-8
+   12 	le: 18/04/2013 par jpl : mise à jour pour version 2013
+   13 	le: 11/05/2013 par jpl : pour compilation avec les fichiers mis à jour
+   14 
+   32                                                    ajout n et v version 3.1 
+   41 	                               old version see asm.c
+   42                                 old version see basic.c
+   43 	                             old version see cpp.c
+   44                                 old version see fortran.c
+   45                                 old version see pascal.c
+   46                                 old version see shell.c
+   47                                 old version see tri.c
+   73                         c++
+  298                              même répertoire 
+    2    File mkddocu writed by Clara Jimenez 2013-12-15
+    3    Fichier modifié par JPL le 22/02/2014 pour une version plus universelle
+    4    Util : Create any debian package for mkd for multi-lang programming languages
+  118    Fichier mkddocu.sh
+  119    -----------------------------------------------------------------------------
+  120    Menu d'aide sommaire obtenu par la commande 'mkddocu ?'
+  122    Extract code mkd -twC C mkddocu.sh mkddocu 
+  124    File mkddocu
+  132                  exit -1 : La commande mkd n'est pas trouvée
+  149                 exit 0 : Fin d'affichage de la syntaxe
+  152    Affecttion des macros et des variables
+  153       BACKUPSMAX : Définition du nombre de sauvegardes d'une série avant la 
+  154        sauvegarde globale dans un répertoire 'Backup'. (Valeur modifiable)
+  156                      compteur
+  157                      false ou true
+  158                      nom du fichier de projet .prj
+  160    -----------------------------------------------------------------------------
+  161    Gestion des paramètres d'entrée
+  171                                                   Vérif que c'est bien -s
+  186    -----------------------------------------------------------------------------
+  187    Gestion de sauvegarde des séries (Transfert dans maintenance/Backup)
+  189    Créer la fonction 'sauvegarde'. (Noter que la varable i est globale)
+  197   o Tant que l'on n'a pas atteind BACKUPSMAX
+  200   o   Si le répertoire de projet.i existe
+  202   o   alors:
+  204   o      Si le nombre de répertoires projet.i de la série dépasse BACKUPSMAX
+  207   o         demander si il faut transférer la série dans de répertoire 'Backup'
+  211   o         si 'y' (yes)
+  213   o         alors:
+  215   o            Créer le répertoir Backup s'il y alieu et transférer la série .*
+  227                           : Fin par erreur ou abandon de l'utilisateur
+  230   o    sinon: Sauvegarder le dernier répertoire par incrément d'extension
+  238    -----------------------------------------------------------------------------
+  239    Préparation des répertoires de travail, maintenance et fichier de projet .prj
+  241       Clean, nettoyage des fichiers d'éditions *~
+  243       Créer du répertoire ./maintenance si il n'existe pas
+  245       Créer le fichier de projet .prj pour tout langage de programmation
+  252    -----------------------------------------------------------------------------
+  253    Génération de la documentation :
+  255       Générer le fichier d'entête global .h si il existe des fichiers .c??
+  262   w   → Remarque d'ATTENTION pour copier manuellement le fichier d'entête .h
+  264   w   → ATTENTION ligne non validée : cp -f ./maintenance/$project/$project.h . 
+  270       Générer la 'documentation' avec le repère 'D'
+  277       Générer le fichier des directives des tests; avec numéro de ligne repère 'T'
+  284       Générer le fichier destiné aux mainteneurs avec le repère 'P'
+  290    Si le paramètre '-s' est entrée à la commande:
+  291       Créer les fichiers : chaînes de caractères et chaînes pour gettext
+  301    -----------------------------------------------------------------------------
+  302    Afficher les recommandations de lecture des fichiers de maintenance
+  306    Quitter avec un retour à la valeur 0 Fin correcte normale
+  307           exit 0 : Fin d'exécution de la commande mkddocu
+
+    1    
+    2 FILE NAME: pascal.c for konsole pascal.cc for individual compilation in
+    3   c++ or pascal.inc.cc to include file in sources files with gtkmm
+    4 
+    5 PROJECT: mkd 
+    6 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    7 software documentation according to ISO standards. 
+    8 mkd is the abbreviation of make documentation. This command was originally 
+    9 known under the name mkdoc (make documentation).
+   10 This command is not integrated into the standard distributions of Unix / Linux
+   11 
+   12 INITIAL PROJECT: 
+   13 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   14 
+   15 ADMINISTRATIVE RECORD: 
+   16 extractdoc 04/12/2009
+   17 
+   18 FILE UPDATE:
+   19 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   20 Date: 09/06/1989 by JPL Update
+   21 Date: 30/12/1990 by JPL Udate for R3.11
+   22 Date: 09/01/1991 by JPL mkdoc 3.11 for PC and UNIX
+   23 Date: 12/02/1991 by JPL mkdoc 3.12 for PC and UNIX
+   24 ...
+   25 Date: 06/05/2013 by Clara update for R 2013-05
+   26 
+   27 
+  167                                             rappels 
+  267                     C2 pas testé si curly vrai
+    1    
+    2 FILE NAME: shell.c for konsole shell.cc for individual compilation in
+    3   c++ or shell.inc.cc to include file in sources files with gtkmm
+    4 
+    5 PROJECT: mkd 
+    6 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    7 software documentation according to ISO standards. 
+    8 mkd is the abbreviation of make documentation. This command was originally 
+    9 known under the name mkdoc (make documentation).
+   10 This command is not integrated into the standard distributions of Unix / Linux
+   11 
+   12 INITIAL PROJECT: 
+   13 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   14 
+   15 ADMINISTRATIVE RECORD: 
+   16 extractdoc 04/12/2009
+   17 
+   18 FILE UPDATE:
+   19 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   20 Date: 09/06/1989 by JPL 
+   21 Date: 03/01/1991 by JPL mkdoc 3.11 for PC and UNIX
+   22 Date: ../../1991 by JPL mkdoc 3.12 for PC and UNIX
+   23 Date: 09/05/2013 by Clara for mkd 13.05 alpha
+   24 
+  269                               option t 
+    2    
+    3 FILE NAME: tri.c for konsole tri.cc for individual compilation in
+    4   c++ or tri.inc.cc to include file in sources files with gtkmm
+    5 
+    6 PROJECT: mkd 
+    7 mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+    8 software documentation according to ISO standards. 
+    9 mkd is the abbreviation of make documentation. This command was originally 
+   10 known under the name mkdoc (make documentation).
+   11 This command is not integrated into the standard distributions of Unix / Linux
+   12 
+   13 INITIAL PROJECT: 
+   14 mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+   15 
+   16 ADMINISTRATIVE RECORD: 
+   17 extractdoc 04/12/2009
+   18 
+   19 FILE UPDATE:
+   20 Date: ../../1986 by JPL Initial programming for MSDOS and UNIX on SUN
+   21 Date: 09/06/1989 by JPL Update mkdoc 3.09
+   22 Date: 09/01/1991 by JPL mkdoc 3.11 for PC and UNIX
+   23 Date: 10/05/2013 by GC Update for mkd 2013
+   24 
+   25 
+
+   18    
+   19 	NOM DU FICHIER: version.h
+   20 	PROJET INITIAL: mkd console linux & MSDOS
+   21 	DOSSIER INITIAL : mkdoc3.12 Centre d'Electronique de Montpellier
+   22 	PROGRAMMEUR: JPL 
+   23 	DATE: 18/12/2009
+   24 	MODIFICATIONS:
+   25 	le: 09/01/2011 par JPL objet: Ajouté l'option de compilation pour MSDEV41
+   26 	le: 10/01/2012 par JPL objet: Ajouté la définition std_C pour compilation UNIX STD
+   27 	le: 25/03/2012 par Clara objet: internationalisation
+   28 	le: 27/03/2012 par jpl objet: internationalisation en utf-8
+   29 	le: 10/04/2013 par Cardabela: Modification mineure. Alignement des commentaires.
+   30         le: 11/05/2013 par jpl mise à jour des définitions CD* pour tri.c
+   31 
+   40                 PROGRAMMEUR            

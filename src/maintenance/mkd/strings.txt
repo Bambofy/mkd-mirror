@@ -1,0 +1,432 @@
+
+   58   #include "version.h"
+   59   #include "asm.h"
+  141 #include "version.h"
+  142 #include "asm.h"
+  203                          fprintf( pfdoc, "%5d ", num);
+  204                          if(s) printf( "%5d ", num);
+  290                                  fprintf( pfdoc, "%5d ", num);
+  292                                  if(s) printf( "%5d ", num); // screen
+  312                                  fprintf( pfdoc, "%5d ", num);
+  314                                  if(s) printf( "%5d ", num); // screen
+   83   #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+   84   #include "/usr/include/mkd/basic.h"   // or mkd.h
+  168 #include "version.h"
+  169 #include "basic.h"
+  207 /*O       si le caractère suivant est '\'' ou les caractères ("REM") */
+  223                  if (c4!=' ') ungetc(c4,pnfile); //P unget c4 if not "REM_"
+  224                  //T fprintf(pfdoc,"\nREM détecté \'%c%c%c%c\'\n",c1, c2, c3, c4);
+  253                        fprintf( pfdoc, "%5d ", num );
+  254                        if(s) printf( "%5d ",num );
+   76   #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+   77   #include "/usr/include/mkd/cpp.h"     // or mkd.h
+  111        comment-line starting with "//".
+  112     if the decoded comment begins with the characters "//", the line is
+  169 #include "version.h"
+  170 #include "cpp.h"
+  176       windowed version, and then not "extern" in windowed version.
+  240                      fprintf( pfdoc, "%5d ", num );
+  241                      if(s) printf( "%5d ", num );
+  307 /*www                           if(c1=='\n') fprintf(pfdoc, "%s", NL );*/ 
+  318                               fprintf( pfdoc,"%5d ", num );
+  319                               if(s) printf("%5d ", num );
+  337                               //T fprintf(pfdoc, "\nc1 = %c  c2 = %c\n", c1, c2); //T
+  382 //T                  fprintf(pfdoc, "%s", NL ); //P obsolete ?
+  383 //T                  if(s) puts("");
+   10                  if(v) printf("Find Souce File Language, \'%s\':   ",fsrc);
+   21                     //T printf("\nTests: **** tolower extension = %s\n",buffer); //T tests only
+   25                        {L=1;A=1;printf("ASM\n");}
+   31                        {L=1;B=1;printf("BASIC\n");}
+   53                               {L=1;C=1;printf("C or PROLOG\n");}
+   56                              {L=1;F=1;printf("FORTRAN\n");}
+   59                         {L=1;P=1;printf("PASCAL\n");}
+   64                        {L=1;A=1;printf("Assembler\n");}
+   67                        {L=1;F=1;printf("Fortran\n");}
+   70                        {L=1;P=1;printf("Pascal\n");}
+   83                        {L=1;S=1;printf("Shell\n");}
+   89                        {L=1;C=1;printf("C strict\n");}
+   96                        {L=1;j=1;printf("Project file\n");}
+  107                        printf("\n*** Source file: language not found. (Enter A,B,C,F,P,S,l or p)\n");
+  109                        if(!j)printf("*** For project file: exit and use option -j.\n");
+  111                        printf("Enter ESCAPE for exit ?:");
+  112                        if(j)printf("\b\bor space_bar for Ignore ?: ");
+  113                        if((c=getch())==0x1B){ /*S*/ printf("\n.Exit 1\n");exit(1);} /*S*/
+  124                           printf("\n.Exit 2\n"); exit(2);
+  126                        printf("\n");
+   77   #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+   78   #include "/usr/include/mkd/fortran.h" // or mkd.h
+   80   #include "version.h"
+   88   A letter "C" in column 1 caused the entire card to be treated as a comment
+  170 #include "version.h"
+  171 #include "fortran.h"
+  224                         if (n) fprintf( pfdoc,"%5d ", num );
+  229                         if (s && n) printf("%5d ", num );
+  288                             if (n) fprintf( pfdoc,"%5d ", num );
+  296                                 if (n) printf("%5d ", num );
+  308                            if (n) fprintf( pfdoc,"%5d ", num ); // target file
+  309                            if(s) printf("%5d ", num );          // stdout
+  359         fprintf( pfdoc, "\nCas 1 tous les commentaires: %5d ", cas1 );
+  360         fprintf( pfdoc, "\nCas 2 colonne 2 sans espace: %5d ", cas2 );
+  361         fprintf( pfdoc, "\nCas 3 colonne 2 avec espace: %5d \n", cas3 );
+    4 # syntax :  "sudo ./INSTALL.sh" 
+    5 # or "./INSTALL.sh .." packaging
+    6 # or "./INSTALL.sh ../test-INSTALL.sh" for tests
+   12 if test $1; then echo "test directory : $1"; \
+   35 echo "########### VERIFY  C files ###########"
+   37 #echo "STRIKE 'RETURN' TO CONTINUE   'CTRL-C' FOR EXIT"
+   40 echo "############# INSTALL mkd #############"
+   42 #echo "STRIKE 'RETURN' TO CONTINUE   'CTRL-C' FOR EXIT"
+   45 echo "################ CLEAN ################"
+   47 #echo "STRIKE 'RETURN' TO CONTINUE   'CTRL-C' FOR EXIT"
+   51 echo "### INSTALL BIN, MAN, LANG, ICON, and MIME DATABASE, ON UBUNTU or DEBIAN ###"
+   52 #echo "STRIKE 'RETURN' TO CONTINUE   'CTRL-C' FOR EXIT"
+   58 echo "install or update mkd bin on UBUNTU or DEBIAN"
+   59 echo "install bin mkd compiled with UTF-8 format"
+   66 echo "erase old mkd manual mkd 1"
+   67 if [ -e "/usr/local/man/mkd.1.gz" ]; then  rm -f $1/usr/local/man/mkd.1.gz ; fi
+   68 if [ -e "/usr/local/man/man1/mkd.1.gz" ]; then  rm -f $1/usr/local/man/man1/mkd.1.gz ; fi
+   69 if [ -e "/usr/share/man/man1/mkd.1.gz" ]; then  rm -f $1/usr/share/man/man1/mkd.1.gz ; fi
+   71 echo "install or update mkd manual mkd 1"
+   76 echo " For all languages by default"
+   79 #echo " For language British"
+   80 # if [ -d "/usr/share/man/en_GB/man1" ]; \
+   83 echo " Für die deutsche Sprache"
+   84 if [ -d "/usr/share/man/de.UTF-8/man1" ]; \
+   86 	elif [ -d "/usr/share/man/de/man1" ]; then  cp -f lang/man/de/mkd.1.gz $1/usr/share/man/de/man1/mkd.1.gz ; \
+   88 echo " Pour la langue française"
+   89 if [ -d "/usr/share/man/fr.UTF-8/man1" ]; \
+   91 	elif [ -d "/usr/share/man/fr/man1" ]; then  cp -f lang/man/fr/mkd.1.gz $1/usr/share/man/fr/man1/mkd.1.gz ; \
+   96 echo "install or update languages"
+   99 if [ -f "lang/mkd_de.mo" ] ; then \
+  100 		echo "de" ; \
+  104 if [ -f "lang/mkd_en.mo" ] ; then \
+  105 		echo "en GB" ; \
+  109 if [ -f "lang/mkd_fr.mo" ] ; then \
+  110 		echo "fr" ; \
+  116 echo "Copy icons to "$1"/usr/share/icons/hicolor/"
+  121 	if test -e "/usr/share/icons/hicolor/16x16/apps/mkd.png"; then \
+  122 		echo "Update icon-cache" ;
+  129 	echo "Copy mime package in "$1
+  132 if test -e "/usr/share/mime/packages/mkd.xml"; then \
+  133 	echo "Update mime database mkd"; \
+  149 echo "End update"
+
+   15     setlocale( LC_ALL, "" );    
+   17     bindtextdomain( "mkd", "/usr/share/locale" );    
+   19     textdomain( "mkd" );
+
+   28 #include "version.h"
+   29 #include "mkd.h"
+   30 #include "internationalisation.h"
+   41 // #include "asm.inc.c"	    //P old version see asm.c
+   42 // #include "basic.inc.c"   //P old version see basic.c
+   43 // #include "c.inc.c"	    //P old version see cpp.c
+   44 // #include "fortran.inc.c" //P old version see fortran.c
+   45 // #include "pascal.inc.c"  //P old version see pascal.c
+   46 // #include "shell.inc.c"   //P old version see shell.c
+   47 // #include "tri.inc.c"     //P old version see tri.c
+   91      setlocale( LC_ALL, "" );    
+   93      bindtextdomain( "mkd", "/usr/share/locale" );    
+   95      textdomain( "mkd" );
+  124         ret = printf(gettext("mkd PC version, Release %s, USAGE:\n"),VERSION);
+  125         printf(gettext("syntax: mkd [-ABCFPSafjlnpstvw] char_codes path_source [path_target]\n"));
+  126         puts  (gettext("    or: mkd ? .See also mkd.doc or manual."));
+  130         printf(gettext("mkd UNIX version, Release %s, USAGE:\n"),VERSION);
+  131         printf(gettext("syntax: mkd [-ABCFPSafjlnpstvw] char_codes path_source [path_target]\n"));
+  132         puts  (gettext("    or: mkd \\? .See also nanual: \'man mkd\'"));
+  137            printf(gettext(" --> options:\n"));
+  138            printf(gettext("      -A decode Assembler comment style only\n"));
+  140            printf(gettext("      -B        Basic style\n"));
+  142            printf(gettext("      -C        C++ style\n"));
+  143            printf(gettext("      -F        Fortran 77 style\n"));
+  144            printf(gettext("      -P        Pascal style\n"));
+  146            printf(gettext("      -S        Shell style\n"));
+  148            printf(gettext("      -a append target file\n"));
+  149            printf(gettext("      -f:\n"));
+  152            printf(gettext("          find language ( .ASM .BAS .C .FOR .PAS .PRO )\n"));
+  156            printf(gettext("          find language ( .s .S .c .h .i .f .F .r .p .sh .csh )\n"));
+  159            printf(gettext("      -j use only with project sources file.\n"));
+  160            printf(gettext("      -l and p;   line:  (compil.: %c or %c in first column or %c in line)\n"),CD1,CD2,CD3);
+  161            printf(gettext("                  page:  (compil.: begin with %c and end with %c)\n"),CD4,CD5);
+  162            printf(gettext("      -n insert line number\n"));
+  163            printf(gettext("      -s copy and add to screen\n"));
+  164            printf(gettext("      -t copy the comment only\n"));
+  165            printf(gettext("      -v verbose\n"));
+  166            printf(gettext("      -w overwrite (default option: switch off)\n"));
+  167            printf(gettext(" --> char_codes: all ASCII "));
+  170            printf(gettext("except space:' '  (5 char max)\n"));
+  171            printf(gettext("                 example codes = UM or *OPTw or *HOS or ** for all\n"));
+  175            printf(gettext(" (5 char max)\n"));
+  176            printf(gettext("                 example codes = UM or \\*OPTw or '* HOS' or '**' for all\n"));
+  179            printf(gettext(" --> path_source: source file (option j: if it is a project file) \n"));
+  180            printf(gettext(" --> path_target: target file\n"));
+  183            printf(gettext("Example: mkd -Csnv '*S' file.c \\*.verif_struct\n"));
+  187            printf(gettext("Example: mkd -Cs *Snv file.c *.str\n"));
+  189            printf(gettext(".Exit 2\n"));
+  206         c=system("BREAK ON");
+  250                  printf(gettext("Syntax error: Too many 'Language' options:\n"));
+  251                  printf(gettext(" A or B or C or...please.\n.Exit 2\n"));
+  265                  if (v) printf(gettext("Options a or w please... "));
+  270               /*www else {printf("Option '-' syntax error\n");exit(2);} */
+  277            printf (gettext("Force language comment, style "));
+  278            if(A)printf(gettext("ASSEMBLER\n"));
+  279            else if(B)printf(gettext("BASIC\n"));
+  280               else if(C)printf(gettext("C\n"));
+  281                  else if(F)printf(gettext("FORTRAN\n"));
+  282                     else if(P)printf(gettext("PASCAL\n"));
+  283                        else if(S)printf(gettext("SHELL\n"));
+  286            if (v) printf (gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d\n"),a,f,j,l,n,p,s,t,w);
+  289 /*O    si ( argc > 3 et Opt ) examiner les cas *. *.* pour path_target=""    */
+  306                   - ligne de commande "mkd -options char_codes path"
+  307                   -                ou "mkd char_codes path"
+  334                     printf(gettext("Syntax error '*' in path_source.\n.Exit 2\n"));
+  343                  printf(gettext("Arg. syntax error '\\:'\n.Exit 2 \n"));
+  351                  // puts("\nTEST: f positionné et pas j ... rechercher avec find"); //T
+  352 #include"find.inc.c"
+  373                  printf(gettext("Syntax error: path_source, suffixe '.doc'\n.Exit 2\n"));
+  390                      -ligne de commande "mkd char_codes path_src path_target
+  391                      -     ou " mkd -options char_codes path_src path_target
+  420                           printf(gettext("Syntax error '*' in path_source.\n.Exit 2\n"));
+  431                        printf(gettext("Arg. syntax error '\\:'\n.Exit 2\n"));
+  438 #include "find.inc.c"
+  458                              printf(gettext("Path_target: syntax error at or near '\\'\n.Exit 2\n"));
+  475                              printf(gettext("Path_target: syntax error at or near '/'\n.Exit 2\n"));
+  525                           printf(gettext("Path target: suffixe not determined.\n"));
+  570                        printf(gettext("Path target: suffixe not determined.\n"));
+  591 /*Test     printf("%c%c",c,fsrc[i]); */
+  597            printf(gettext("Syntax error: (path_source : \'%s\') == (path_target = \'%s\')\n"),fsrc,fdoc);
+  598            printf(".Exit 2 \n");
+  607            /*T printf("code nx1 pour test: %c\n",codes[0]); T*/
+  610         if(v) printf(gettext("doc file : \'%s\' \n"), fdoc);
+  621                  printf(gettext("\n OVERWRIT \'%s\' ...  y?\n"),fdoc);
+  625                     printf(gettext(".Exit 1\n"));
+  633                  printf(gettext("%s is write protected.\n"), fdoc);
+  634                  puts(gettext(".Exit 2\n"));
+  647 			  if ( fopen_s( &pfdoc,fdoc,"ab") != 0 )
+  649               if((pfdoc = fopen(fdoc,"ab")) == NULL)
+  652               printf(gettext("fopen file \'%s\' error for append\n.Exit 2\n"),fdoc);
+  661 					 if (fopen_s(&pfdoc,fdoc,"wb") != 0)
+  663                      if((pfdoc = fopen(fdoc,"wb")) == NULL)
+  666                      printf(gettext("fopen file \'%s\' error for overwrit\n.Exit 2\n"),fdoc);
+  673                  printf(gettext("error option -a or -w not found\n"));
+  681               printf(gettext("project file : \'%s\' \n"), fprj);
+  684 			  if ( fopen_s(&pfprj,fprj,"r") != 0 )
+  686 			  if (( pfprj = fopen ( fprj,"r" )) == 0 )
+  689               printf (gettext("project file \'%s\' not found\n.Exit 2\n"),fprj);
+  707                     if(v) printf(gettext("\n\nfile for doc: \'%s\'\n"),fsrc);
+  719 #include "find.inc.h"
+  720 #include "find.inc.c"
+  729                        if ( fopen_s(&pnfile,fsrc,"rb" ) != 0 )
+  731                        if  (( pnfile = fopen ( fsrc,"rb" )) == 0 )
+  733 /*O                   écrire file "nomfich" not found */
+  734                        printf (gettext("file \'%s\' not found for read\n"),fsrc);
+  741 								if(v)fprintf(pfdoc,gettext("%s\n(file %s :)"), NL, fsrc );
+  742 								if( v || s ) printf(gettext("\n\n(file %s :)\n"),fsrc);
+  743 								if(v)fprintf (pfdoc,gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d"),a,f,j,l,n,p,s,t,w);
+  744 								fprintf (pfdoc, "%s", NL );
+  753                                             else if(l==0&&p==0)printf(gettext("Error, language not determined !.\n"));
+  757                              printf(gettext("Closure error: \'%s\'\n.Exit 2\n"),fsrc);
+  767                  printf(gettext("Closure error: \'%s\'\n.Exit 2\n"),fprj);
+  776               if(v) printf(gettext("\n\nfile for doc: \'%s\' \n"),fsrc);
+  779 			  if ( fopen_s(&pnfile,fsrc,"rb") != 0 )
+  781 			  if (( pnfile = fopen ( fsrc,"rb" )) == 0 )
+  784 /*O          écrire file "nomfich" not found */
+  785                  printf(gettext("file \'%s\' not found for read\n.Exit 2\n"),fsrc);
+  794 					if(v)fprintf(pfdoc,gettext("%s\n(file %s :)"), NL, fsrc );
+  795 					if( v || s ) printf(gettext("\n\n(file %s :)\n"),fsrc);
+  796 					if(v)fprintf (pfdoc,gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d"),a,f,j,l,n,p,s,t,w);
+  797 					fprintf (pfdoc, "%s", NL );
+  808                                 printf(gettext("Error, programming language not found !.\n.Exit 2\n"));
+  814                  printf(gettext("Closure error: \'%s\'\n.Exit 2 \n"),fdoc);
+  822            printf(gettext("Closure \'%s\' error\n.Exit 2\n"),fdoc);
+  825 /*O    ecrire DOC "file_src" END */
+  826            if(v) printf(gettext("\n\nDOC %s END\n"),fdoc);
+  127 if test -x /usr/bin/mkd; then echo "";
+  129    if test -x ./mkd ; then echo "";
+  131       echo "$(gettext ' Please install mkd software ')" 
+  137    if [ $1 = "?" ]
+  139       echo "$(gettext ' Syntax : ')"
+  140       echo "$(gettext ' mkddocu [target_dir] [-s] ')"
+  141       echo "$(gettext '    → example series with date : mkddocu 2014-02-22 ')"
+  142       echo "$(gettext '    → without target_dir, name of target dir is : project ')"
+  143       echo "$(gettext '    → with -s mkddocu make complete documentation. ')"
+  144       echo "$(gettext ' Target dir is writed in maintenance directory : ')"
+  145       echo "$(gettext '    → ./maintenance/2014-02-22/ ')"
+  146       echo "$(gettext ' mkddocu ? for help ')"
+  147       echo "$(gettext ' Note : ')"
+  148       echo "$(gettext ' This command dépends on mkd command ')"
+  157 str="false"       #P false ou true
+  158 project="project" #P nom du fichier de projet .prj
+  165       echo ""
+  166 #      echo " Deux paramètres à la ligne de commande "
+  167 #      echo " Paramètres : 1=$1, 2=$2 "
+  168       if test $1 && [ $1 != "-s" ] ; 
+  171          if [ $2 = "-s" ]; then str="true"; fi #P Vérif que c'est bien -s
+  173          if [ $1 = "-s" ]; then str="true"; project=$2; fi
+  176       echo ""
+  177 #      echo " Un seul paramètre à la ligne de commande : $1 "
+  178       if test $1 && [ $1 != "-s" ] ; then project=$1; fi
+  179       if [ $1 = "-s" ]; then str="true"; fi
+  181 else echo "" # " Pas de paramètre "
+  183 # echo " Projet : $project "
+  184 # echo " Strings ? : $str "
+  208             echo "$(gettext ' Last backup before maintenance : ')"
+  209             echo -n "$(gettext ' Make backup in Backup dir, yes ? Your choice : y ? ')"
+  212             if test $char &&  [ $char = "y" ]
+  216                echo "$(gettext ' If not exist, create `Backups` directory ')"
+  223                echo "$(gettext ' Files in dir Backups ')"
+  226                echo "$(gettext ' exit -2 ')"
+  257 if test -s cfiles.txt ; then cfiles="true"; fi
+  260    echo "$(gettext ' → Make header file, to ./maintenance/$project/$project.h, benchmark H ')"
+  263    echo "$(gettext ' → Warning : Copy manually header file in current source directory ')"
+  266    echo "$(gettext ' C files not found ')"
+  272 echo "$(gettext ' Make documentation, find the programming style, benchmark D ')"
+  273 echo "$(gettext ' → ./maintenance/$project/$project-documentation.txt ')"
+  279 echo "$(gettext ' Make tests document and tests directives with benchmark T ')"
+  280 echo "$(gettext ' → ./maintenance/$project/$project-tests-directives.txt ')"
+  286 echo "$(gettext ' Make functions maintainers documentation with benchmark P ')"
+  287 echo "$(gettext ' → /maintenance/$project-maintainers-doc.txt ')"
+  292 #en If second parametre is "-s" then
+  295 if [ $str = "true" ]; then
+  296    echo "$(gettext ' Make list of strings for tranlations benchmark ** ')"
+  304 echo "$(gettext '  See in working directory: ./maintenance/$project/$project/* ')"
+
+   75   #include "/usr/include/mkd/version.h"    // IMPORTANT: Compilation directives
+   76   #include "/usr/include/mkd/pascal.h"     // or mkd.h
+  160 #include "version.h"
+  161 #include "pascal.h"
+  220                  //T fprintf(pfdoc,"\ncurly = %d\n",curly); //T
+  228                     fprintf(pfdoc,"%5d ",num);
+  229                     if(s)  printf("%5d ",num);
+  287                        fprintf(pfdoc,"%5d -",num);
+  288                        if(s)  printf("%5d ",num);
+  328                     if(s)puts("");     // copy NL (Cr/Lf stdout)                    
+   72   #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+   73   #include "/usr/include/mkd/shell.h"     // or mkd.h
+  162 #include "version.h"
+  163 #include "shell.h"
+  202 /*O          sinon si le char est '\"' */
+  203               else if (c1=='\"')
+  204 /*O          alors aller jusqu'au prochain '\"' */
+  205               { /*S string */
+  206 /*O             tant que le caractère suivant n'est pas " */
+  207                  while ((c1=getc(pnfile))!='\"')
+  208                  { /*S*/
+  209 /*O                si le char est EOF quitter la boucle */
+  210                     if (c1==EOF)break;
+  211                  } /*S*/
+  212               } /*S string */
+  213 /*O          sinon si le char est bakslatch: */
+  214               else if (c1=='\\')
+  215 /*O          alors: */
+  216               { /*S*/
+  217 /*O             si le char suivant est # :  */
+  218                  if((c1=getc(pnfile))=='#')
+  219 /*O             alors simuler un espace */
+  220                  c1=' ';
+  221 /*O             sinon revenir en arrière */
+  222                  else
+  223                  { /*S*/
+  224                     ungetc(c1,pnfile);
+  225                     c1='\\';
+  226                  } /*S*/
+  227               } /*S*/
+  228 /*O          si le char est '#' */
+  229               if (c1=='#')
+  230 /*O          alors: */
+  231               { /*S char = # */
+  232 /*O             si codes[0]=0 (all chars) ou si suivi par c2 (char code utilisateur) */
+  233                  c2=getc(pnfile);
+  234                  if ( codes[0] == 0 ||
+  235                      c2 == codes[0] ||
+  236                      c2 == codes[1] ||
+  237                      c2 == codes[2] ||
+  238                      c2 == codes[3] ||
+  239                      c2 == codes[4]
+  240                     )
+  241 /*O             alors: */
+  242                  { /*S comment*/
+  243 /*O                repérer la position commentaire */
+  244                     //w ungetc(c2,pnfile);
+  245                     ll=ftell(pnfile);
+  246 /*O                si option n insérer le numéro de ligne */
+  247                     if(n)
+  248                     { /*S*/
+  249                        fprintf(pfdoc, "%5d ", num );
+  250                        if(s) printf( "%5d ", num );
+   73   #include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+   74   #include "/usr/include/mkd/tri.h"     // or mkd.h
+  116   comme en PASCAL : CD4={ et CD5=} . CD4=CD5=" peut a la rigueur permettre
+  117   d'extraire des chaînes de caractères afin d’éditer un dictionnaire syntaxique
+  118   toutefois " étant a la fois début et fin de caractère le résultat n'est pas
+  174 #include "version.h"
+  175 #include "tri.h"
+  241                        fprintf( pfdoc ,"%5d ", num );
+  242                        if(s) printf( "%5d ", num );
+  318                           fprintf( pfdoc, "%5d ", num );
+  319                           if(s) printf( "%5d ", num );
+  403                        fprintf(pfdoc, "%5d ", num );
+  404                        if(s) printf("%5d ", num );
+  451                           fprintf(pfdoc, "%5d ", num );
+  452                           if(s) printf( "%5d ", num );
+    9 	echo erase $root"/bin/mkd"
+   10 	rm -f $root"/bin/mkd"
+   11 	echo erase $root"/share/doc/mkd/"
+   12 	rm -rf $root"/share/doc/mkd"
+   13 	echo erase $root"/share/icons/hicolor/16x16/apps/mkd.png"
+   14 	rm -f $root"/share/icons/hicolor/16x16/apps/mkd.png"
+   15 	echo erase $root"/share/icons/hicolor/32x32/apps/mkd.png"
+   16 	rm -f $root"/share/icons/hicolor/32x32/apps/mkd.png"
+   17 	echo erase $root"/share/icons/hicolor/48x48/apps/mkd.png"
+   18 	rm -f $root"/share/icons/hicolor/48x48/apps/mkd.png"
+   19 	echo erase $root"/share/icons/hicolor/256x256/apps/mkd.png"
+   20 	rm -f $root"/share/icons/hicolor/256x256/apps/mkd.png"
+   22 	echo erase $root"/share/locale/de/LC_MESSAGES/mkd.mo"
+   23 	rm -f $root"/share/locale/de/LC_MESSAGES/mkd.mo" 
+   25 	echo erase $root"/share/locale/fr/LC_MESSAGES/mkd.mo"
+   26 	rm -f $root"/share/locale/fr/LC_MESSAGES/mkd.mo" 
+   28 	echo erase $root"/share/locale/en/LC_MESSAGES/mkd.mo"
+   29 	rm -f $root"/share/locale/en/LC_MESSAGES/mkd.mo" 
+   30 	echo erase $root"/share/man/man1/mkd.1.gz"
+   31 	rm -f $root"/share/man/man1/mkd.1.gz"
+   32 	echo erase $root"/share/man/de/man1/mkd.1.gz"
+   33 	rm -f $root"/share/man/de/man1/mkd.1.gz"
+   34 	echo erase $root"/share/man/fr.UTF-8/man1/mkd.1.gz"
+   35 	rm -f $root"/share/man/fr.UTF-8/man1/mkd.1.gz"
+   36 	echo erase $root"/share/man/fr/man1/mkd.1.gz"
+   37 	rm -f $root"/share/man/fr/man1/mkd.1.gz"
+   38 	echo erase $root"/share/mime/packages/mkd.1.gz"
+   39 	rm -f $root"/share/mime/packages/mkd.1.gz"
+   41 	if test -e "/usr/share/mime/packages/mkd.xml"; then \
+   42 		echo erase "/usr/share/mime/packages/mkd.xml" ; \
+   43 		rm -f "/usr/share/mime/packages/mkd.xml" ;\
+   44 		echo "Update mime package without mkd.xml" ;
+   45 		update-mime-database "/usr/share/mime" ; 
+   47 	if ! test -e "/usr/share/icons/hicolor/16x16/apps/mkd.png"; then \
+   50 		echo " ==========================="
+   51 		echo " END erase mkd in "$root"/* " ;
+   52 		echo " ==========================="
+   55 echo " ==========================="
+   56 echo " uninstal mkd (unix command)"
+   57 echo " ==========================="
+   58 root="/usr" ; 
+   59 echo " test if mkd is in /usr/bin"
+   60 if test -e $root"/bin/mkd"; \
+   62 		echo " erase mkd in "$root"/* " ;
+   63 		echo " ===================="
+   66 		echo " mkd is not in "$root"/bin/" ;
+   70 root="/usr/local"
+   71 echo " test if mkd is in /usr/local/bin"
+   72 if test -e "/usr/local/bin/mkd"
+   74 		echo " erase mkd in "$root"/* " ;
+   75 		echo " ================================"
+   78 		echo " mkd is not in "$root"/bin/" ;
+   79 		echo " =======================" ;
+   80 		echo " exit without installing"
+   81 		echo " =======================" ;
+
+   52 #define NL "\r\n"       /*H*/
+   76 #define CD4 '\"'  /*H #Define Option CD4 = "  debut de commentaire                         */
+   77 #define CD5 '\"'  /*H #Define Option CD5 = "  fin de commentaire                           */
+   85 #define VERSION "130514"	/*H*/
+  108 #define NL "\n"                 /*H*/

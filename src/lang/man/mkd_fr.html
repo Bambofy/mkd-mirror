@@ -1,0 +1,226 @@
+<meta charset="utf-8">
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MKD</TITLE>
+</HEAD><BODY>
+<H1>MKD</H1>
+Section: User Commands  (1)<BR>Updated: 28 mars 2014<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NOM</H2>
+
+mkd - Extrait des fichiers sources, la documentation logicielle.
+<A NAME="lbAC">&nbsp;</A>
+<H2>RÉSUMÉ</H2>
+
+<B>mkd</B>
+
+<B>[-ABCFPSafjlpstw]</B>
+
+<I>codes</I>
+
+<I>chemin_source</I>
+
+[chemin_cible]
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT><B>mkd</B>
+
+<DD>
+Des commentaires sélectionnés (ou tous les commentaires) sont extraits des programmes sources: 'chemin_source', et sont copiés dans un fichier documentaire: 'chemin_cible', afin de produire une documentation spécifique .  Habituellement les fichiers documentaires sont des Organigrammes, des Structures de programme, des commentaires pour Programmeurs, des points de Test et 'warnings' .... Les codes de sélection peuvent être respectivement 'O', 'S', 'P', 'T' et 'www' juste après le caractère début de commentaire.
+<DT><I>codes</I>
+
+<DD>
+Les commentaires commençant par ces caractères sont extraits du programme source et sont ajoutés au fichier documentaire. Tous les caractères ASCII peuvent servir a coder les commentaires, toutefois on utilise habituellement des caractères majuscules, sauf w pour 'warning'. Avec deux étoiles en paramètre codes, mkd extrait tous les commentaires. (Voir aussi option t et les exemples).
+<DT><I>chemin_source</I>
+
+<DD>
+Chemin du fichier source (ou fichier projet: option j)
+<DT>chemin_cible
+
+<DD>
+Chemin du fichier documentaire. Par défaut chemin_cible est une copie de chemin_source auquel on remplace le suffixe par le suffixe '.doc'.
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><DD>
+<B>Options en majuscules :</B>
+
+<P>
+Ces options restreignent l'extraction des commentaires a un seul style de langage.
+<P>
+<DT><B>-A<DD>
+</B>extrait le style Assembleur (   ;    → fin de ligne  )
+<DT><B>-B<DD>
+</B>style Basic                ( REM ou ' → fin de ligne )
+<DT><B>-C<DD>
+</B>style C++                  (  // → NL et  /*  →  */  )
+<DT><B>-F<DD>
+</B>style Fortran              ( c,C ou * → fin de ligne )
+<DT><B>-P<DD>
+</B>style Pascal               (  {   →   } et (*  →  *) )
+<DT><B>-S<DD>
+</B>style Shell ou ratfor      (   #    →  fin de ligne  )
+<P>
+<B>Options en minuscules:</B>
+
+<P>
+<DT><B>-a<DD>
+</B>(append) Ajoute a la suite du fichier documentaire 'chemin_cible'.
+<DT><B>-f<DD>
+</B>(find) Trouve le langage du fichier source par analyse du suffixe. (s'utilise généralement avec un fichier projet).  mkd reconnait les extensions suivantes:  .asm, .s, .bas, .vb, .bat, .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw; .pj, .prj
+<DT><B>-j<DD>
+</B>(project) S'utilise avec un fichier projet composé de sources en langages différents.
+<DT><B>-l<DD>
+</B>(lignes) Extrait les lignes commençant par les caractères CD1 ou CD2 ou CD3 et suivis par un des caractères codes, le commentaire se termine par la lecture du caractère 'Nouvelle Ligne'. CD1 et CD2 doivent être placés en 1ère colonne, alors que CD3 peut être placé en milieu de ligne. CD1, CD2, CD3, sont des options de compilation dans le fichier version.h de la distribution source de mkd. On peut connaître ces options compilées par la commande <B>mkd&nbsp;\?
+<DT>-n<DD>
+</B>(num) numérote les lignes (numéro de ligne du fichier d'origine).
+<DT><B>-p<DD>
+</B>(page) Extrait le texte débutant par le caractère CD4 suivi d'un des caractères codes, l'extraction du commentaire se termine avec la lecture du caractère CD5. CD4 et CD5 sont des options de compilation dans le fichier version.h de la distribution source de mkd. On peut connaître ces options compilées par la commande&nbsp;<B>mkd \?
+<DT>-s<DD>
+</B>(screen verbose) Duplique les commentaires extraits sur la sortie standard.
+<DT><B>-t<DD>
+</B>(text) Ne copie que le commentaire.
+<DT><B>-w<DD>
+</B>(overwrite) Réécrit le fichier documentaire.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXEMPLES</H2>
+
+<DL COMPACT>
+<DT><B>mkd -Ct </B><I>F manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+(Produit un manuel UNIX en francais. au format UTF-8 depuis la version 12.03) C: pour décoder le fichier en langage C, s:avec visualisation à l' écran, t:ne copier que le commentaire, F:sélectionner les commentaires debutants par F. 
+<DT><B>mkd -Ct </B><I>M manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+(Produit un manuel UNIX standard en anglais au format UTF-8 depuis la version 12.03)
+<DT><B>mkd -Csl </B><I>'*Sied' mkd3.c </I>'*.verif_struct'
+
+<DD>
+(avec les options de compilation CD1 ou CD2 = '#', produit une documentation avec la structure du programme, avec les: include, define, ifdef, else, et endif, des options de compilations afin de vérifier la structure du programme.) C:décoder les commentaires style C, s:vérifier à l'écran, l:décoder egalement des lignes commencant par les caractères CD1 ou CD2 ou CD3 et suivis des char_codes:*Sied.
+<DT><B>mkd -jfsl </B><I>'*OHie' mkd_docu.prj </I>mkd.org
+
+<DD>
+(avec les options de compilation CD1 ou CD2 = '#', produit un organigramme. Les commentaires commencent par *,O,H, et les fichiers sources sont listés dans le fichier projet.) f:trouver le style de langage, j:le fichier source est un fichier projet qui contient la liste des fichiers a documenter.
+<DT><B>mkd -l </B><I>'*ide' mkd3.c </I>'*.id_ei'
+
+<DD>
+(avec les options de compilation CD1='#' ou CD2='#', décode les #includes, #define, #ifdef, #else, #endif des options de compilation en C ).
+<DT><B>mkd -pj </B><I>'**' mkd_docu.prj </I>mkd.strings
+
+<DD>
+(avec les options de compilation CD4=CD5='\&quot;', extrait les chaînes de caractères du programme. (les commentaires sont transmis a la sortie standard).
+<DT><B>mkd </B>(sans argument)
+
+<DD>
+Génère une erreur et envoie la syntaxe au terminal avec les caractères compilés pour les options l et p.
+<P>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>VOIR AUSSI</H2>
+
+<P>
+
+<A HREF="/cgi-bin/man/man2html?1+mkddocu">mkddocu</A>(1) <A HREF="/cgi-bin/man/man2html?1+mkdcppw">mkdcppw</A>(1)
+<BR>
+
+<A HREF="file:////usr/share/doc/mkddocu/">file:////usr/share/doc/mkddocu/</A>
+<BR>
+
+<A HREF="file:////usr/share/doc/mkd/">file:////usr/share/doc/mkd/</A>
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>HISTORIQUE</H2>
+
+<P>
+
+1989 - mkd pour DOS, et mkdoc pour UNIX, sont écrits  au  format  ASCII par Jean-Paul Louyot pour  le  laboratoire  'CEM'  de  l'université  de Montpellier (France).
+<DL COMPACT>
+<DT>1991 - mkdoc 3.12 pour PC et UNIX (Sun)<DD>
+<DT>1995 - 2004 - mkdoc 3.22 à mkdoc 4 pour Unix et Linux: SUN-SPARC, HP-UX, RedHat<DD>
+<DT>2004 - mkdoc 4 pour Linux Ubuntu, Windows 98, Windows 2000<DD>
+<DT>2007 - 2012 - de mkdoc R7.01 à mkd R12.01 sont  au  format  ISO-8859-1. Le nom 'mkdoc' est  abandonné  avec  la  version  10.01  compilée  avec Visual C++ 2010<DD>
+<DT>2012 - mkd 12.03 adapté au format UTF-8 pour son  internationalisation. Dans la foulée mkdcppw est écrit pour les styles de langages C++ (C, c++, c#, php, java, javscript, CSS, etc.) en mode graphique avec gcc et 'gtkmm' (fenêtres). <DD>
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>TELECHARGEMENTS</H2>
+
+<P>
+
+<A HREF="http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX">http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX</A>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTEURS</H2>
+
+<P>
+
+Manuel mis à jour par : Clara JIMENEZ
+<A NAME="lbAK">&nbsp;</A>
+<H2>TRADUCTEURS</H2>
+
+<P>
+
+Allemand : Clara, JPL, Martine
+<DL COMPACT>
+<DT>Catalan : Alizée <DD>
+<DT>Espagnol : Alizée, JPT, Sharo<DD>
+<DT>Italien : Luca<DD>
+<DT>Email : <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A><DD>
+<DT><DD>
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>NOTES</H2>
+
+<P>
+
+Il appartient aux programmeurs de veiller à refermer les commentaires, blocs et lignes, par les codes de fermeture appropriés dans les fichiers sources.
+<P>
+Attention: La fermeture d'un commentaire ligne est un  retour chariot ( NL, LF, CR/LF) selon les cas.
+<P>
+En fin de fichier: cette note implique un retour chariot en fin de commentaire ligne. Dans ce cas vous devez avoir une ligne vide à la fin du fichier source.
+<P>
+Remarque: Cette version ne lit et ne décode pas les fichier inclus par '#include' dans les sources.
+<P>
+<A NAME="lbAM">&nbsp;</A>
+<H2>BUGS</H2>
+
+<P>
+
+Bugs Report: <A HREF="http://edeulo.free.fr/phpBB3">http://edeulo.free.fr/phpBB3</A><I>ndex.php 
+<P>
+Générateur de documents mkd
+<P>
+<P>
+</I>
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NOM</A><DD>
+<DT><A HREF="#lbAC">RÉSUMÉ</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXEMPLES</A><DD>
+<DT><A HREF="#lbAG">VOIR AUSSI</A><DD>
+<DT><A HREF="#lbAH">HISTORIQUE</A><DD>
+<DT><A HREF="#lbAI">TELECHARGEMENTS</A><DD>
+<DT><A HREF="#lbAJ">AUTEURS</A><DD>
+<DT><A HREF="#lbAK">TRADUCTEURS</A><DD>
+<DT><A HREF="#lbAL">NOTES</A><DD>
+<DT><A HREF="#lbAM">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 15:35:06 GMT, March 31, 2014
+</BODY>
+</HTML>

@@ -1,0 +1,156 @@
+.\" FILE manuals Update_mkd_(de).1.txt to edit in UTF-8 format
+.\" .
+.\" Traduction en allemand au format UTF-8 par Clara le 6 novembre 2012
+.\" Mise à jour par Cardabela le 31 mars 2012
+.\" Mise à jour par JPL le 6 avril 2013
+.\" Mise à jour par Clara le 11 mai 2013 suite à la modification de find.inc.c
+.\" Mise à jour par JPL le 15/03/214 retouches et ajout de mkddocu(1)
+.\" .
+
+.TH MKD 1 "28 March 2014"
+.SH BEZEICHNUNG
+mkd \- Extrakte aus Quelldateien, der Softwaredokumentation.
+.SH ÜBERSICHT
+.B mkd
+.BR [\-ABCFPSafjlnpstw]
+.IR Codes
+.IR Quellpfad
+.RB [Zieldatei]
+.SH BESCHREIBUNG
+.TP
+.B mkd
+.TP
+Selected comments (or alle comments) are extracted from programs sources and product specific documentation to target file. Usual target files are Organigrams, or Structure of programs, or comments for Programmers, Warnings and Tests points .... Coded informations are respectively 'O', 'S', 'P', 'www', ant 'T' just after the comment character.
+.TP
+Ausgewählte Kommentaren,  (oder alle Kommentaren) werden von Proggramme Quelle extrahiert und Produkt  spezifische  Dokumentation. Üblichen Zieldateien sind Organigramme, Struktur der  Programme, Kommentare für Programmierer, Warnungen oder Testpunkte Kommenttare ... Codierte Informationen sind jeweils 'O', 'S', 'P', 'www' und 'T', direkt hinter dem Kommentar.
+.TP
+.I Codes
+Alle  ASCII. Der Kommentar werden extrahiert, wenn der Kommentar beginnt mit diesem Zeichen.
+.TP
+.I Quellpfad
+Pfad der Quelldatei. (Oder mit Projektdatei : Option j).
+.TP
+.RI Zieldatei
+Pfad der Zieldatei. In der  Standardeinstellung  Pfad  Ziel  ist identisch mit der Quelldatei mit der Erweiterung '.doc'.
+.SH OPTIONEN
+.TP
+
+.B Großbuchstaben Optionen:
+
+Wählen Sie eine bestimmte Programmierung Sprache.
+
+.IP \fB\-A\fB
+\fRAssembler Stil Kommentare zu extrahieren ( ;  Zum Ende der Zeile)\fR
+.IP \fB\-B\fB
+\fRBasic Stil               ( REM oder '  →  Zum Ende der Zeile  )\fR
+.IP \fB\-C\fB
+\fRC++ Stil                 ( // → Ende der Zeile, und /*  →  */ )\fR
+.IP \fB\-F\fB
+\fRFortran Stil             ( c,C oder *  →   Zum Ende der Zeile )\fR
+.IP \fB\-P\fB
+\fRPascal Stil              ( {  Bis zu  }  und   (*  Bis zu  *) )\fR
+.IP \fB\-S\fB
+\fRShell oder Ratfor Stil   (   #  →  Bis  zu  Ende  der  Zeile  )\fR
+
+.B Kleinbuchstaben Optionen :
+.IP \fB\-a\fB
+\fR(append) Hinzufügen am ende von Zieldatei.\fR
+.IP \fB\-f\fB
+\fR(find) Finden Quelldatei Programmierung Sprache. (Mit Projekt Datei). mkd erkennt die folgenden Dateien 
+: .asm, .s, .bas, .vb, .bat, .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js, .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw, .pj, .prj\fR
+.IP \fB\-j\fB
+\fR(project) Verwendet, wenn die Quelldatei ist eine Projektdatei.\fR
+.IP \fB\-l\fB
+\fR(lines) Linien (Extrakt  Linien beginnend mit  CD1  oder  CD2  in erste Spalte, oder CD3 in Linie bis nächste Ende der Zeile. CD1, CD2, CD3, sind kompilierbare im Vertrieb und sind definiert in 'version.h'). Sie sehen die Optionen kompiliert mit dem Befehl\fR \fBmkd\ \\?\fB
+.IP \fB\-n\fB
+\fR(num) Zeilennummerierung (Die Nummer der Zeile der Quelldatei).\fR
+.IP \fB\-p\fB
+\fR(page) Seite  (Extrakt Text beschränkt mit CD4 und CD5 - Beginnend mit CD4 und beendet mit CD5 - CD4, CD5, sind kompilierbare im Vertrieb und sind definiert in 'mkd distribution', in 'version.h'). Sie sehen die Optionen kompiliert mit dem Befehl\fR \fBmkd\ \\?\fB
+.IP \fB\-s\fB
+\fR(screen verbose) Fügt auf dem Konsole Bildschirm ('Verbose' ; Ausführliche)\fR
+.IP \fB\-t\fB
+\fR(text only) Text (Kopiert nur der Kommentar).\fR
+.IP \fB\-w\fB
+\fR(overwrite) Überschrieben die aktuelle Zieldatei.\fR
+.SH BEISPIEL
+.TP
+.B mkd -Cst \fIF manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+Produkt französisch UNIX Manual; Version 12.03. C: Sprache C, s:Auch anzeigen die Konsole, t:nur text, F:Code zu entschlüsseln. 
+.TP
+.B mkd -Ct \fIM manual\fI \fRmkd.1 | gzip -f mkd.1.gz\fR
+Produkt englisch UNIX Manual; Version 12.03.
+(Produit un manuel UNIX standard en anglais au format UTF-8 depuis la version 12.03)
+.TP
+.B mkd -Csl \fI'*Sied' mkd3.c\fI \fR'*.verif_struct'\fR
+(Mit den Kompilierung--optionen CD1='#' oder CD2='#' in 'mkd distribution' version.h).Produkt  Dokumentation  mit Struktur der Programme, '#includes', '#defines', '#ifdef', '#else' und '#endif' Kompilierte Optionen, für überprüfen die Struktur in Quelldatei in Programms 
+.TP
+.B mkd -jfsl \fI'*OHie' mkd_docu.prj\fI \fRmkd.org\fR
+(Mit den Kompilierung Optionen CD1='#' oder CD2='#' in 'mkd distribution' version.h) Produkt Organigramm. Der Kommentar beginnt mit * oder O oder H, und Pfad zu den Quelldatei sind die Komponenten der Projektdatei. Optionen : 'f' finden der Stil der Sprache, 'j'  sagte dass die Quelldatei ist eine Projektdatei.  
+.TP
+.B mkd -l \fI'*ide' mkd3.c\fI \fR'*.id_ei'\fR
+( Mit Kompilierung--optionen  CD1='#' oder CD2='#' extrahiert #include, #define, #ifdef, #else, #endif Kompilierung--optionen der C- Sprache.
+.TP
+.B mkd -pj \fI'**' mkd_docu.prj\fI \fRmkd.strings\fR
+(Mit Kompilierung--optionen  CD4=CD5='\\"', extrahiert Saiten aus den Quelldateien. (Die Saiten werden auf die Standard-Ausgabe angezeigt.)
+.TP
+.B mkd \e?
+Zeigt die Syntax und den Charakter CD1 bis CD5 Kompiliert. (Mit den Optionen l und p verwendet)
+.TP
+.B mkd \fR(Ohne Argumente)\fR
+Generiert einen Syntaxfehler und zeigt die Syntax zum Konsole.
+.SH SIEHE AUCH
+.PP
+mkddocu(1) mkdcppw(1)
+.br
+file:////usr/share/doc/mkddocu/
+.br
+file:////usr/share/doc/mkd/
+.SH HISTORISH
+.PP
+1989 - mkd für DOS, und mkdoc für UNIX, werden in ASCII geschrieben von Jean-Paul Louyot für CEM loratory in Montpellier Universität (Frankreich).
+.TP
+1991 - 1991 - mkdoc 3.12 für PC und UNIX (Sun)
+.TP
+1995 - 2004 - mkdoc 3.22 für Unix und Linux: SUN-SPARC, HP-UX, RedHat
+.TP
+2004 - mkdoc 4 für Linux Ubuntu, Windows 98, Windows 2000
+.TP
+2007 - 2012 -mkdoc R7.01 bis R12.01 sind auf ISO-8859-1-Format abgestimmt.       
+.TP
+2012 - mkd 12.03 ist umgeschrieben in UTF-8 Format, und mkdcppw (für C, c++, php) ist geschrieben für Fenstern mit gcc und gtkmm. 
+.SH DOWLOADS
+.PP
+http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX
+.SH AUTOREN
+.PP
+Manuel mis à jour par : Clara JIMENEZ und JPL
+.SH ÜBERSETZER
+.PP
+Deutsch : Clara, JPL, Martine
+.TP
+Englisch : JPL, Cardabela
+.TP
+Italienisch : Luca
+.TP
+Katalanisch : Alizée 
+.TP
+Spanisch : Alizée, JPT, Sharo
+.TP
+E-Mail : http://edeulo.free.fr/contacts/formmail.php
+.IP
+.SH HINWEISE
+.PP
+Es gehört zu Programmierer, um die Kommentare zu schließen, blöcke und Zeilen, mit entsprechenden Codes in Quelldateien.
+
+Warnung: Die Schließung einer Kommentarzeile ist ein Wagenrücklauf (NL, LF, CR/LF) als der Fall.
+
+Ende der Datei: Diese Beobachtung impliziert einen Wagenrücklauf am ende des Kommentar Linie. In diesem Fall muss eine leerzeile am Ende der Quelldatei.
+
+Diese Version lesen, und Dekodiert nicht,  mit  '#include'  Richtlinie in der Quelldatei.
+.SH BUGS
+.PP
+Bugs Report: http://edeulo.free.fr/phpBB3/index.php 
+
+Documents generator mkd
+

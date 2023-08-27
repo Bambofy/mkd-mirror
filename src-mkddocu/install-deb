@@ -1,0 +1,3 @@
+#!/bin/bash
+File install-deb
+make -d -f Makefile install DESTDIR=../debian/mkdocu

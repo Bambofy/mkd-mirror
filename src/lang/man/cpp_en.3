@@ -1,0 +1,84 @@
+.\" FILE manuals Update_cpp_en.3.txt to edit in UTF-8 format
+.\" (en) English version with comment pre-codage M
+.\" (fr) Version française avec le pré-codage de commentaire F. (Pas fini)
+.\" Mise à jour par JPL le 6 avril 2013
+.\" .
+
+
+.TH CPP_ 3 "6 April 2013"
+.SH NAME
+cpp_ \- Extract coded informations from C, c++, php source files.
+
+.SH SYNOPSIS
+.TP
+#include "/usr/include/mkd/version.h" // IMPORTANT: Compilation directives
+.TP
+#include "/usr/include/mkd/cpp.h"
+.TP
+int cpp_(FILE * pfdoc, FILE * pnfile);
+
+.SH DESCRIPTION
+.TP
+The cpp_ function reads the source file (pnfile) transmitted from the calling function, and decodes the comments pre-encoded in lines or blocks of style C, c++ or php files, and writing this comments in a target file (pfdoc).
+.TP
+Pre-coded characters are defined in a external global table 'Codes':
+.IP 
+The golbal external variables are
+.B 'Codes'
+and
+.B 'Options':
+.TP
+.I extern char codes[]; 
+They must be defined in the calling function;
+char codes[5] = {0,0,0,0,0}; table of 5 ASCII characters on 8 bits. 
+The comment are extracted if the comment begin with one of thiese characters. 
+.TP 
+.I extern unsigned char n,s,t;
+They must be defined in the calling function; 
+unsigned char n=0,s=0,t=0;
+.TP
+.IP \fB\-n\fB
+The transcript is preceded by line number. This allows to easily reach the commented line.
+.IP \fB\-s\fB
+Add the comment to the terminal or Konsole to use shell redirections > , >> , or || etc.
+.IP \fB\-t\fB
+With the t option only the commented text is copied. Without the t option the entire line or block is copied. The t option permit to generate directly exploitable and publishable documents. 
+
+.SH RETURN VALUE
+.TP
+Return 0 in case of success in konsole version, nothing with gtkmm.
+.SH CONFORMING TO
+.PP
+All UNIX / LINUX systems with gcc
+
+.SH AUTHORS
+.PP
+JP LOUYOT, Clara JIMENEZ.
+.TP
+contact: http://edeulo.free.fr/contacts/formmail.php
+
+.SH RESOURCES
+If your product is designed to work with any graphical application, then the file cpp.c++ is ready to use gtkmm. (See also mkdcppw)
+
+.SH FILES
+.PP
+cpp.c++
+.TP
+/usr/include/mkd/ : mkd header files
+.TP
+/usr/src/mkd/ : mkd source files
+
+.SH NOTES
+.PP
+Not ready for read and decode files including in sources files
+
+.SH BUGS
+.PP
+Bugs Report: http://edeulo.free.fr/phpBB3/index.php 
+
+.SH SEE ALSO
+.PP
+Documents generator mkd(1)
+.TP
+http://edeulo.free.fr/wiki/index.php/Projet_mkd/Fichiers_en_développement
+

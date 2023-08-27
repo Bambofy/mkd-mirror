@@ -1,0 +1,110 @@
+  124         ret = printf(gettext("mkd PC version, Release %s, USAGE:\n"),VERSION);
+  125         printf(gettext("syntax: mkd [-ABCFPSafjlnpstvw] char_codes path_source [path_target]\n"));
+  126         puts  (gettext("    or: mkd ? .See also mkd.doc or manual."));
+  130         printf(gettext("mkd UNIX version, Release %s, USAGE:\n"),VERSION);
+  131         printf(gettext("syntax: mkd [-ABCFPSafjlnpstvw] char_codes path_source [path_target]\n"));
+  132         puts  (gettext("    or: mkd \\? .See also nanual: \'man mkd\'"));
+  137            printf(gettext(" --> options:\n"));
+  138            printf(gettext("      -A decode Assembler comment style only\n"));
+  140            printf(gettext("      -B        Basic style\n"));
+  142            printf(gettext("      -C        C++ style\n"));
+  143            printf(gettext("      -F        Fortran 77 style\n"));
+  144            printf(gettext("      -P        Pascal style\n"));
+  146            printf(gettext("      -S        Shell style\n"));
+  148            printf(gettext("      -a append target file\n"));
+  149            printf(gettext("      -f:\n"));
+  152            printf(gettext("          find language ( .ASM .BAS .C .FOR .PAS .PRO )\n"));
+  156            printf(gettext("          find language ( .s .S .c .h .i .f .F .r .p .sh .csh )\n"));
+  159            printf(gettext("      -j use only with project sources file.\n"));
+  160            printf(gettext("      -l and p;   line:  (compil.: %c or %c in first column or %c in line)\n"),CD1,CD2,CD3);
+  161            printf(gettext("                  page:  (compil.: begin with %c and end with %c)\n"),CD4,CD5);
+  162            printf(gettext("      -n insert line number\n"));
+  163            printf(gettext("      -s copy and add to screen\n"));
+  164            printf(gettext("      -t copy the comment only\n"));
+  165            printf(gettext("      -v verbose\n"));
+  166            printf(gettext("      -w overwrite (default option: switch off)\n"));
+  167            printf(gettext(" --> char_codes: all ASCII "));
+  170            printf(gettext("except space:' '  (5 char max)\n"));
+  171            printf(gettext("                 example codes = UM or *OPTw or *HOS or ** for all\n"));
+  175            printf(gettext(" (5 char max)\n"));
+  176            printf(gettext("                 example codes = UM or \\*OPTw or '* HOS' or '**' for all\n"));
+  179            printf(gettext(" --> path_source: source file (option j: if it is a project file) \n"));
+  180            printf(gettext(" --> path_target: target file\n"));
+  183            printf(gettext("Example: mkd -Csnv '*S' file.c \\*.verif_struct\n"));
+  187            printf(gettext("Example: mkd -Cs *Snv file.c *.str\n"));
+  189            printf(gettext(".Exit 2\n"));
+  250                  printf(gettext("Syntax error: Too many 'Language' options:\n"));
+  251                  printf(gettext(" A or B or C or...please.\n.Exit 2\n"));
+  265                  if (v) printf(gettext("Options a or w please... "));
+  277            printf (gettext("Force language comment, style "));
+  278            if(A)printf(gettext("ASSEMBLER\n"));
+  279            else if(B)printf(gettext("BASIC\n"));
+  280               else if(C)printf(gettext("C\n"));
+  281                  else if(F)printf(gettext("FORTRAN\n"));
+  282                     else if(P)printf(gettext("PASCAL\n"));
+  283                        else if(S)printf(gettext("SHELL\n"));
+  286            if (v) printf (gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d\n"),a,f,j,l,n,p,s,t,w);
+  334                     printf(gettext("Syntax error '*' in path_source.\n.Exit 2\n"));
+  343                  printf(gettext("Arg. syntax error '\\:'\n.Exit 2 \n"));
+  373                  printf(gettext("Syntax error: path_source, suffixe '.doc'\n.Exit 2\n"));
+  420                           printf(gettext("Syntax error '*' in path_source.\n.Exit 2\n"));
+  431                        printf(gettext("Arg. syntax error '\\:'\n.Exit 2\n"));
+  458                              printf(gettext("Path_target: syntax error at or near '\\'\n.Exit 2\n"));
+  475                              printf(gettext("Path_target: syntax error at or near '/'\n.Exit 2\n"));
+  525                           printf(gettext("Path target: suffixe not determined.\n"));
+  570                        printf(gettext("Path target: suffixe not determined.\n"));
+  597            printf(gettext("Syntax error: (path_source : \'%s\') == (path_target = \'%s\')\n"),fsrc,fdoc);
+  610         if(v) printf(gettext("doc file : \'%s\' \n"), fdoc);
+  621                  printf(gettext("\n OVERWRIT \'%s\' ...  y?\n"),fdoc);
+  625                     printf(gettext(".Exit 1\n"));
+  633                  printf(gettext("%s is write protected.\n"), fdoc);
+  634                  puts(gettext(".Exit 2\n"));
+  652               printf(gettext("fopen file \'%s\' error for append\n.Exit 2\n"),fdoc);
+  666                      printf(gettext("fopen file \'%s\' error for overwrit\n.Exit 2\n"),fdoc);
+  673                  printf(gettext("error option -a or -w not found\n"));
+  681               printf(gettext("project file : \'%s\' \n"), fprj);
+  689               printf (gettext("project file \'%s\' not found\n.Exit 2\n"),fprj);
+  707                     if(v) printf(gettext("\n\nfile for doc: \'%s\'\n"),fsrc);
+  734                        printf (gettext("file \'%s\' not found for read\n"),fsrc);
+  741 								if(v)fprintf(pfdoc,gettext("%s\n(file %s :)"), NL, fsrc );
+  742 								if( v || s ) printf(gettext("\n\n(file %s :)\n"),fsrc);
+  743 								if(v)fprintf (pfdoc,gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d"),a,f,j,l,n,p,s,t,w);
+  753                                             else if(l==0&&p==0)printf(gettext("Error, language not determined !.\n"));
+  757                              printf(gettext("Closure error: \'%s\'\n.Exit 2\n"),fsrc);
+  767                  printf(gettext("Closure error: \'%s\'\n.Exit 2\n"),fprj);
+  776               if(v) printf(gettext("\n\nfile for doc: \'%s\' \n"),fsrc);
+  785                  printf(gettext("file \'%s\' not found for read\n.Exit 2\n"),fsrc);
+  794 					if(v)fprintf(pfdoc,gettext("%s\n(file %s :)"), NL, fsrc );
+  795 					if( v || s ) printf(gettext("\n\n(file %s :)\n"),fsrc);
+  796 					if(v)fprintf (pfdoc,gettext("Options a=%d f=%d j=%d l=%d n=%d p=%d s=%d t=%d w=%d"),a,f,j,l,n,p,s,t,w);
+  808                                 printf(gettext("Error, programming language not found !.\n.Exit 2\n"));
+  814                  printf(gettext("Closure error: \'%s\'\n.Exit 2 \n"),fdoc);
+  822            printf(gettext("Closure \'%s\' error\n.Exit 2\n"),fdoc);
+  826            if(v) printf(gettext("\n\nDOC %s END\n"),fdoc);
+  131       echo "$(gettext ' Please install mkd software ')" 
+  139       echo "$(gettext ' Syntax : ')"
+  140       echo "$(gettext ' mkddocu [target_dir] [-s] ')"
+  141       echo "$(gettext '    → example series with date : mkddocu 2014-02-22 ')"
+  142       echo "$(gettext '    → without target_dir, name of target dir is : project ')"
+  143       echo "$(gettext '    → with -s mkddocu make complete documentation. ')"
+  144       echo "$(gettext ' Target dir is writed in maintenance directory : ')"
+  145       echo "$(gettext '    → ./maintenance/2014-02-22/ ')"
+  146       echo "$(gettext ' mkddocu ? for help ')"
+  147       echo "$(gettext ' Note : ')"
+  148       echo "$(gettext ' This command dépends on mkd command ')"
+  208             echo "$(gettext ' Last backup before maintenance : ')"
+  209             echo -n "$(gettext ' Make backup in Backup dir, yes ? Your choice : y ? ')"
+  216                echo "$(gettext ' If not exist, create `Backups` directory ')"
+  223                echo "$(gettext ' Files in dir Backups ')"
+  226                echo "$(gettext ' exit -2 ')"
+  260    echo "$(gettext ' → Make header file, to ./maintenance/$project/$project.h, benchmark H ')"
+  263    echo "$(gettext ' → Warning : Copy manually header file in current source directory ')"
+  266    echo "$(gettext ' C files not found ')"
+  272 echo "$(gettext ' Make documentation, find the programming style, benchmark D ')"
+  273 echo "$(gettext ' → ./maintenance/$project/$project-documentation.txt ')"
+  279 echo "$(gettext ' Make tests document and tests directives with benchmark T ')"
+  280 echo "$(gettext ' → ./maintenance/$project/$project-tests-directives.txt ')"
+  286 echo "$(gettext ' Make functions maintainers documentation with benchmark P ')"
+  287 echo "$(gettext ' → /maintenance/$project-maintainers-doc.txt ')"
+  296    echo "$(gettext ' Make list of strings for tranlations benchmark ** ')"
+  304 echo "$(gettext '  See in working directory: ./maintenance/$project/$project/* ')"

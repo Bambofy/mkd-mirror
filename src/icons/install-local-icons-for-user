@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "icons install for user, and update icon-cache for user app mkd"
+#
+install -D -m644 mkd-256x256.png ~/.local/share/icons/hicolor/256x256/apps/mkd.png
+install -D -m644 mkd-128x128.png ~/.local/share/icons/hicolor/128x128/apps/mkd.png
+install -D -m644 mkd-48x48.png ~/.local/share/icons/hicolor/48x48/apps/mkd.png
+install -D -m644 mkd-32x32.png ~/.local/share/icons/hicolor/32x32/apps/mkd.png
+install -D -m644 mkd-16x16.png ~/.local/share/icons/hicolor/16x16/apps/mkd.png
+#
+echo "update user .local/share/icon/hicolor icon-cache"
+gtk-update-icon-cache -t ~/.local/share/icons/hicolor
+#
+install -D -m644 mkd-128x128.png ~/.icons/mkd.png
+
+#
+echo "End icons install on user ~/.local/share/icons/hicolor"
+#
+echo -n "CTRL-C or Return to quit : "
+read i

@@ -1,0 +1,63 @@
+   Fichier mkddocu.sh
+   -----------------------------------------------------------------------------
+   Documentation : Manuel mkddocu(1)
+   Cette commande doit être placée dans le répertoire /usr/bin
+   
+   NOM
+      mkddocu  -  Cette commande shell génère la documentation informatique de tout fichier de
+      projet reconnu par la commande mkd
+  
+   SYNOPSYS
+      mkddocu [nom] [s]
+  
+   DESCRIPTION
+      La commande mkd associée à mkddocu, extrait les commentaires  dotés  d'un  caractère  de
+      repère.
+      Si  des  fichiers  de langage C sont présents, mkddocu génère un fichier d'entête global
+      (header) du projet informatique.
+  
+      Caractère de repère
+         D - Extrait la documentation générale.
+         T - Extrait le document des directives de tests.
+         P - Extrait un document utile aux mainteneurs.
+  
+   OPTIONS
+      nom    Cette option permet de choisir un nom de  projet  différent  du  nom  par  défaut
+             project.  Si nom est le caractère '?' la commande affiche la syntaxe.
+  
+      s      Cette  option  génère  le  fichier  des  chaînes  de caractères et le fichier des
+             chaînes de caractères utiles aux traductions avec gettext et poedit.
+  
+   VALEURS RETOURNÉES
+       0 : Fin normale à la fin de l'exécution de la commande.
+       1 : Fin normale après l'affichage de la syntaxe de la commande.
+       -1 : Erreur de sauvegarde de la série de documents dans Backups.
+   
+   EXEMPLES :
+      L'auto documentation de cette commande se crée  en  renommant  pour  l'usage  mkddocu.sh
+      L'extension importe peu, la commande sera gérée par bash. Les fichiers sans extension ou
+      avec l'extension .bash ne sont pas pris en compte.
+      compte.
+      Lancer la commande 'mkddocu.sh mkddocu -s'
+      Le répertoire maintenance/mkddocu contiendra la documentation
+      Les répertoires de projet sont générés par séries et peuvent avoir été sauvegardés  dans
+      un répertoire Backups si le nombre de fichiers de projet de la série ont atteind la lim‐
+      ite BACKUPSMAX
+      Pour les essais on peut se limiter à BACKUPSMAX=2 (3 'backups' par série.)
+  
+   REMARQUES
+      BACKUPSMAX est normalement fixé à 9 mais peut être modifié par édition du fichier.
+  
+   VOIR AUSSI 
+      mkd(1) gettext(1) poedit(1)
+  
+   TÉLÉCHARGEMENTS
+      http://edeulo.free.fr
+  
+   AUTEURS
+      Clara, JPL
+      Email : http://edeulo.free.fr/contacts/formmail.php
+  
+   BUGS
+      Rapports de bugs : http://edeulo.free.fr/phpBB3/index.php
+  

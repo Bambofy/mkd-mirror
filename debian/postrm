@@ -1,0 +1,13 @@
+#!/bin/sh -ev
+# file postrm for mkd debian installation	
+#
+# POST RM
+#
+echo " postrm : update icon cache "
+	gtk-update-icon-cache -t /usr/share/icons/hicolor
+echo " postrm : update MIME database "
+	update-mime-database /usr/share/mime
+#
+# END POST RM
+#
+

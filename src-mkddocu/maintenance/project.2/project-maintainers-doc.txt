@@ -1,0 +1,52 @@
+
+    2    File mkddocu writed by Clara Jimenez 2013-12-15
+    3    Fichier modifié par JPL le 22/02/2014 pour une version plus universelle
+    4    Util : Create any debian package for mkd for multi-lang programming languages
+  118    Fichier mkddocu.sh
+  119    -----------------------------------------------------------------------------
+  120    Menu d'aide sommaire obtenu par la commande 'mkddocu ?'
+  122    Extract code mkd -twC C mkddocu.sh mkddocu 
+  124    File mkddocu
+  132                  exit -1 : La commande mkd n'est pas trouvée
+  149                 exit 0 : Fin d'affichage de la syntaxe
+  152    Affecttion des macros et des variables
+  153       BACKUPSMAX : Définition du nombre de sauvegardes d'une série avant la 
+  154        sauvegarde globale dans un répertoire 'Backup'. (Valeur modifiable)
+  156                      compteur
+  157                      false ou true
+  158                      nom du fichier de projet .prj
+  160    -----------------------------------------------------------------------------
+  161    Gestion des paramètres d'entrée
+  171                                                   Vérif que c'est bien -s
+  186    -----------------------------------------------------------------------------
+  187    Gestion de sauvegarde des séries (Transfert dans maintenance/Backup)
+  189    Créer la fonction 'sauvegarde'. (Noter que la varable i est globale)
+  197   o Tant que l'on n'a pas atteind BACKUPSMAX
+  200   o   Si le répertoire de projet.i existe
+  202   o   alors:
+  204   o      Si le nombre de répertoires projet.i de la série dépasse BACKUPSMAX
+  207   o         demander si il faut transférer la série dans de répertoire 'Backup'
+  211   o         si 'y' (yes)
+  213   o         alors:
+  215   o            Créer le répertoir Backup s'il y alieu et transférer la série .*
+  227                           : Fin par erreur ou abandon de l'utilisateur
+  230   o    sinon: Sauvegarder le dernier répertoire par incrément d'extension
+  238    -----------------------------------------------------------------------------
+  239    Préparation des répertoires de travail, maintenance et fichier de projet .prj
+  241       Clean, nettoyage des fichiers d'éditions *~
+  243       Créer du répertoire ./maintenance si il n'existe pas
+  245       Créer le fichier de projet .prj pour tout langage de programmation
+  252    -----------------------------------------------------------------------------
+  253    Génération de la documentation :
+  255       Générer le fichier d'entête global .h si il existe des fichiers .c??
+  262   w   → Remarque d'ATTENTION pour copier manuellement le fichier d'entête .h
+  264   w   → ATTENTION ligne non validée : cp -f ./maintenance/$project/$project.h . 
+  270       Générer la 'documentation' avec le repère 'D'
+  277       Générer le fichier des directives des tests; avec numéro de ligne repère 'T'
+  284       Générer le fichier destiné aux mainteneurs avec le repère 'P'
+  290    Si le paramètre '-s' est entrée à la commande:
+  291       Créer les fichiers : chaînes de caractères et chaînes pour gettext
+  301    -----------------------------------------------------------------------------
+  302    Afficher les recommandations de lecture des fichiers de maintenance
+  306    Quitter avec un retour à la valeur 0 Fin correcte normale
+  307           exit 0 : Fin d'exécution de la commande mkddocu

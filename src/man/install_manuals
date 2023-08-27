@@ -1,0 +1,39 @@
+#!/bin/bash
+# Mis à jour le 2 décembre 2013
+# File: install_manuals,
+# Command syntax: sudo install_manuals
+# Only for updates
+clear
+echo "-------------------------------------------"
+echo "install manuals"
+echo "install or update mkd manuals : mkd (1) and functions (3)"
+echo ""
+echo -e '\E['32';'01'm'"-Alternative commands :"
+tput sgr0 # Reset text attributes to normal without clear
+echo "Running by cliking on install_manuals_on_debian_systems"
+echo "Konsole command syntax on Debian or Ubuntu systems : sudo ./install_manuals"
+echo "Konsole command syntax for user root (see command su) : ./install_manuals"
+echo -e '\E['31';'01'm'"-Press key new-line to continue, or CTRL to quit"
+tput sgr0 # Reset text attributes to normal without clear
+read 
+echo "For all languages by default"
+cp -f en/mkd.1.gz /usr/share/man/man1/mkd.1.gz ;
+cp -f en/cpp.3.gz /usr/share/man/man3/cpp.3.gz;
+# echo "For language British"
+# if [ -d "/usr/share/man/en_GB/man1" ]; \
+#	then cp -f en_GB/mkd.1.gz /usr/share/man/en_GB/man1/mkd.1.gz ; \
+# fi
+echo "Für die deutsche Sprache"
+if [ -d "/usr/share/man/de.UTF-8/man1" ]; \
+	then cp -f de/mkd.1.gz /usr/share/man/de.UTF-8/man1/mkd.1.gz ; \
+	elif [ -d "/usr/share/man/de/" ]; then cp -f de/mkd.1.gz /usr/share/man/de/man1/mkd.1.gz ; \
+fi
+echo "Pour la langue française"
+if [ -d "/usr/share/man/fr.UTF-8/man1" ]; \
+	then cp -f fr/mkd.1.gz /usr/share/man/fr.UTF-8/man1/mkd.1.gz ; \
+	elif [ -d "/usr/share/man/fr/" ]; then cp -f fr/mkd.1.gz /usr/share/man/fr/man1/mkd.1.gz ; \
+fi
+echo ""
+echo -e '\E['31';'01'm'"install END -------------------------------"
+tput sgr0 # Reset text attributes to normal without clear
+echo ""

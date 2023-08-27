@@ -1,0 +1,110 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mkd-doc_140515\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-02 12:05+0200\n"
+"PO-Revision-Date: 2014-04-02 13:13+0100\n"
+"Last-Translator: Jean-Paul Louyot <edeulo@free.fr>\n"
+"Language-Team: Edeulo <edeulo@free.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: Français\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid " Please install mkd software "
+msgstr " S'il vous plaît,  installez la commande mkd "
+
+msgid " Syntax : "
+msgstr " Syntaxe : "
+
+msgid " mkddocu <target_dir> "
+msgstr " mkddocu <répertoire_cible> "
+
+msgid "    -> example of series with date : mkddocu 2014-02-22 "
+msgstr "    → exemple de series avec date : mkddocu 2014-02-22 "
+
+msgid "    The target directory is also writen in maintenance directory : "
+msgstr "    Le répertoire cible est généré dans le répertoire maintenance : "
+
+msgid "    -> ./maintenance/2014-02-22/ "
+msgstr "    → ./maintenance/2014-02-22/ "
+
+msgid " mkddocu ? for this help "
+msgstr " mkddocu ? pour la syntaxe "
+
+msgid " Last backup before maintenance : "
+msgstr " Dernière sauvegarde avant maintenance : "
+
+msgid " Make backup in Backups dir, yes ? Your choice : y ? "
+msgstr ""
+" Faire une sauvegarde dans le répertoire Backups ? choix : (y pour oui) y ? "
+
+msgid ""
+" If the Backups directory does not exist, create the `Backups` directory "
+msgstr ""
+" Si le répertoire Backups n'existe pas, création du répertoire Backups. "
+
+msgid " Files in directory Backups "
+msgstr " Fichiers dans le répertoire Backups "
+
+msgid " exit -2 "
+msgstr " exit -2 "
+
+#, sh-format
+msgid ""
+" -> Create header file in ./maintenance/$project/$project.h (benchmark H) "
+msgstr ""
+" → crée un fichier d'entête, dans ./maintenance/$project/$project.h (Repère "
+"H) "
+
+msgid ""
+" -> Warning : Copy manually the header file in current source directory "
+msgstr ""
+" → Attention : Copier manuellement le fichier d'entête dans le répertoire "
+"source "
+
+msgid " C files not found "
+msgstr " Pas de fichier C trouvé "
+
+msgid ""
+" Creating documentation, find the programming style, with the benchmark D "
+msgstr ""
+" Crée la documentation, trouve le style de programmation, avec le repère D "
+
+#, sh-format
+msgid " -> ./maintenance/$project/$project-documentation.txt "
+msgstr " → ./maintenance/$project/$project-documentation.txt "
+
+msgid ""
+" Creates the tests document and the directives of tests, with the benchmark "
+"T "
+msgstr " Crée le document des tests et directives de tests, avec le repère T "
+
+#, sh-format
+msgid " -> ./maintenance/$project/$project-tests-directives.txt "
+msgstr " → ./maintenance/$project/$project-tests-directives.txt "
+
+msgid " Creates the document for the maintainers, with the benchmark P "
+msgstr " Crée le document à l'usage des mainteneurs, avec le repère P "
+
+#, sh-format
+msgid " -> /maintenance/$project-maintainers-doc.txt "
+msgstr " → /maintenance/$project-maintainers-doc.txt "
+
+msgid ""
+" Creates a file with strings, and a file with strings for tranlations, with "
+"benchmark ** "
+msgstr ""
+" Crée le fichier des chaînes de caractères pour les traductions, avec le "
+"repère '**'"
+
+#, sh-format
+msgid "  See in working directory: ./maintenance/$project/$project/* "
+msgstr "  Voyez le répertoire ./maintenance/$project/* "

@@ -1,0 +1,32 @@
+Source: mkd
+Section: devel
+Priority: extra
+Maintainer: Edeulo <edeulo@free.fr>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: http://edeulo.free.fr
+#Vcs-Git: git://git.debian.org/collab-maint/mkd.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/mkd.git;a=summary
+
+Package: mkd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: mkd - make  documentation.
+ mkd extrait la documentation logicielle incluse dans les fichiers sources.
+ .
+ mkd extracts marked comments from sources files and create software documents.
+ .
+ Install also the command mkddocu included in `mkd-doc_140515_all.deb' package.
+
+Package: mkd-doc
+Architecture: all
+Description: Documentation for mkd and mkddocu
+ mkddocu create a project file and the command mkd linked to mkddocu, extracts
+ the comments marked by a benchmark character in source files, create the
+ general documentation and the files for maintainers and tests directives.
+ .
+ If some C files exist, then mkddocu will create a global header for the
+ project, with the benchmark character 'H'.
+ .
+ mkddocu extracts also the gettext strings for the maintainers.
+

@@ -1,0 +1,20 @@
+Fichier src/maintenance/maintenance.txt
+
+Date : Vendredi 21 mars 2014 (Noter d'un + quand ce sera fait.)(JPL)
+
+  Suite à la mise à jour du fichier src/mime/mkd.xml
+  Suite à la création de l'icône src/icons/mkd-128x128.png :
+
+  A l'installation :
+  1 - Prévoir la copie dans ~.icons (pour identifier les fichiers .prj)
+    + (Pas fait à l'install, pas raisonable, ce serait l'utilisateur root ...)
+  2 + Installer l'icône dans /usr/share/icons/hicolor/128x128/apps/mkd.png
+  3 + Réintégrer l'installation mkd.xml qui avai été supprimée.
+  4 + Créer le fichier debian/preinst avec la supression des vieux fichiers tels
+      que : /usr/share/doc/mkd et aussi pour mkddocu
+  5 + Pour les installations autres que ubuntu il faudrait peut-être installer
+      le manuel français dans /usr/share/man/fr/man1/mkd.1.gz plutôt que dans
+      le répertoire /usr/share/man/fr.UTF-8
+      Fait le 22 mars. (Clara)
+
+Date : 

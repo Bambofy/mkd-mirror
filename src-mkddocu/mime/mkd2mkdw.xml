@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/mkd">
+    <comment>mkd project</comment>
+    <comment xml:lang="ar">مشروع mkd</comment>
+    <comment xml:lang="ast">proyeutu de mkd</comment>
+    <comment xml:lang="az">mkd layihəsi</comment>
+    <comment xml:lang="be">Prajekt mkd</comment>
+    <comment xml:lang="be@latin">Prajekt mkd</comment>
+    <comment xml:lang="bg">Проект — mkd</comment>
+    <comment xml:lang="bo">mkd ལས་གཞི</comment>
+    <comment xml:lang="bs">Glejd projekat</comment>
+    <comment xml:lang="ca">projecte de mkd</comment>
+    <comment xml:lang="cs">Projekt mkd</comment>
+    <comment xml:lang="cy">Prosiect mkd</comment>
+    <comment xml:lang="da">mkdprojekt</comment>
+    <comment xml:lang="de">mkd-Projekt</comment>
+    <comment xml:lang="el">έργο mkd</comment>
+    <comment xml:lang="en_AU">mkd project</comment>
+    <comment xml:lang="en_GB">mkd project</comment>
+    <comment xml:lang="eo">mkd-projekto</comment>
+    <comment xml:lang="es">proyecto de mkd</comment>
+    <comment xml:lang="eu">mkd proiektua</comment>
+    <comment xml:lang="fi">mkd-projekti</comment>
+    <comment xml:lang="fo">mkd verkætlan</comment>
+    <comment xml:lang="fr">projet mkd</comment>
+    <comment xml:lang="ga">tionscadal mkd</comment>
+    <comment xml:lang="gl">proxecto de mkd</comment>
+    <comment xml:lang="he">מיזם mkd</comment>
+    <comment xml:lang="hr">mkd projekt</comment>
+    <comment xml:lang="hu">mkd-projekt</comment>
+    <comment xml:lang="id">Proyek mkd</comment>
+    <comment xml:lang="it">Progetto mkd</comment>
+    <comment xml:lang="ja">mkd プロジェクト</comment>
+    <comment xml:lang="kk">mkd жобасы</comment>
+    <comment xml:lang="ko">mkd 프로젝트</comment>
+    <comment xml:lang="lt">mkd projektas</comment>
+    <comment xml:lang="lv">mkd projekts</comment>
+    <comment xml:lang="ms">Projek mkd</comment>
+    <comment xml:lang="nb">mkd prosjekt</comment>
+    <comment xml:lang="nl">mkd-project</comment>
+    <comment xml:lang="nn">mkd prosjekt</comment>
+    <comment xml:lang="no">mkd prosjekt</comment>
+    <comment xml:lang="oc">Projècte mkd</comment>
+    <comment xml:lang="pl">Projekt mkd</comment>
+    <comment xml:lang="pt">projecto mkd</comment>
+    <comment xml:lang="pt_BR">Projeto do mkd</comment>
+    <comment xml:lang="ro">Proiect mkd</comment>
+    <comment xml:lang="ru">проект mkd</comment>
+    <comment xml:lang="sk">Projekt mkd</comment>
+    <comment xml:lang="sl">Datoteka projekta mkd</comment>
+    <comment xml:lang="sq">Projekt mkd</comment>
+    <comment xml:lang="sr">Глејд пројекат</comment>
+    <comment xml:lang="sv">mkd-projekt</comment>
+    <comment xml:lang="ug">mkd قۇرۇلۇشى</comment>
+    <comment xml:lang="uk">проект mkd</comment>
+    <comment xml:lang="vi">Dự án mkd</comment>
+    <comment xml:lang="zh_CN">mkd 工程</comment>
+    <comment xml:lang="zh_TW">mkd 專案</comment>
+    <acronym>MKDPROJECT</acronym>
+    <sub-class-of type="application/xml"/>
+    <generic-icon name="mkd"/>
+    <glob pattern="*.prj"/>
+    <glob pattern="*.pj"/>
+    <alias type="application/mkddocu"/>
+    <!-- for mkdcppw and mkdw -->
+    <!--magic priority="50">
+      <match value="&lt;mkd-interface" type="string" offset="0:256"/>
+      <match value="interface-requires gtk" type="string" offset="0:256"/>
+      <match value="requires lib=&quot;gtk" type="string" offset="0:256"/>
+    </magic-->
+  </mime-type>
+</mime-info>

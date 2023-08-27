@@ -1,0 +1,307 @@
+
+   25    
+   26  NOM DU FICHIER: asm.c pour console
+   27  
+   28     Directives de tests unitaires version alpha 2013:
+   29     -------------------------------------------------
+   30     Vérifiez les options n, s et t séparément:
+   31     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   32     décodage de lignes. n, ns. nt, nst.
+   33     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   34     avec ou sans numérotation des lignes, avec ou sans l'option texte seul.
+   35     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   36        cas, décodage en début des lignes, et 'dans' les lignes.
+   37     -- Vérifiez de même pour les espaces.
+   38     La fonction doit être éprouvée de telle sorte qu'un commentaire qui se 
+   39     termine par le caractère de fin de fichier soit entièrement copié dans le
+   40     fichier cible.
+   41  
+   42     Le caractère de fin de fichier (EOF) NE DOIT JAMAIS APPARAÎTRE DANS LE
+   43     TEXTE DU FICHIER CIBLE.
+   44 
+   45     Ajouté le 18 avril 2013:
+   46     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   47     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   48 
+   49 
+  285                             fseek ou: fseek(pnfile,(nl-ftell(pnfile)),1); 
+  307                             fseek ou: fseek(pnfile,(nl-ftell(pnfile)),1); 
+   28    
+   29  FILE NAME: basic.c for konsole basic.cc for individual compilation in
+   30   c++ or basic.inc.cc to include file in sources files with gtkmm
+   31 
+   32  RECOMMANDED TESTS:
+   33   Cette fonction doit décoder les commentaires style Basic. 
+   34   Voir aussi NOTES et option -l dans version.h
+   35 
+   36   Colonne n+ |0|1|2|3|4|5|6|7|8|9|A|B|C|
+   37              |'|O| |C|o|m|m|e|n|t| | | |To NL....| toutes versions
+   38              |R|E|M|O| |C|o|m|m|e|n|t| |To NL....| toutes versions
+   39              |R|e|m| |O| |C|o|m|m|e|n|t|To NL....| depuis version 2013
+   40   Notez que le 'Code' peut être placé en 3ème ou 4ème colonne avec REM.
+   41 
+   42  
+   43     Directives de tests unitaires version alpha 2013
+   44     Généralités pour tous les modules.
+   45     -------------------------------------------------
+   46     Vérifiez les options n, s et t séparément:
+   47     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   48     décodage (lignes et blocs). n, ns. nt, nst.
+   49     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   50     toute la ligne (dans la cas de la directive de compilation FULL_LINE), ou 
+   51     texte seul.
+   52     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   53        cas, décodage des lignes et des blocs.
+   54     -- Vérifiez de même pour les espaces.
+   55     La fonction doit être éprouvé©e de telle sorte qu'un commentaire qui se 
+   56     termine par le caractère de fin de fichier soit entièrement copié dans le
+   57     fichier cible.
+   58     Le caractère de fin de fichier décodé avant le(les) caractère(s) de fin de
+   59     commentaire doit être remplacé par un caractère de fin de ligne 0x0A. Noter
+   60     que le caractère 0x0A précédant EOF est considéré comme fin de ligne.
+   61  
+   62     Le caractère de fin de fichier (EOF 0xFF) NE DOIT JAMAIS APPARAÎTRE DANS LE
+   63     TEXTE DU FICHIER CIBLE.
+   64     Ceci provoquait un bug dans la version Alpha de l'application fenêtrée
+   65     mkdbasicw à l'étape du test d'intégration.
+   66 
+   67     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   68     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   69  
+   70 
+  224                      fprintf(pfdoc,"\nREM détecté \'%c%c%c%c\'\n",c1, c2, c3, c4);
+   34    
+   35  FILE NAME: cpp.c for konsole cpp.cc for individual compilation in c++ or
+   36            cpp.inc.cc to include file in sources files with gtkmm
+   37  
+   38     Directives de tests unitaires version alpha 2013:
+   39     -------------------------------------------------
+   40     Vérifiez les options n, s et t séparément:
+   41     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   42     décodage (lignes et blocs). n, ns. nt, nst.
+   43     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   44     toute la ligne (dans la cas de la directive de compilation FULL_LINE), ou 
+   45     texte seul.
+   46     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   47        cas, décodage des lignes et des blocs.
+   48     -- Vérifiez de même pour les espaces.
+   49     La fonction doit être éprouvé©e de telle sorte qu'un commentaire qui se 
+   50     termine par le caractère de fin de fichier soit entièrement copié dans le
+   51     fichier cible.
+   52     Le caractère de fin de fichier décodé avant le(les) caractère(s) de fin de
+   53     commentaire doit être remplacé par un caractère de fin de ligne.
+   54  
+   55     Le caractère de fin de fichier (EOF) NE DOIT JAMAIS APPARAÎTRE DANS LE
+   56     TEXTE DU FICHIER CIBLE.
+   57     Ceci provoquait un bug dans la version Alpha de l'application fenêtrée
+   58     mkdcppw à l'étape du test d'intégration.
+   59 
+   60     Ajouté le 18 avril 2013:
+   61     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   62     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   63  
+   64 
+  337                                   fprintf(pfdoc, "\nc1 = %c  c2 = %c\n", c1, c2); //T
+  344                          if (c1==EOF) break;
+  382                      fprintf(pfdoc, "%s", NL ); //P obsolete ?
+  383                      if(s) puts("");
+   13                         char buffer[10]; //T tests only
+   20                         buffer[0]=c; buffer[1]=d; buffer[2]=e; buffer[3]='\0'; //T Tests only
+   21                         printf("\nTests: **** tolower extension = %s\n",buffer); //T tests only
+   30    
+   31 FILE NAMES: fortran.c for konsole, or fortran.cc or fortran.inc.cc to include
+   32             the file in windowed version of mkd with gtkmm
+   33 FUNCTION : fortran_()
+   34  
+   35 RECOMMANDED TESTS:
+   36   Cette fonction doit décoder les commentaires style Fortran 77. 
+   37   Pour le fortran 90 et ultérieurs Voir NOTES et option -l dans version.h
+   38 
+   39   Dès la version 2013 le caractère de décodage se place en 3 ème colonne
+   40   Comme il est d'usage, ceci contrairement aux versions précédentes où
+   41   le caractère de décodage se plaçait uniquement en 2 ème colonnes.
+   42   Colonne |1|2|3|4|5|6|7|8|9|A|B|C|....To 72
+   43           |C| |O| |C|o|m|m|e|n|t| |....| | | depuis version 2013
+   44           |C|O| |C|o|m|m|e|n|t| | |....| | | toutes versions
+   45           |C| |C|o|m|m|e|n|t| | | |....| | | toutes versions avec Codes '**'
+   46   Notez que le 'Code' peut être placé en 2ème ou 3ème colonne.
+   47 
+   48 TETS UNITAIRES:
+   49   Veiller à ce que les commentaires restent à la bonne place quelle que soient
+   50   les colonnes utilisées pour le décodage (2ème ou 3éme colonne) augmenté du 
+   51   numéro de ligne.
+   52   Vérifier dans cette nouvelle version, que le numéro de ligne s'écrit 
+   53   correctement, sur 5 colonnes.
+   54   Veiller à ce que le fichier cible ne contienne jamais le caractère de fin de
+   55   fichier EOF.
+   56   
+   57   3 cas peuvent se présenter:
+   58   Cas 1 : Codes est '**' tous les caractères doivent être copiés
+   59   Cas 2 : colonne 2 identifie le commentaire de la ligne à copier
+   60   cas 3 : Colonne 2 est un espace et colonne 3 identifie la ligne de commentaire
+   61           à copier
+   62   Vérifiez tous les cas avec les options n,s,t
+   63 
+   64   Testez de la même façon le fortran 90 avec l'option de compilation CD3 = '!'
+   65 
+   66 
+  182                           pour les tests
+  183                           pour les tests
+  184                           pour les tests
+
+
+  351                                                                                         
+  591    est     printf("%c%c",c,fsrc[i]); 
+  607                printf("code nx1 pour test: %c\n",codes[0]); T
+  670              sinon ecrire message d'erreur -a -w pas trouve 
+  672                       est
+  675                       est
+   70    Fichier mkddocu.sh
+   71    -----------------------------------------------------------------------------
+   72    Tests : Ne peut fonctionner que si la commande mkd est installée.
+   73   
+   74    Test unitaire :
+   75    ---------------
+   76    Renommer mkddocu mkddocu.sh ou .csh
+   77    Editer le fichier mkddocu.sh et modifier la valeur de BACKUPSMAX limiter 
+   78    cette valeur à 3 (4 sauvegardes indicées)
+   79   
+   80    La commande s'autoteste
+   81    1. Lancer 4 fois la commande ./mkddoccu (sans paramètre)
+   82    2. Vérifier la commande de boucle à chaque fois, elle doit incrémenter les 
+   83       répertoires de projets project (le dernier), puis project.1, etc.
+   84       Après project.3 on doit vous demander si vous désirez préserver ces
+   85       fichiers dans un répertoire .Backups. Répondez oui : 'y' (yes)
+   86    3. Vérifier que le fichier .prj prend bien en charge tous les fichiers de
+   87       langages de programmation de la commande mkd. Pour cela il faut évidemment
+   88       disposer des fichiers nécessaires. On peut en trouver sur le site EELL
+   89       http://edeulo.free.fr/wiki/index.php/Projet_mkd/Fichiers_en_développement
+   90       Les fichiers en développement sont accompagnés de leurs tests unitaires,
+   91       notamment le fichier find.inc.c très sollicité par la commande mkddocu.
+   92       Trouver des exemples aussi sur wikipedia, wikibooks.
+   93    4. Essayer les commandes : (dans un 'Terminal' ou une 'Konsoke')
+   94       ./mkddocu.sh -s
+   95       ./mkddocu.sh mkddocu
+   96       ./mkddocu.sh mkddocu -s
+   97       ./mkddocu.sh -s mkddocu
+   98       Les commandes mkd ont été éprouvées par ailleurs. Vérifiez tout de même
+   99       que les fichiers générés sont bien conformes.
+  100    5. Vérifiez que les fichiers en langage C sont pris en compte quand ils sont
+  101       présents. les fichiers d'entête (.h) n'ont pas à être pris en compte.
+  102    6. Vérifier le bon fonctionnement des traduction
+  103       xgettext : Outil pour extraire les chaînes à traduire avec poedit
+  104       ne pas oublier la ligne '. gettext.sh' en tête de fichier
+  105       xgettext -L shell -o lang/mkddocu.po --from-code=UTF-8 mkddocu.sh
+  106    
+  107   
+  108    Tests d'intégration :
+  109    ---------------------
+  110    Pour ces tests il faut évidemment disposer de vrais fichiers de programmation
+  111    dans différent langages mais cela a déjà été fait lors des tests
+  112    d'intégration de la commande mkd.
+  113    On peut trouver ces fichiers dans chaqu'un des fichiers de tests unitaires de
+  114    la page wiki 'fichiers' en développement citée plus haut.
+  115   
+
+   30    
+   31  FILE NAME: pascal.c for konsole pascal.cc for individual compilation in
+   32   c++ or pascal.inc.cc to include file in sources files with gtkmm
+   33 
+   34  
+   35     Directives de tests unitaires version alpha 2013
+   36     Généralités pour tous les modules.
+   37     -------------------------------------------------
+   38     Vérifiez les options n, s et t séparément:
+   39     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   40     décodage (lignes et blocs). n, ns. nt, nst.
+   41     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   42     toute la ligne (dans la cas de la directive de compilation FULL_LINE), ou 
+   43     texte seul.
+   44     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   45        cas, décodage des lignes et des blocs.
+   46     -- Vérifiez de même pour les espaces.
+   47     La fonction doit être éprouvée de telle sorte qu'un commentaire qui se 
+   48     termine par le caractère de fin de fichier soit entièrement copié dans le
+   49     fichier cible.
+   50     Le caractère de fin de fichier décodé avant le(les) caractère(s) de fin de
+   51     commentaire doit être remplacé par un caractère de fin de ligne 0x0A. Noter
+   52     que le caractère 0x0A précédant EOF est considéré comme fin de ligne.
+   53  
+   54     Le caractère de fin de fichier (EOF 0xFF) NE DOIT JAMAIS APPARAÃTRE DANS LE
+   55     TEXTE DU FICHIER CIBLE.
+   56     Ceci provoquait un bug dans la version Alpha de l'application fenêtrée
+   57     mkdbasicw à l'étape du test d'intégration.
+   58 
+   59     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   60     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   61  
+   62 
+  220                      fprintf(pfdoc,"\ncurly = %d\n",curly); //T
+   27    
+   28  FILE NAME: shell.c for konsole shell.cc for individual compilation in
+   29   c++ or shell.inc.cc to include file in sources files with gtkmm
+   30 
+   31  
+   32     Directives de tests unitaires version alpha 2013
+   33     Généralités pour tous les modules.
+   34     -------------------------------------------------
+   35     Vérifiez les options n, s et t séparément:
+   36     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   37     décodage (lignes et blocs). n, ns. nt, nst.
+   38     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   39     toute la ligne (dans la cas de la directive de compilation FULL_LINE), ou 
+   40     texte seul.
+   41     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   42        cas, décodage des lignes et des blocs.
+   43     -- Vérifiez de même pour les espaces.
+   44     La fonction doit être éprouvée de telle sorte qu'un commentaire qui se 
+   45     termine par le caractère de fin de fichier soit entièrement copié dans le
+   46     fichier cible.
+   47     Le caractère de fin de fichier décodé avant le(les) caractère(s) de fin de
+   48     commentaire doit être remplacé par un caractère de fin de ligne 0x0A. Noter
+   49     que le caractère 0x0A précédant EOF est considéré comme fin de ligne.
+   50  
+   51     Le caractère de fin de fichier (EOF 0xFF) NE DOIT JAMAIS APPARAÎTRE DANS LE
+   52     TEXTE DU FICHIER CIBLE.
+   53     Ceci provoquait un bug dans la version Alpha de l'application fenêtrée
+   54     mkdbasicw à l'étape du test d'intégration.
+   55 
+   56     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   57     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   58  
+   59 
+   28    
+   29  FILE NAME: tri.c for konsole tri.cc for individual compilation in
+   30   c++ or tri.inc.cc to include file in sources files with gtkmm
+   31 
+   32  
+   33     Directives de tests unitaires version alpha 2013
+   34     Généralités pour tous les modules.
+   35     -------------------------------------------------
+   36     Vérifiez les options n, s et t séparément:
+   37     Vérifiez que la numérotation des lignes est correcte dans tous les cas de
+   38     décodage (lignes et blocs). n, ns. nt, nst.
+   39     Vérifiez que le texte reste à la bonne place dans tous les cas de décodage:
+   40     toute la ligne (dans la cas de la directive de compilation FULL_LINE), ou 
+   41     texte seul.
+   42     -- Vérifiez que les tabulations sont bien prises en charge dans tous les 
+   43        cas, décodage des lignes et des blocs.
+   44     -- Vérifiez de même pour les espaces.
+   45     La fonction doit être éprouvée de telle sorte qu'un commentaire qui se 
+   46     termine par le caractère de fin de fichier soit entièrement copié dans le
+   47     fichier cible.
+   48     Le caractère de fin de fichier décodé avant le(les) caractère(s) de fin de
+   49     commentaire doit être remplacé par un caractère de fin de ligne 0x0A. Noter
+   50     que le caractère 0x0A précédant EOF est considéré comme fin de ligne.
+   51  
+   52     Le caractère de fin de fichier (EOF 0xFF) NE DOIT JAMAIS APPARAÎTRE DANS LE
+   53     TEXTE DU FICHIER CIBLE.
+   54     Ceci provoquait un bug dans la version Alpha de l'application fenêtrée
+   55     mkdbasicw à l'étape du test d'intégration.
+   56 
+   57     Vérifiez que l'extraction de tous les commentaires avec pour code de 
+   58     décodage '**' soient copiés et que ceux-ci soient à la bonne place.
+   59  
+   60 
+
+   39                    TESTS               

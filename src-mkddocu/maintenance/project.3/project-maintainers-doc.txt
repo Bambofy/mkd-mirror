@@ -1,0 +1,68 @@
+
+
+    2    File mkddocu writed by Clara Jimenez 2013-12-15
+    3    Fichier modifié par JPL le 22/02/2014 pour une version plus universelle
+    4    mkddocu.sh modifié le 22/03/2014 par JPL pour introduire l'icône mkd dans 
+    5       ~.icons de l'utilisateur pour identifier le fichier .prj de mkd
+    6       suppression de l'option -s pour produire le fichier des chaînes de
+    7       caractères
+    8    Util : Create any debian package for mkd for multi-lang programming languages
+    9    modifié par JPL modification des messages. ajout de (mkddocu) pour faire la 
+   10       différence avec les messages de mkd et invalidation pour gettext des
+   11       messages qui ne supportent pas le traduction tel que ./maintenance/Backup
+   12   
+  129    Fichier mkddocu.sh
+  130    -----------------------------------------------------------------------------
+  131    Menu d'aide sommaire obtenu par la commande 'mkddocu ?'
+  133    Extract code mkd -twC C mkddocu.sh mkddocu 
+  135    File mkddocu
+  147                  exit -1 : La commande mkd n'est pas trouvée
+  151    -----------------------------------------------------------------------------
+  152    Gestion de la syntaxe Nouvelle version pour mkd 140515
+  154    Créer la fonction d'affichage 'syntaxe'.
+  166                                                exit -3 : défaut de param d'entrée
+  171                 exit 0 : Fin d'affichage de la syntaxe
+  174    Affecttion des macros et des variables
+  175       BACKUPSMAX : Définition du nombre de sauvegardes d'une série avant la 
+  176        sauvegarde globale dans un répertoire 'Backup'. (Valeur modifiable)
+  178                      compteur
+  179                      false ou true
+  180                      nom du fichier de projet .prj
+  182    -----------------------------------------------------------------------------
+  183    Gestion des paramètres d'entrée
+  193                                                   Vérif que c'est bien -s
+  205    force str="true" without option -s 22/03/2014
+  206              
+  210    -----------------------------------------------------------------------------
+  211    Gestion de sauvegarde des séries (Transfert dans maintenance/Backup)
+  213    Créer la fonction 'sauvegarde'. (Noter que la varable i est globale)
+  221   o Tant que l'on n'a pas atteind BACKUPSMAX
+  224   o   Si le répertoire de projet.i existe
+  226   o   alors:
+  228   o      Si le nombre de répertoires projet.i de la série dépasse BACKUPSMAX
+  231   o         demander si il faut transférer la série dans de répertoire 'Backup'
+  237   o         si 'y' (yes)
+  239   o         alors:
+  241   o            Créer le répertoir Backup s'il y a lieu et transférer la série .*
+  259                           exit -2 : Fin par erreur ou abandon de l'utilisateur
+  262   o    sinon: Sauvegarder le dernier répertoire par incrément d'extension
+  270    -----------------------------------------------------------------------------
+  271    Préparation des répertoires de travail, maintenance et fichier de projet .prj
+  273       Clean, nettoyage des fichiers d'éditions *~
+  275       Créer du répertoire ./maintenance si il n'existe pas
+  277       Créer le fichier de projet .prj pour tout langage de programmation
+  284    -----------------------------------------------------------------------------
+  285    Génération de la documentation :
+  287       Générer le fichier d'entête global .h si il existe des fichiers .c??
+  297   w   -> Remarque d'ATTENTION pour copier manuellement le fichier d'entête .h
+  300   w   -> ATTENTION ligne non validée : cp -f ./maintenance/$project/$project.h . 
+  307       Générer la 'documentation' avec le repère 'D'
+  315       Générer le fichier des directives des tests; avec numéro de ligne repère 'T'
+  323       Générer le fichier destiné aux mainteneurs avec le repère 'P'
+  330    Si le paramètre '-s' est entrée à la commande:
+  331       Créer les fichiers : chaînes de caractères et chaînes pour gettext
+  342    -----------------------------------------------------------------------------
+  343    Afficher les recommandations de lecture des fichiers de maintenance
+  349    Quitter avec un retour à la valeur 0 Fin correcte normale
+  352           exit 0 : Fin d'exécution de la commande mkddocu
+

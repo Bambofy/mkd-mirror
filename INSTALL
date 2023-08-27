@@ -1,0 +1,60 @@
+Installation and Uninstall Instructions
+***************************************
+ © Copyright CEM2 1986, 1991, 1995, 1999 : CEM2 ; cem2.univ-montp2.fr
+   Free Software Foundation, Inc.
+ © Copyright EELL 2004, 2007, 2010, 2012, 2013 EELL <edeulo@free.fr>
+   European Copyright (C) EUPL
+   https://joinup.ec.europa.eu/software/page/eupl
+
+Copying and distribution of this files, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without warranty of any kind.
+
+
+The installation is more secure and better with debian packages on launchpad :
+==============================================================================
+Downloads informations and sources for debian systems :
+http://edeulo.free.fr/wiki/index.php/Shell_command_projects/mkd
+
+
+Installation with the debian tarball in a terminal :
+====================================================
+To install mkd binary :
+-----------------------
+  sudo apt-get install mkd_<version>.deb 
+To uninstall : sudo apt-get uninstall mkd
+
+To install mkddocu :
+--------------------
+  sudo apt-get install mkd_<version>.all_deb
+To uninstall : sudo apt-get uninstall mkd_<version>.all_deb
+---
+Note : As root user you can install mkd with the repository software
+
+Installation with sources :
+===========================
+Unpack the original source tarball.
+
+To install mkd (mkd_<version>.deb:
+----------------
+Go in src directory type the following command in a terminal : 
+  sudo ./INSTALL.sh
+  Note : As root user you can click on the command INSTALL.sh
+To uninstall : sudo ./UNINSTALL.sh
+
+For testing in your directory : 
+  ./INSTALL.sh ~/mkd
+To uninstall : type rm -f ~/mkd in your user directory
+
+To install mkddocu (mkd_<version>.all_deb):
+-------------------------------------------
+Go in src-mkddocu directory type the following command in a terminal : 
+  sudo ./INSTALL.sh
+  Note : As root user you can click on the command INSTALL.sh
+To uninstall sudo ./UNINSTALL.sh
+
+For testing in your directory :
+  make -d install DESTDIR=~/mkddocu 
+To uninstall : rm -f ~/mkddocu
+

@@ -1,0 +1,227 @@
+<meta charset="utf-8">
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of MKD</TITLE>
+</HEAD><BODY>
+<H1>MKD</H1>
+Section: User Commands  (1)<BR>Updated: 28 March 2014<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+mkd - Extract from source files, the software documentation.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>mkd</B>
+
+<B>[-ABCFPSafjlpstw]</B>
+
+<I>char_codes</I>
+
+<I>path_source</I>
+
+[path_target]
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT><B>mkd</B>
+
+<DD>
+Selected comments (or all comments) are extracted from programs sources and product specific documentation to target file. Usual target files are Organigrams, or Structure of programs, or comments for Programmers, Warnings and Tests points .... Coded informations are respectively 'O', 'S', 'P', 'www', and 'T' just after the comment character.
+<DT><I>char_codes</I>
+
+<DD>
+All ASCII. The comment are extracted if the comment begin with this character. With two star mkd extract all comments.
+<DT><I>path_source</I>
+
+<DD>
+Path source file (or project file: option j ).
+<DT>path_target
+
+<DD>
+Path target file. Default, path target is idendical to source file with extension '.doc' .
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H2>OPTIONS</H2>
+
+<DL COMPACT>
+<DT><DD>
+<B>Uppercase options :</B>
+
+<P>
+<B>These options restrict the extraction of comments to a sigle style of language.</B>
+
+<DT><B>-A<DD>
+</B>extract Assembler style comments ( ; to end of line  )
+<DT><B>-B<DD>
+</B>Basic style                 ( REM or ' → end of line )
+<DT><B>-C<DD>
+</B>C++ style                   ( // → NL and  /*  →  */ )
+<DT><B>-F<DD>
+</B>Fortran style               ( c,C or * → end of line )
+<DT><B>-P<DD>
+</B>Pascal style                ( {  →  } and (*  →  *)  )
+<DT><B>-S<DD>
+</B>Shell or ratfor style       (   #    →   end of line )
+<P>
+<B>Lowercase options :</B>
+
+<P>
+<DT><B>-a<DD>
+</B>append to current target file.
+<DT><B>-f<DD>
+</B>find source file language. (useful with project file). mkd recognizes the following files: .asm, .s, .bas, .vb, .bat; .C, .H, .D, .cc, .hh, .cp, .cs, c#, .c++, .h++, c--, h--, .cpp, .hpp, .css, .pr, .pl, .php, .jav, .jse, .js, .for, .f, .pas, .p, .sh, .csh
+, .pl, .rb, .py, .pyw, .pj, .prj
+<DT><B>-j<DD>
+used if source file is a project file.
+<DT>-l<DD>
+</B>lines (extract lines delimited by CD1 or CD2 in first colomn or CD3 in line, and next New-Line. CD1, CD2, CD3 are compilable options in version.h from mkd distribution. You can see these options compiled by the command <B>mkd&nbsp;\?
+<DT>-n<DD>
+</B>numbering the lines (line number from source files)
+<DT><B>-p<DD>
+</B>page (extract text delimited by CD4 and CD5 -begin with CD4 and end with CD5-. CD4, CD5 are compilable options in version.h from mkd distribution. You can see these options compiled by the command&nbsp;<B>mkd \?
+<DT>-s<DD>
+</B>add to screen. (verbose)
+<DT><B>-t<DD>
+</B>text (copy only the comment).
+<DT><B>-w<DD>
+</B>overwrite the current target file.
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXAMPLES</H2>
+
+<DL COMPACT>
+<DT><B>mkd -Ct </B><I>F manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+Product UNIX manual for french users.
+<DT><B>mkd -Ct </B><I>M manual </I>mkd.1 | gzip -f mkd.1.gz
+
+<DD>
+Product UNIX manual.
+<DT><B>mkd -Csl </B><I>'*Sied' mkd3.c </I>'*.verif_struct'
+
+<DD>
+Product documentation with structure of program, includes, defines, ifdef else and endif compile options, to verify structure of program.
+(with compilable options CD1='#' or CD2='#' in version.h from mkd distribution).
+<DT><B>mkd -jfsl </B><I>'*OHie' mkd_docu.prj </I>mkd.org
+
+<DD>
+Product organigram. Comment begin with *,O,H, and sources files are listed in project file.
+(with compilable options CD1='#' or CD2='#'). f: find language, j: source file is a project file containing the list of sources files. 
+<DT><B>mkd -l </B><I>'*ide' mkd3.c </I>'*.id_ei'
+
+<DD>
+(with compilable options CD1='#' or CD2='#', extract lines: #include, #define, #ifdef, #else, #endif, etc.)
+<DT><B>mkd -pj </B><I>'**' mkd_docu.prj </I>mkd.strings
+
+<DD>
+Extract strings from program. (messages are printed to stdout).
+(sources files are itemize in project file, and with compilable options CD4=CD5='\&quot;').
+<DT><B>mkd </B>(without argument)
+
+<DD>
+Cause any error and syntax are transmit to terminal with caracters compiled to use options l and p.
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<P>
+
+<A HREF="/cgi-bin/man/man2html?1+mkddocu">mkddocu</A>(1) <A HREF="/cgi-bin/man/man2html?1+mkdcppw">mkdcppw</A>(1)
+<BR>
+
+<A HREF="file:////usr/share/doc/mkddocu/">file:////usr/share/doc/mkddocu/</A>
+<BR>
+
+<A HREF="file:////usr/share/doc/mkd/">file:////usr/share/doc/mkd/</A>
+<A NAME="lbAH">&nbsp;</A>
+<H2>HISTORY</H2>
+
+<P>
+
+1989 - mkd for DOS, and mkdoc for UNIX, are writen  in  ASCII format by Jean-Paul Louyot for the University of Montpellier  'CEM' laboratory (France).
+<DL COMPACT>
+<DT>1991 - mkdoc 3.12 for PC and UNIX (Sun)<DD>
+<DT>1995 - 2004 - mkdoc 3.22 to mkdoc 4 for Unix and Linux: SUN-SPARC, HP-UX, RedHat<DD>
+<DT>2004 - mkdoc 4 for Linux Ubuntu, Windows 98, Windows 2000<DD>
+<DT>2007-2012 - mkdoc release 7.01 to mkd R12.01 are in format  ISO-8859-1. The name 'mkdoc' was forgotten  with the  release  10.01  compiled  with Visual C++ 2010<DD>
+<DT>2012 - mkd 12.03 is  adapted  to  UTF-8  format  for  translations  and internationalization. During the developement,  mkdcppw was writen to decode  computer languages C, c++ and php in graphical mode with 'gcc' and 'gtkmm'.<DD>
+</DL>
+<A NAME="lbAI">&nbsp;</A>
+<H2>DOWNLOADS</H2>
+
+<P>
+
+<A HREF="http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX">http://edeulo.free.fr/wiki/index.php/Projet_mkd/Compilations_UNIX-LINUX</A>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+<P>
+
+man updated by Clara JIMENEZ, Cardabela, and JPL. (May 2013) and by Luca (Oct 1013)
+<A NAME="lbAK">&nbsp;</A>
+<H2>TRANSLATORS</H2>
+
+<P>
+
+Catalan : Alizée
+<DL COMPACT>
+<DT>English : JPL, Cardabela<DD>
+<DT>German : Clara, JPL, Martine<DD>
+<DT>Italian : Luca<DD>
+<DT>Spanish : Alizée, JPT, Sharo<DD>
+<DT>Email : <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A><DD>
+<DT><DD>
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>NOTES</H2>
+
+<P>
+
+It belong to the programmers to close comments, blocks and lines, by the appropriate closing codes in the source files.
+<P>
+Warning: The closure of a comment line is a carriage-return (NL, LF, CR/LF) as the case.
+<P>
+At the end of the file: this note implies a carriage-return at the end of the comment line. In this case you must have a blank line at the end of the source file.
+<P>
+Do es not allow to read and decode the files included by #include in the sources files.
+<A NAME="lbAM">&nbsp;</A>
+<H2>BUGS</H2>
+
+<P>
+
+Bugs Report: <A HREF="http://edeulo.free.fr/phpBB3/index.php">http://edeulo.free.fr/phpBB3/index.php</A> 
+<P>
+Documents generator mkd
+<P>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DT><A HREF="#lbAF">EXAMPLES</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO</A><DD>
+<DT><A HREF="#lbAH">HISTORY</A><DD>
+<DT><A HREF="#lbAI">DOWNLOADS</A><DD>
+<DT><A HREF="#lbAJ">AUTHORS</A><DD>
+<DT><A HREF="#lbAK">TRANSLATORS</A><DD>
+<DT><A HREF="#lbAL">NOTES</A><DD>
+<DT><A HREF="#lbAM">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 15:35:06 GMT, March 31, 2014
+</BODY>
+</HTML>

@@ -1,0 +1,28 @@
+PROJECT: mkd 
+mkd is a UNIX command to extract pre-encoded comments lines to generate the 
+software documentation according to ISO standards. 
+mkd is the abbreviation of make documentation. This command was originally 
+known under the name mkdoc (make documentation).
+This command is not integrated into the standard distributions of Unix / Linux
+
+INITIAL PROJECT: 
+mkdoc 1989 for MS-DOS and UNIX now obsolete. CEM - University of Montpellier II
+
+ADMINISTRATIVE RECORD: 
+extractdoc 04/12/2009
+
+FILES UPDATES:
+Date: ../../1989 by JPL mkd Initial programming for MSDOS and UNIX on SUN
+Date: ../../1991 by JPL mkdoc 3.12 for PC and UNIX
+Date: ../../1995 by JPL mkdoc 3.22 for RED-HAT on LINUX
+Date: ../../2004 by JPL mkdoc 4.00 for LINUX ubuntu
+Date: 11/02/2010 by JPL Update for MS Visual C10 beta 2. 
+Date: ../../.... by JPL Transformation into independant function for mkdcpp.
+Date: ../03/2012 by CLARA Update to UTF-8 format (C++)
+Date: 02/05/2012 by CLARA Special adaptation for mkdcppw with gtkmm
+Date: 10/03/2013 by JPL Rewrite in english (en) to facilitate the translations
+Date: 30/04/2013 by GC  Rewrite to correct End Of File control
+Date: 03/05/2013 by JPL Resolve the EOF problem if the last block is open.
+Date: 15/10/2013 by JPL Resolve the new package for ubuntu
+Date: 15/12/2013 by CLARA rewrite a new debian package
+Date: 15/05/2014 by EDEULO new package and with the maintainers utility mkddocu

@@ -1,0 +1,143 @@
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of CPP_</TITLE>
+</HEAD><BODY>
+<H1>CPP_</H1>
+Section: C Library Functions (3)<BR>Updated: 6 April 2013<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+cpp_ - Extract coded informations from C, c++, php source files.
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<DL COMPACT>
+<DT>#include &quot;/usr/include/mkd/version.h&quot; // IMPORTANT: Compilation directives<DD>
+<DT>#include &quot;/usr/include/mkd/cpp.h&quot;<DD>
+<DT>int cpp_(FILE * pfdoc, FILE * pnfile);<DD>
+<P>
+</DL>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT>The cpp_ function reads the source file (pnfile) transmitted from the calling function, and decodes the comments pre-encoded in lines or blocks of style C, c++ or php files, and writing this comments in a target file (pfdoc).<DD>
+<DT>Pre-coded characters are defined in a external global table 'Codes':<DD>
+<DT><DD>
+The golbal external variables are
+<B>'Codes'</B>
+
+and
+<B>'Options':</B>
+
+<DT><I>extern char codes[]; </I>
+
+<DD>
+They must be defined in the calling function;
+char codes[5] = {0,0,0,0,0}; table of 5 ASCII characters on 8 bits. 
+The comment are extracted if the comment begin with one of thiese characters. 
+<DT><I>extern unsigned char n,s,t;</I>
+
+<DD>
+They must be defined in the calling function; 
+unsigned char n=0,s=0,t=0;
+<DT><DT><B>-n<DD>
+<DD>
+The transcript is preceded by line number. This allows to easily reach the commented line.
+<DT>-s<DD>
+Add the comment to the terminal or Konsole to use shell redirections &gt; , &gt;&gt; , or || etc.
+<DT>-t<DD>
+With the t option only the commented text is copied. Without the t option the entire line or block is copied. The t option permit to generate directly exploitable and publishable documents. 
+<P>
+</DL>
+</B><A NAME="lbAE">&nbsp;</A>
+<H2>RETURN VALUE</H2>
+
+<DL COMPACT>
+<DT>Return 0 in case of success in konsole version, nothing with gtkmm.<DD>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>CONFORMING TO</H2>
+
+<P>
+
+All UNIX / LINUX systems with gcc
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+<P>
+
+JP LOUYOT, Clara JIMENEZ.
+<DL COMPACT>
+<DT>contact: <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A><DD>
+<P>
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<H2>RESOURCES</H2>
+
+If your product is designed to work with any graphical application, then the file cpp.c++ is ready to use gtkmm. (See also mkdcppw)
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>FILES</H2>
+
+<P>
+
+cpp.c++
+<DL COMPACT>
+<DT>/usr/include/mkd/ : mkd header files<DD>
+<DT>/usr/src/mkd/ : mkd source files<DD>
+<P>
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>NOTES</H2>
+
+<P>
+
+Not ready for read and decode files including in sources files
+<P>
+<A NAME="lbAK">&nbsp;</A>
+<H2>BUGS</H2>
+
+<P>
+
+Bugs Report: <A HREF="http://edeulo.free.fr/phpBB3/index.php">http://edeulo.free.fr/phpBB3/index.php</A> 
+<P>
+<A NAME="lbAL">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<P>
+
+Documents generator <A HREF="/cgi-bin/man/man2html?1+mkd">mkd</A>(1)
+<DL COMPACT>
+<DT><A HREF="http://edeulo.free.fr/wiki/index.php/Projet_mkd/Fichiers_en_développement">http://edeulo.free.fr/wiki/index.php/Projet_mkd/Fichiers_en_développement</A><DD>
+<P>
+<P>
+</DL>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">RETURN VALUE</A><DD>
+<DT><A HREF="#lbAF">CONFORMING TO</A><DD>
+<DT><A HREF="#lbAG">AUTHORS</A><DD>
+<DT><A HREF="#lbAH">RESOURCES</A><DD>
+<DT><A HREF="#lbAI">FILES</A><DD>
+<DT><A HREF="#lbAJ">NOTES</A><DD>
+<DT><A HREF="#lbAK">BUGS</A><DD>
+<DT><A HREF="#lbAL">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 15:35:06 GMT, March 31, 2014
+</BODY>
+</HTML>

@@ -1,0 +1,11 @@
+README du répertoire <projet>/lang/man
+ Le fichier initial <projet>_<lang>.1 doit être créé avec un éditeur (manedit)
+ .
+ Le fichier 1-docuhtml.sh : crée les fichiers .gz, .txt.gz, et .html
+ .
+ Le fichier 2-testmanuals.sh : les manuels sont édités dans leur langue.
+ .
+ Les fichiers doivent ensuite être copiés dans /usr/share/doc/<projet>/html/*.html
+ Eventuellement dans /usr/share/doc/<projet>/<projet>.txt.gz
+ .
+ Voir le fichier debian/doc-base, ou /usr/share/doc-base/mkd ou mkddocu

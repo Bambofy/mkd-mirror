@@ -1,0 +1,148 @@
+<meta charset="utf-8">
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of mkddocu</TITLE>
+</HEAD><BODY>
+<H1>mkddocu</H1>
+Section: Linux User's Manual (1)<BR>Updated: 2014-02-24<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NOM</H2>
+
+mkddocu - Génère la documentation informatique avec <B>mkd (1)</B>.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS</H2>
+
+<B>mkddocu </B><I>projet</I>
+
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<DL COMPACT>
+<DT><B>mkddocu</B>
+
+<DD>
+La commande <B>mkddocu</B> associée à <B>mkd</B>, extrait les commentaires codés par un <B>caractère de repérage</B> pour créer les documents logiciels.
+Exemple : 
+<B>//D</B>
+
+ceci est un commentaire php ou C, répéré par le caractère 'D'
+<BR>
+
+Si des fichiers de langage C sont présents, <B>mkddocu</B> génère un fichier d'entête global (header) du projet informatique grâce au caractère de repérage 'H'.
+<BR>
+
+<B>Caractère de repérage :</B>
+
+<BR>
+
+<B>D</B> Extrait la documentation générale.
+<BR>
+
+<B>H</B> Crée le fichier d'entête global (header) si un fichier C est présent.
+<BR>
+
+<B>P</B> Extrait un document utile aux mainteneurs, noms, dates, versions, etc.
+<BR>
+
+<B>T</B> Extrait le document des directives de tests. (Unitaires, d'intégration, etc.)
+<DT><I>projet </I>
+
+<DD>
+C'est sous ce nom_de_projet que seront crées ou mis à jour les fichiers du répertoire 'maintenance/nom_de_projet'
+</DL>
+<A NAME="lbAE">&nbsp;</A>
+<H2>VALEURS RETOURNÉES</H2>
+
+<B>&nbsp;0</B> Fin normale à la fin de l'exécution de la commande ou de l'aide (syntaxe).
+<BR>
+
+<B>-1</B> La commande <B>mkd</B> n'est pas installée.
+<BR>
+
+<B>-2</B> Command stoppée. La sauvegarde de la série de documents dans le répertoire <B>Backups</B> n'a pas été effectuée.
+<BR>
+
+<B>-3</B> Command stoppée. Le paramètre <I>project</I> est vide.
+<A NAME="lbAF">&nbsp;</A>
+<H2>EXEMPLES</H2>
+
+L'auto-documentation de cette commande se crée avec le fichier d'origne des sources mkddocu.sh. Lancer la commande&nbsp;:
+<BR>
+
+<B>mkddocu.sh mkddocu</B>
+
+<BR>
+
+Le répertoire 
+<B>maintenance/mkddocu</B>
+
+contiendra les documents.
+<BR>
+
+<P>
+Les répertoires de projet sont générés par séries et peuvent avoir été sauvegardés dans un répertoire <B>maintenance/Backups</B> si le nombre de fichiers de projet de la série a atteind la limite 
+<I>BACKUPSMAX</I>
+
+<BR>
+
+Pour les essais on peut limiter <I>BACKUPSMAX</I> à 2 
+(3 sauvegardes par série.)
+<A NAME="lbAG">&nbsp;</A>
+<H2>REMARQUES</H2>
+
+<I>BACKUPSMAX </I>
+
+est normalement fixé à 9 mais peut être modifié par édition du fichier : /usr/bin/mkddocu.
+<A NAME="lbAH">&nbsp;</A>
+<H2>VOIR AUSSI</H2>
+
+<A HREF="/cgi-bin/man/man2html?1+mkd">mkd</A>(1)
+<A HREF="/cgi-bin/man/man2html?1+xgettext">xgettext</A>(1)
+<A HREF="/cgi-bin/man/man2html?1+poedit">poedit</A>(1)
+<BR>
+
+<A HREF="file:////usr/share/doc/mkddocu/">file:////usr/share/doc/mkddocu/</A>
+<BR>
+
+<A HREF="file:////usr/share/doc/mkd/">file:////usr/share/doc/mkd/</A>
+<A NAME="lbAI">&nbsp;</A>
+<H2>TÉLÉCHARGEMENTS</H2>
+
+<A HREF="http://edeulo.free.fr">http://edeulo.free.fr</A>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>AUTEURS</H2>
+
+Clara, JPL, Luca
+<BR>
+
+Email : <A HREF="http://edeulo.free.fr/contacts/formmail.php">http://edeulo.free.fr/contacts/formmail.php</A>
+<A NAME="lbAK">&nbsp;</A>
+<H2>BUGS</H2>
+
+Rapports de bugs :  <A HREF="http://edeulo.free.fr/phpBB3/viewforum.php?f=14">http://edeulo.free.fr/phpBB3/viewforum.php?f=14</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NOM</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">VALEURS RETOURNÉES</A><DD>
+<DT><A HREF="#lbAF">EXEMPLES</A><DD>
+<DT><A HREF="#lbAG">REMARQUES</A><DD>
+<DT><A HREF="#lbAH">VOIR AUSSI</A><DD>
+<DT><A HREF="#lbAI">TÉLÉCHARGEMENTS</A><DD>
+<DT><A HREF="#lbAJ">AUTEURS</A><DD>
+<DT><A HREF="#lbAK">BUGS</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 16:15:55 GMT, April 02, 2014
+</BODY>
+</HTML>
